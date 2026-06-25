@@ -1,911 +1,1805 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Um Novo Jeito de Lidar com a Ansiedade — Guia ACT por Mariana Psicóloga" },
+      {
+        title:
+          "Um Novo Jeito de Lidar com a Ansiedade — Guia ACT por Mariana Anício",
+      },
       {
         name: "description",
         content:
-          "Guia digital baseado em Terapia de Aceitação e Compromisso (ACT) para desenvolver uma relação mais saudável com pensamentos, emoções e preocupações do dia a dia.",
+          "Guia digital baseado em ACT para desenvolver uma nova forma de se relacionar com a ansiedade. Criado por Mariana Anício, psicóloga.",
       },
-      { property: "og:title", content: "Um Novo Jeito de Lidar com a Ansiedade" },
+      {
+        property: "og:title",
+        content: "Um Novo Jeito de Lidar com a Ansiedade",
+      },
       {
         property: "og:description",
         content:
-          "Você não precisa esperar a ansiedade desaparecer para voltar a viver sua vida. Um guia prático baseado em ACT.",
+          "Você não precisa esperar a ansiedade desaparecer para começar a viver. Guia prático baseado em ACT.",
       },
     ],
   }),
-  component: Index,
+  component: LandingPage,
 });
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const } },
-};
+/* ──────────────────────────────── Utilities ───────────────────────────────── */
 
-const stagger = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
-};
-
-function SectionLabel({ children }: { children: React.ReactNode }) {
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  as: As = "div",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+  as?: keyof React.JSX.IntrinsicElements;
+}) {
+  const ref = useRef<HTMLElement | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setVisible(true);
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  const Tag = As as unknown as React.ElementType;
   return (
-    <span className="inline-block text-xs tracking-[0.3em] uppercase text-[#7B8C9B] font-medium mb-4">
+    <Tag
+      ref={ref as never}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.6s cubic-bezier(0.4,0,0.2,1) ${delay}ms, transform 0.6s cubic-bezier(0.4,0,0.2,1) ${delay}ms`,
+      }}
+      className={className}
+    >
       {children}
-    </span>
+    </Tag>
   );
 }
 
-function CTA({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function WaveDivider({ color = "#F2EFE8" }: { color?: string }) {
+  return (
+    <svg
+      viewBox="0 0 1440 80"
+      preserveAspectRatio="none"
+      className="block w-full h-12 sm:h-16"
+      aria-hidden
+    >
+      <path
+        d="M0,40 C240,80 480,0 720,32 C960,64 1200,16 1440,48 L1440,80 L0,80 Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
+function CTAButton({
+  children,
+  pulse = false,
+  full = false,
+  size = "md",
+}: {
+  children: React.ReactNode;
+  pulse?: boolean;
+  full?: boolean;
+  size?: "md" | "lg";
+}) {
+  const padding =
+    size === "lg" ? "px-12 py-5 text-[18px]" : "px-10 py-[18px] text-[17px]";
   return (
     <a
-      href="#pricing"
-      className={
-        "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#CC6A39] text-white font-medium tracking-wide shadow-[0_10px_30px_-10px_rgba(204,106,57,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(204,106,57,0.65)] active:translate-y-0 " +
-        className
-      }
+      href="#comprar"
+      className={`group inline-flex items-center justify-center gap-2 rounded-[10px] font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 ${padding} ${full ? "w-full" : ""}`}
+      style={{
+        backgroundColor: "#CC6A39",
+        fontFamily: "Inter, sans-serif",
+        animation: pulse ? "pulse-cta 2.5s infinite" : undefined,
+      }}
     >
       {children}
     </a>
   );
 }
 
-function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-  const [open, setOpen] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+/* ──────────────────────────────── Mockup ──────────────────────────────────── */
 
+function BookMockup({ width = 260 }: { width?: number }) {
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "backdrop-blur-md bg-[#F2EFE8]/75 border-b border-[rgba(107,67,37,0.10)]"
-          : "bg-transparent"
-      }`}
+    <div
+      className="relative"
+      style={{
+        width,
+        aspectRatio: "3 / 4",
+        background: "linear-gradient(145deg, #A8B5A2, #7B8C9B)",
+        borderRadius: "8px 18px 18px 8px",
+        boxShadow:
+          "-6px 0 0 #8B9E84, 0 20px 60px rgba(107,67,37,0.25), 0 4px 12px rgba(107,67,37,0.15)",
+        transform: "rotate(2deg)",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a href="#top" className="font-display text-[#6B4325] text-lg sm:text-xl leading-tight max-w-[60%] truncate">
-          Um Novo Jeito de Lidar com a Ansiedade
-        </a>
-        <a
-          href="#pricing"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
-        >
-          Quero acessar o guia →
-        </a>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
-          className="sm:hidden w-10 h-10 grid place-items-center rounded-full border border-[rgba(107,67,37,0.15)] text-[#6B4325]"
-        >
-          <div className="space-y-1.5">
-            <span className="block w-4 h-px bg-[#6B4325]" />
-            <span className="block w-4 h-px bg-[#6B4325]" />
-          </div>
-        </button>
-      </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="sm:hidden px-5 pb-5"
-          >
-            <div className="rounded-2xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-4 flex flex-col gap-3">
-              {[
-                ["O guia", "#produto"],
-                ["Para quem é", "#para-quem"],
-                ["Sobre Mariana", "#mariana"],
-                ["Perguntas", "#faq"],
-              ].map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} className="text-[#6B4325] text-sm">
-                  {label}
-                </a>
-              ))}
-              <a
-                href="#pricing"
-                onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#CC6A39] text-white text-sm font-medium"
-              >
-                Quero acessar o guia →
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
-  );
-}
-
-function Hero() {
-  return (
-    <section id="top" className="relative min-h-screen pt-28 sm:pt-32 pb-16 px-5 sm:px-8">
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#A8B5A2]/25 blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full bg-[#C78162]/20 blur-3xl" />
-      </div>
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={stagger}
-        className="max-w-4xl mx-auto text-center"
-      >
-        <motion.div variants={fadeUp}>
-          <span
-            className="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-[13px] tracking-wide"
+      <div className="absolute inset-0 flex flex-col items-center justify-between text-white px-6 py-8 text-center">
+        <div style={{ fontFamily: "Inter", fontSize: 11, opacity: 0.75 }}>
+          Mariana Anício
+        </div>
+        <div className="flex flex-col items-center gap-5">
+          <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+            <path
+              d="M10 45 C 20 25, 40 25, 50 45"
+              stroke="white"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+            />
+            <path
+              d="M15 38 C 25 22, 40 28, 50 18"
+              stroke="white"
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              opacity="0.7"
+            />
+          </svg>
+          <h3
             style={{
-              border: "1px solid #7B8C9B",
-              background: "rgba(123,140,155,0.10)",
-              color: "#7B8C9B",
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 600,
+              fontSize: 18,
+              lineHeight: 1.2,
             }}
           >
-            Baseado em ACT • Psicologia baseada em evidências
-          </span>
-        </motion.div>
-
-        <motion.h1
-          variants={fadeUp}
-          className="font-display text-[#6B4325] mt-6 text-[32px] leading-[1.1] sm:text-[52px] md:text-[64px] lg:text-[68px] font-semibold tracking-tight"
-        >
-          Você não precisa esperar a ansiedade desaparecer para voltar a viver sua vida.
-        </motion.h1>
-
-        <motion.p
-          variants={fadeUp}
-          className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
-        >
-          Um guia prático baseado na Terapia de Aceitação e Compromisso (ACT) para ajudar você
-          a desenvolver uma relação mais saudável com pensamentos, emoções e preocupações do dia a dia.
-        </motion.p>
-
-        <motion.div variants={fadeUp} className="mt-10">
-          <p className="text-sm text-[#6B4325]/80 mb-3 font-display italic text-lg">
-            Assista ao vídeo antes de continuar 👇
-          </p>
-          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[rgba(107,67,37,0.15)] shadow-[0_30px_60px_-30px_rgba(107,67,37,0.35)] bg-white/40 backdrop-blur-sm">
-            <div className="aspect-video w-full bg-gradient-to-br from-[#A8B5A2]/30 to-[#7B8C9B]/30 grid place-items-center">
-              {/* REPLACE WITH YOUTUBE URL */}
-              <motion.div
-                animate={{ scale: [1, 1.06, 1] }}
-                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-20 h-20 rounded-full bg-white/80 backdrop-blur grid place-items-center shadow-xl"
-              >
-                <div className="w-0 h-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-[#CC6A39] ml-1.5" />
-              </motion.div>
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
-        </motion.div>
-
-        <motion.ul
-          variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#5b5448]"
-        >
-          <li>✓ Acesso imediato</li>
-          <li>✓ Funciona no celular</li>
-          <li>✓ Garantia de 7 dias</li>
-        </motion.ul>
-      </motion.div>
-    </section>
-  );
-}
-
-function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  return (
-    <motion.div
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={stagger}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
-function Identificacao() {
-  const items = [
-    { e: "🧠", t: "Sua mente parece nunca desacelerar." },
-    { e: "⚠️", t: "Você vive preocupado com o que pode acontecer." },
-    { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
-    { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
-    { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-5xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>Identificação</SectionLabel>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
-        >
-          Você se reconhece em alguma dessas situações?
-        </motion.h2>
-
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {items.map((it, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className="rounded-2xl p-7 text-left bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-transform duration-300 hover:-translate-y-1"
-            >
-              <div className="text-3xl mb-3">{it.e}</div>
-              <p className="text-[#3f3a32] leading-[1.7]">{it.t}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinho.
-        </motion.p>
-      </Reveal>
-    </section>
-  );
-}
-
-function Problema() {
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-4xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>O problema</SectionLabel>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
-        >
-          O problema não é sentir ansiedade.
-        </motion.h2>
-        <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
-          O problema é ficar preso na luta contra ela.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
-          Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
-          Quando lutamos contra uma emoção, ela se intensifica. A ciência mostra: o sofrimento
-          aumenta quando entramos em uma batalha interna que não escolhemos.
-        </motion.p>
-
-        <motion.div variants={fadeUp} className="mt-14">
-          <div className="relative mx-auto max-w-md">
-            <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
-              <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
-              <div className="text-center px-8">
-                <p className="font-display text-[#6B4325] text-xl">Ciclo da luta</p>
-                <p className="text-xs text-[#5b5448] mt-2 leading-relaxed">
-                  Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
-
-function NovaPerspectiva() {
-  const left = [
-    "Controlar pensamentos",
-    "Eliminar emoções difíceis",
-    "Esperar se sentir melhor para agir",
-    "Buscar segurança absoluta",
-    "Evitar desconfortos",
-  ];
-  const right = [
-    "Desenvolver flexibilidade psicológica",
-    "Fazer espaço para emoções difíceis",
-    "Observar pensamentos com mais distância",
-    "Agir em direção ao que importa",
-    "Construir uma vida alinhada aos seus valores",
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-6xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Uma nova perspectiva</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
-            Existe outro caminho.
-          </h2>
-        </motion.div>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="rounded-3xl p-8 sm:p-10 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
-          >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#C78162]">O que a maioria tenta</p>
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mt-2 mb-6">
-              O caminho da luta
-            </h3>
-            <ul className="space-y-4">
-              {left.map((t) => (
-                <li key={t} className="flex gap-3 text-[#5b5448] leading-[1.7]">
-                  <span className="text-[#C78162] shrink-0">✕</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 backdrop-blur-sm border border-[#A8B5A2]/40"
-          >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#7B8C9B]">O que você aprenderá</p>
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mt-2 mb-6">
-              O caminho da flexibilidade
-            </h3>
-            <ul className="space-y-4">
-              {right.map((t) => (
-                <li key={t} className="flex gap-3 text-[#3f3a32] leading-[1.7]">
-                  <span className="text-[#7B8C9B] shrink-0">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-
-        <motion.p
-          variants={fadeUp}
-          className="mt-16 max-w-3xl mx-auto text-center font-display italic text-xl sm:text-2xl text-[#6B4325] leading-snug"
-        >
-          A mudança não acontece quando a ansiedade desaparece. Ela acontece quando você aprende
-          uma nova forma de se relacionar com ela.
-        </motion.p>
-      </Reveal>
-    </section>
-  );
-}
-
-function Produto() {
-  const benefits = [
-    "Compreender melhor como a ansiedade funciona",
-    "Identificar padrões emocionais",
-    "Desenvolver mais presença",
-    "Aplicar exercícios práticos",
-    "Construir uma relação mais saudável com pensamentos",
-    "Agir mesmo quando a ansiedade aparece",
-    "Desenvolver clareza emocional",
-    "Reduzir a luta constante contra a ansiedade",
-  ];
-  return (
-    <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <motion.div variants={fadeUp} className="order-2 md:order-1">
-          <SectionLabel>O guia</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Mais do que um guia. Uma nova forma de lidar com a ansiedade.
-          </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Um material cuidadosamente construído para acompanhar você passo a passo no
-            desenvolvimento de uma relação mais saudável com pensamentos, emoções e preocupações,
-            apoiado por conceitos centrais da Terapia de Aceitação e Compromisso.
-          </p>
-          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-            {benefits.map((b) => (
-              <li key={b} className="flex gap-3 text-[#3f3a32] text-[15px] leading-[1.6]">
-                <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="order-1 md:order-2 flex justify-center">
-          <div className="relative">
-            <div className="absolute -inset-8 bg-[#C78162]/15 rounded-full blur-3xl" />
-            <div className="relative w-[260px] sm:w-[320px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(107,67,37,0.45)] border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#6B4325] to-[#C78162] p-8 flex flex-col justify-between">
-              <div>
-                <div className="text-xs tracking-[0.3em] uppercase text-white/70">Guia Prático</div>
-                <div className="mt-1 text-xs text-white/60">Baseado em ACT</div>
-              </div>
-              <div>
-                <h3 className="font-display text-white text-3xl sm:text-4xl leading-[1.05]">
-                  Um Novo Jeito de Lidar com a Ansiedade
-                </h3>
-              </div>
-              <div className="text-white/80 text-sm">
-                <div className="h-px bg-white/30 mb-3" />
-                Mariana Psicóloga
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
-
-function Receba() {
-  const items = [
-    {
-      e: "📘",
-      tag: "Produto principal",
-      title: "Guia Principal",
-      desc: "Um Novo Jeito de Lidar com a Ansiedade — material completo baseado em ACT.",
-    },
-    {
-      e: "📋",
-      tag: "Bônus 01",
-      title: "Checklist de Gatilhos da Ansiedade",
-      desc: "Ferramenta prática para identificar padrões, situações e contextos que costumam intensificar a ansiedade.",
-    },
-    {
-      e: "🚨",
-      tag: "Bônus 02",
-      title: "Cartão de Emergência Emocional",
-      desc: "PDF otimizado para celular: respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
-    },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-6xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Conteúdo</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
-            O que você recebe
-          </h2>
-        </motion.div>
-
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {items.map((it) => (
-            <motion.div
-              key={it.title}
-              variants={fadeUp}
-              className="rounded-3xl p-8 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(107,67,37,0.3)]"
-            >
-              <div className="text-4xl mb-5">{it.e}</div>
-              <div className="text-[11px] tracking-[0.25em] uppercase text-[#7B8C9B] mb-2">{it.tag}</div>
-              <h3 className="font-display text-2xl text-[#6B4325] leading-tight">{it.title}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.7] text-[15px]">{it.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-function ParaQuem() {
-  const yes = [
-    "Convive com ansiedade",
-    "Pensa demais",
-    "Sente excesso de preocupação",
-    "Busca mais leveza emocional",
-    "Deseja ferramentas práticas",
-    "Quer desenvolver autoconhecimento",
-  ];
-  const no = [
-    "Busca soluções milagrosas",
-    "Quer eliminar emoções difíceis",
-    "Não pretende aplicar o que aprender",
-  ];
-  return (
-    <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-5xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Para quem é</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Este guia é para você se…
-          </h2>
-        </motion.div>
-
-        <div className="mt-14 grid md:grid-cols-5 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
-          >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#7B8C9B] mb-5">Indicado para</p>
-            <ul className="space-y-3.5">
-              {yes.map((t) => (
-                <li key={t} className="flex gap-3 text-[#3f3a32]">
-                  <span className="text-[#7B8C9B] shrink-0">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
-          >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#C78162] mb-5">Não é para você se</p>
-            <ul className="space-y-3.5">
-              {no.map((t) => (
-                <li key={t} className="flex gap-3 text-[#5b5448]">
-                  <span className="text-[#C78162] shrink-0">✕</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-function Objecoes() {
-  const items = [
-    {
-      q: "Isso substitui terapia?",
-      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o trabalho individual com um(a) psicólogo(a). Se você já faz terapia, pode ser um excelente apoio entre sessões.",
-    },
-    {
-      q: "Preciso ter conhecimento prévio?",
-      a: "Nenhum. A linguagem é acessível, sem jargões técnicos, com exemplos do cotidiano e exercícios passo a passo para quem está começando a entender a ansiedade.",
-    },
-    {
-      q: "E se eu me identificar muito com os sintomas?",
-      a: "Se identificar faz parte. O guia foi construído com acolhimento e ritmo. Caso sinta necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo.",
-    },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-4xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Objeções honestas</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você esteja pensando…
-          </h2>
-        </motion.div>
-        <div className="mt-12 space-y-5">
-          {items.map((it) => (
-            <motion.div
-              key={it.q}
-              variants={fadeUp}
-              className="rounded-2xl p-7 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
-            >
-              <h3 className="font-display text-xl sm:text-2xl text-[#6B4325]">{it.q}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.75]">{it.a}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-function Depoimentos() {
-  const items = [
-    {
-      n: "Luiza M.",
-      r: "Professora",
-      t: "Pela primeira vez entendi que não precisava ‘parar de sentir’ para voltar a viver. O guia me trouxe um respiro real.",
-    },
-    {
-      n: "Rafael S.",
-      r: "Engenheiro",
-      t: "Os exercícios práticos me ajudaram a observar meus pensamentos com mais distância. Algo simples, mas que mudou meu dia a dia.",
-    },
-    {
-      n: "Camila A.",
-      r: "Designer",
-      t: "Material acolhedor, sem promessas mágicas. Senti que estava sendo conduzida por alguém que entende de verdade do assunto.",
-    },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-6xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Depoimentos</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            O que leitores estão dizendo
-          </h2>
-        </motion.div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {items.map((it) => (
-            <motion.div
-              key={it.n}
-              variants={fadeUp}
-              className="rounded-3xl p-8 bg-white/65 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
-            >
-              <div className="font-display text-[#C78162] text-5xl leading-none mb-2">“</div>
-              <p className="text-[#3f3a32] leading-[1.75]">{it.t}</p>
-              <div className="mt-6 pt-5 border-t border-[rgba(107,67,37,0.15)]">
-                <p className="font-display text-[#6B4325] text-lg">{it.n}</p>
-                <p className="text-xs text-[#7B8C9B] tracking-wide uppercase mt-1">{it.r}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-function SobreMariana() {
-  return (
-    <section id="mariana" className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
-        <motion.div variants={fadeUp} className="md:col-span-2 flex justify-center">
-          <div className="relative">
-            <div className="absolute -inset-6 bg-[#A8B5A2]/30 rounded-full blur-2xl" />
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#A8B5A2] to-[#7B8C9B] grid place-items-center">
-              <span className="font-display text-white text-7xl">M</span>
-            </div>
-          </div>
-        </motion.div>
-        <motion.div variants={fadeUp} className="md:col-span-3">
-          <SectionLabel>Sobre a autora</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Quem criou este guia?
-          </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Mariana é psicóloga e atua com base na Terapia de Aceitação e Compromisso (ACT),
-            abordagem reconhecida por ajudar pessoas a desenvolverem mais flexibilidade
-            psicológica e construírem uma vida alinhada ao que realmente importa.
-          </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
-            Seu trabalho busca unir ciência, acolhimento e aplicabilidade prática.
-          </p>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
-
-function Pricing() {
-  const features = [
-    "Guia Completo",
-    "Checklist de Gatilhos da Ansiedade",
-    "Cartão de Emergência Emocional",
-    "Acesso Imediato",
-  ];
-  return (
-    <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-2xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Acesso ao guia</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Comece hoje, no seu ritmo.
-          </h2>
-        </motion.div>
-
-        <motion.div
-          variants={fadeUp}
-          className="mt-12 rounded-3xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)]"
-        >
-          <p className="text-xs tracking-[0.3em] uppercase text-[#7B8C9B] text-center">Oferta atual</p>
-          <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center mt-2">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
-
-          <div className="mt-6 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 67,90</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
-              R$ 37,90
-            </span>
-          </div>
-          <p className="text-center text-xs text-[#5b5448] mt-2">à vista • acesso imediato</p>
-
-          <ul className="mt-8 space-y-3">
-            {features.map((f) => (
-              <li key={f} className="flex gap-3 text-[#3f3a32]">
-                <span className="text-[#A8B5A2] shrink-0">✓</span>
-                {f}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex justify-center">
-            <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
-          </div>
-
-          <p className="mt-5 text-center text-xs text-[#7B8C9B] tracking-wide">
-            🔒 Pagamento seguro
-          </p>
-
-          <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
-            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias</p>
-            <p className="text-xs text-[#5b5448] mt-1">
-              Se não fizer sentido pra você, devolvemos 100% do valor.
-            </p>
-          </div>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
-
-function Garantia() {
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-3xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>Garantia</SectionLabel>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
-        >
-          Você não tem nada a perder.
-        </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75]">
-          Você tem 7 dias completos para acessar o guia e os bônus. Se sentir que o material não é
-          para você, é só nos enviar uma mensagem e devolvemos 100% do valor investido — sem
-          burocracia, sem perguntas constrangedoras.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-[#5b5448] leading-[1.75]">
-          Queremos que sua decisão seja tranquila — porque escolher cuidar de si já é, por si só,
-          um passo importante.
-        </motion.p>
-      </Reveal>
-    </section>
-  );
-}
-
-function FAQItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-[rgba(107,67,37,0.15)]">
-      <button
-        onClick={() => setOpen((v) => !v)}
-        className="w-full flex items-center justify-between gap-4 py-6 text-left"
+        </div>
+        <div style={{ fontFamily: "Inter", fontSize: 10, opacity: 0.7 }}>
+          Psicóloga ACT
+        </div>
+      </div>
+      <div
+        className="absolute -top-3 -right-4 px-3.5 py-1.5 text-white whitespace-nowrap"
+        style={{
+          backgroundColor: "#CC6A39",
+          fontFamily: "Inter, sans-serif",
+          fontWeight: 600,
+          fontSize: 12,
+          borderRadius: 20,
+          transform: "rotate(12deg)",
+        }}
       >
-        <span className="font-display text-lg sm:text-xl text-[#6B4325]">{q}</span>
-        <span
-          className={`shrink-0 w-8 h-8 rounded-full border border-[rgba(107,67,37,0.2)] grid place-items-center transition-transform duration-300 ${
-            open ? "rotate-45 bg-[#CC6A39] text-white border-transparent" : "text-[#6B4325]"
-          }`}
-        >
-          +
-        </span>
-      </button>
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="overflow-hidden"
-          >
-            <p className="pb-6 text-[#5b5448] leading-[1.75]">{a}</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        + 2 bônus incluídos
+      </div>
     </div>
   );
 }
 
+/* ──────────────────────────────── Header ──────────────────────────────────── */
+
+function Header() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 80);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <header
+      className="fixed inset-x-0 top-0 z-50 transition-all duration-300"
+      style={{
+        backgroundColor: scrolled ? "#F2EFE8" : "transparent",
+        boxShadow: scrolled ? "0 1px 20px rgba(107,67,37,0.1)" : "none",
+      }}
+    >
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-10 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <a
+          href="#top"
+          className="text-center sm:text-left leading-tight"
+          style={{ color: "#6B4325", fontFamily: "Cormorant Garamond, serif", fontWeight: 600 }}
+        >
+          <div style={{ fontSize: 20 }}>Mariana Anício</div>
+          <div style={{ fontSize: 12, opacity: 0.7, fontWeight: 500 }}>Psicóloga ACT</div>
+        </a>
+        <a
+          href="#comprar"
+          className="px-6 py-2.5 text-white text-[15px] transition-all duration-300 hover:-translate-y-0.5"
+          style={{
+            backgroundColor: "#CC6A39",
+            borderRadius: 10,
+            fontFamily: "Inter, sans-serif",
+            fontWeight: 500,
+          }}
+        >
+          Quero o guia →
+        </a>
+      </div>
+    </header>
+  );
+}
+
+/* ──────────────────────────────── Hero ────────────────────────────────────── */
+
+function Hero() {
+  return (
+    <section
+      id="top"
+      className="relative overflow-hidden pt-36 sm:pt-32 pb-20 sm:pb-28 px-5 sm:px-10"
+      style={{ backgroundColor: "#F2EFE8" }}
+    >
+      <svg
+        className="absolute -top-20 -right-20 w-[400px] h-[400px] pointer-events-none"
+        viewBox="0 0 400 400"
+        aria-hidden
+      >
+        <path
+          d="M200,40 C300,40 360,120 360,200 C360,300 280,360 200,360 C100,360 40,280 40,200 C40,120 120,40 200,40 Z"
+          fill="#A8B5A2"
+          opacity="0.10"
+        />
+      </svg>
+
+      <div className="max-w-[1100px] mx-auto grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+        <div>
+          <Reveal>
+            <h1
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                color: "#6B4325",
+                lineHeight: 1.1,
+              }}
+              className="text-[38px] sm:text-[52px] lg:text-[64px]"
+            >
+              Você não precisa
+              <br /> esperar a ansiedade
+              <br /> desaparecer para
+              <br />
+              <em style={{ color: "#CC6A39", fontStyle: "italic" }}>começar a viver.</em>
+            </h1>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <p
+              className="mt-7 text-[16px] sm:text-[18px]"
+              style={{ color: "#8B5E3C", lineHeight: 1.7, maxWidth: 560 }}
+            >
+              Um guia digital criado por uma psicóloga especializada em ACT para quem
+              sofre com ansiedade, excesso de pensamentos e a necessidade constante de
+              controlar tudo — e está pronto para uma forma diferente de lidar com isso.
+            </p>
+          </Reveal>
+
+          <Reveal delay={200} className="mt-8">
+            <div
+              className="relative w-full overflow-hidden"
+              style={{
+                aspectRatio: "16 / 9",
+                backgroundColor: "#6B4325",
+                borderRadius: 16,
+                maxWidth: 560,
+              }}
+            >
+              <div className="absolute inset-0 grid place-items-center">
+                <div
+                  className="grid place-items-center"
+                  style={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.12)",
+                    animation: "pulse-cta 2.5s infinite",
+                  }}
+                >
+                  <svg width="34" height="34" viewBox="0 0 24 24" fill="#CC6A39">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <p
+              className="mt-3 text-[13px]"
+              style={{ color: "#8B5E3C", fontFamily: "Inter, sans-serif" }}
+            >
+              ▶ Assista: Mariana apresenta o guia em 2 minutos
+            </p>
+          </Reveal>
+
+          <Reveal delay={280} className="mt-8">
+            <div className="w-full sm:w-auto inline-block">
+              <CTAButton pulse>Quero começar agora — R$ 37,90</CTAButton>
+            </div>
+            <p
+              className="mt-4 text-[13px]"
+              style={{ color: "#8B5E3C", fontFamily: "Inter, sans-serif" }}
+            >
+              🔒 Acesso imediato · Garantia de 7 dias · PDF + bônus incluídos
+            </p>
+          </Reveal>
+        </div>
+
+        <Reveal delay={200} className="hidden lg:flex justify-center">
+          <BookMockup width={260} />
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Identificação ────────────────────────────── */
+
+function Identificacao() {
+  const items = [
+    "Minha cabeça não para — especialmente quando finalmente deito para descansar.",
+    "Fico antecipando problemas que podem nem acontecer, mas não consigo parar de pensar.",
+    "Sinto que preciso controlar tudo para me sentir segura. Quando não consigo, a ansiedade piora.",
+    "Já tentei respirar fundo, pensar positivo, me distrair — e a ansiedade continua lá.",
+    "Vivo no futuro ou no passado. Raramente estou de verdade no momento presente.",
+    "A sensação de alerta constante me cansa — mas eu não sei como desligar.",
+  ];
+  return (
+    <>
+      <WaveDivider color="#F2EFE8" />
+      <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#FFFFFF" }}>
+        <div className="max-w-[1100px] mx-auto">
+          <Reveal>
+            <h2
+              className="text-[30px] sm:text-[48px] text-center"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 600,
+                fontStyle: "italic",
+                color: "#6B4325",
+                lineHeight: 1.15,
+              }}
+            >
+              Você se reconhece
+              <br /> em algum desses?
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid sm:grid-cols-2 gap-5">
+            {items.map((t, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div
+                  className="h-full"
+                  style={{
+                    backgroundColor: "#F2EFE8",
+                    borderLeft: "3px solid #A8B5A2",
+                    borderRadius: 12,
+                    padding: "24px 28px",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "#6B4325",
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: 16,
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    “{t}”
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={120}>
+            <p
+              className="mt-14 text-center text-[20px] sm:text-[24px]"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontStyle: "italic",
+                color: "#CC6A39",
+                lineHeight: 1.4,
+              }}
+            >
+              “Se pelo menos um desses ressoa com você,
+              <br className="hidden sm:block" /> este guia foi feito para onde você está agora.”
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ─────────────────────────────── Ciclo da ansiedade ───────────────────────── */
+
+function Ciclo() {
+  const nodes = [
+    "Pensamento preocupante",
+    "Sensação de ameaça",
+    "Ansiedade aumenta",
+    "Tentativa de controle ou evitação",
+    "Alívio momentâneo",
+  ];
+  return (
+    <>
+      <WaveDivider color="#FFFFFF" />
+      <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#F2EFE8" }}>
+        <div className="max-w-[1100px] mx-auto">
+          <Reveal>
+            <h2
+              className="text-[30px] sm:text-[48px] text-center"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                color: "#6B4325",
+                lineHeight: 1.15,
+              }}
+            >
+              Entenda por que a ansiedade
+              <br /> parece nunca ter fim.
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <p
+              className="mt-6 text-center text-[16px] sm:text-[18px] max-w-2xl mx-auto"
+              style={{ color: "#8B5E3C", lineHeight: 1.7 }}
+            >
+              Muitas pessoas ficam presas em um ciclo que se retroalimenta sem perceber —
+              e quanto mais tentam sair, mais fundo entram.
+            </p>
+          </Reveal>
+
+          {/* Desktop: circular */}
+          <Reveal delay={180}>
+            <div className="hidden md:block mt-14">
+              <div className="relative mx-auto" style={{ maxWidth: 560, aspectRatio: "1/1" }}>
+                <svg viewBox="0 0 560 560" className="absolute inset-0 w-full h-full">
+                  <circle
+                    cx="280"
+                    cy="280"
+                    r="220"
+                    fill="none"
+                    stroke="#A8B5A2"
+                    strokeWidth="1.5"
+                  />
+                  {/* Arrows between nodes (approx) */}
+                  {[0, 1, 2, 3].map((i) => {
+                    const a1 = (-90 + i * 72) * (Math.PI / 180);
+                    const a2 = (-90 + (i + 1) * 72) * (Math.PI / 180);
+                    const r = 220;
+                    const x1 = 280 + r * Math.cos(a1);
+                    const y1 = 280 + r * Math.sin(a1);
+                    const x2 = 280 + r * Math.cos(a2);
+                    const y2 = 280 + r * Math.sin(a2);
+                    return (
+                      <path
+                        key={i}
+                        d={`M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}`}
+                        stroke="#A8B5A2"
+                        strokeWidth="1.5"
+                        fill="none"
+                        markerEnd="url(#arrowSage)"
+                      />
+                    );
+                  })}
+                  {/* Dashed closing arrow */}
+                  {(() => {
+                    const a1 = (-90 + 4 * 72) * (Math.PI / 180);
+                    const a2 = -90 * (Math.PI / 180);
+                    const r = 220;
+                    const x1 = 280 + r * Math.cos(a1);
+                    const y1 = 280 + r * Math.sin(a1);
+                    const x2 = 280 + r * Math.cos(a2);
+                    const y2 = 280 + r * Math.sin(a2);
+                    return (
+                      <path
+                        d={`M ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2}`}
+                        stroke="#C78162"
+                        strokeWidth="1.5"
+                        fill="none"
+                        strokeDasharray="4 4"
+                        markerEnd="url(#arrowClay)"
+                      />
+                    );
+                  })()}
+                  <defs>
+                    <marker
+                      id="arrowSage"
+                      markerWidth="8"
+                      markerHeight="8"
+                      refX="6"
+                      refY="4"
+                      orient="auto"
+                    >
+                      <path d="M0,0 L8,4 L0,8 Z" fill="#A8B5A2" />
+                    </marker>
+                    <marker
+                      id="arrowClay"
+                      markerWidth="8"
+                      markerHeight="8"
+                      refX="6"
+                      refY="4"
+                      orient="auto"
+                    >
+                      <path d="M0,0 L8,4 L0,8 Z" fill="#C78162" />
+                    </marker>
+                  </defs>
+                </svg>
+
+                {/* Center */}
+                <div
+                  className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid place-items-center text-center text-white"
+                  style={{
+                    width: 130,
+                    height: 130,
+                    borderRadius: "50%",
+                    backgroundColor: "#6B4325",
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontStyle: "italic",
+                    fontWeight: 600,
+                    fontSize: 16,
+                    lineHeight: 1.2,
+                  }}
+                >
+                  <span>
+                    Ciclo da
+                    <br /> Ansiedade
+                  </span>
+                </div>
+
+                {/* Nodes */}
+                {nodes.map((n, i) => {
+                  const angle = (-90 + i * 72) * (Math.PI / 180);
+                  const r = 220;
+                  const x = 50 + (Math.cos(angle) * r * 100) / 560;
+                  const y = 50 + (Math.sin(angle) * r * 100) / 560;
+                  return (
+                    <div
+                      key={i}
+                      className="absolute"
+                      style={{
+                        left: `${x}%`,
+                        top: `${y}%`,
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    >
+                      <div
+                        className="whitespace-nowrap"
+                        style={{
+                          backgroundColor: "#FFFFFF",
+                          border: "1.5px solid #C78162",
+                          borderRadius: 24,
+                          padding: "10px 18px",
+                          fontFamily: "Inter, sans-serif",
+                          fontWeight: 500,
+                          fontSize: 13,
+                          color: "#6B4325",
+                          boxShadow: "0 2px 12px rgba(107,67,37,0.10)",
+                        }}
+                      >
+                        {n}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Mobile: linear */}
+          <div className="md:hidden mt-10 flex flex-col items-center gap-3">
+            {nodes.map((n, i) => (
+              <div key={i} className="flex flex-col items-center gap-3">
+                <div
+                  style={{
+                    backgroundColor: "#FFFFFF",
+                    border: "1.5px solid #C78162",
+                    borderRadius: 24,
+                    padding: "10px 18px",
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 500,
+                    fontSize: 13,
+                    color: "#6B4325",
+                    boxShadow: "0 2px 12px rgba(107,67,37,0.10)",
+                    textAlign: "center",
+                  }}
+                >
+                  {n}
+                </div>
+                {i < nodes.length - 1 && (
+                  <svg width="14" height="20" viewBox="0 0 14 20">
+                    <path d="M7 0v16 M2 12l5 6 5-6" stroke="#A8B5A2" strokeWidth="1.5" fill="none" />
+                  </svg>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <Reveal delay={120}>
+            <p
+              className="mt-12 text-center text-[16px] sm:text-[17px] max-w-2xl mx-auto"
+              style={{ color: "#8B5E3C", lineHeight: 1.7 }}
+            >
+              Quanto mais tentamos eliminar completamente a ansiedade, mais ela tende a
+              permanecer presente.
+              <br />
+              <br />
+              A saída não está em lutar contra ela — está em aprender uma nova forma de
+              se relacionar com o que você sente.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ─────────────────────────────── O Problema ───────────────────────────────── */
+
+function Problema() {
+  return (
+    <>
+      <WaveDivider color="#F2EFE8" />
+      <section className="px-5 sm:px-10 py-20 sm:py-28" style={{ backgroundColor: "#6B4325" }}>
+        <div className="max-w-[800px] mx-auto text-center">
+          <Reveal>
+            <h2
+              className="text-[30px] sm:text-[48px]"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                color: "#FFFFFF",
+                lineHeight: 1.15,
+              }}
+            >
+              O problema não é a ansiedade.
+              <br /> É a guerra que travamos
+              <br /> contra ela.
+            </h2>
+          </Reveal>
+          <Reveal delay={120}>
+            <div
+              className="mt-8 space-y-6 text-[16px] sm:text-[17px] text-left sm:text-center"
+              style={{ color: "#F2EFE8", lineHeight: 1.7, fontFamily: "Inter, sans-serif" }}
+            >
+              <p>
+                A maioria das pessoas aprende uma única estratégia para lidar com pensamentos
+                e emoções difíceis: combatê-los. Suprimir. Controlar. Tentar forçar a mente
+                a parar.
+              </p>
+              <p>
+                O paradoxo é que quanto mais você luta contra um pensamento ansioso, mais
+                atenção e energia você dá a ele — e mais forte ele fica.
+              </p>
+              <p>Isso não é fraqueza. É como o sistema nervoso funciona.</p>
+            </div>
+          </Reveal>
+          <Reveal delay={180}>
+            <p
+              className="mt-12 text-[20px] sm:text-[24px]"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontStyle: "italic",
+                color: "#C78162",
+                lineHeight: 1.4,
+              }}
+            >
+              “Existe uma saída. Mas ela não passa por tentar controlar mais — passa por
+              mudar a relação com o que você está sentindo.”
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ─────────────────────────────── Nova Perspectiva ─────────────────────────── */
+
+function NovaPerspectiva() {
+  return (
+    <>
+      <WaveDivider color="#6B4325" />
+      <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#F2EFE8" }}>
+        <div className="max-w-[1100px] mx-auto">
+          <Reveal>
+            <h2
+              className="text-center text-[30px] sm:text-[48px]"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                color: "#6B4325",
+                lineHeight: 1.15,
+              }}
+            >
+              Um novo jeito de se
+              <br /> relacionar com a ansiedade.
+            </h2>
+          </Reveal>
+
+          <div className="mt-14 grid md:grid-cols-2 gap-6">
+            <Reveal>
+              <div
+                className="h-full"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid rgba(199,129,98,0.4)",
+                  borderRadius: 16,
+                  padding: 32,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 13,
+                    color: "#8B5E3C",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  A ABORDAGEM COMUM
+                </p>
+                <ul className="mt-5 space-y-3" style={{ color: "#8B5E3C", fontSize: 16 }}>
+                  {[
+                    "“Controle seus pensamentos”",
+                    "“Não pense nisso”",
+                    "“Force-se a se sentir melhor”",
+                    "“Elimine a ansiedade”",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3">
+                      <span style={{ color: "#C78162" }}>✕</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div
+                className="h-full"
+                style={{
+                  backgroundColor: "rgba(168,181,162,0.15)",
+                  border: "2px solid #A8B5A2",
+                  borderRadius: 16,
+                  padding: 32,
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 13,
+                    color: "#6B4325",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  A ABORDAGEM ACT
+                </p>
+                <ul className="mt-5 space-y-3" style={{ color: "#6B4325", fontSize: 16 }}>
+                  {[
+                    "Observe pensamentos sem ser dominado por eles",
+                    "Faça espaço para emoções sem amplificá-las",
+                    "Aja em direção ao que importa — mesmo com desconforto",
+                    "Desenvolva uma relação diferente com a ansiedade",
+                  ].map((t) => (
+                    <li key={t} className="flex gap-3">
+                      <span style={{ color: "#A8B5A2" }}>✓</span>
+                      <span>{t}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={120}>
+            <p
+              className="mt-12 max-w-3xl mx-auto text-center text-[16px] sm:text-[17px]"
+              style={{ color: "#8B5E3C", lineHeight: 1.7 }}
+            >
+              A ACT — Terapia de Aceitação e Compromisso — é uma abordagem da psicologia
+              contemporânea com décadas de pesquisa e evidências clínicas. Não é autoajuda.
+              É uma forma estruturada de desenvolver flexibilidade psicológica: a capacidade
+              de agir de acordo com o que importa mesmo quando pensamentos e emoções
+              difíceis estão presentes.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ─────────────────────────────── O Produto ────────────────────────────────── */
+
+function Produto() {
+  return (
+    <section
+      id="produto"
+      className="px-5 sm:px-10 py-20 sm:py-24"
+      style={{ backgroundColor: "#FFFFFF" }}
+    >
+      <div className="max-w-[1100px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#6B4325",
+              lineHeight: 1.15,
+            }}
+          >
+            Um guia criado para quem
+            <br /> quer algo que funcione
+            <br /> de verdade.
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid md:grid-cols-[auto_1fr] gap-12 items-start">
+          <Reveal>
+            <div className="flex justify-center md:justify-start">
+              <BookMockup width={300} />
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div>
+              <p
+                className="text-[22px] sm:text-[26px]"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontStyle: "italic",
+                  fontWeight: 600,
+                  color: "#CC6A39",
+                }}
+              >
+                “Um Novo Jeito de Lidar com a Ansiedade”
+              </p>
+              <p className="mt-5" style={{ color: "#8B5E3C", lineHeight: 1.7 }}>
+                Um guia digital baseado nos princípios da ACT — com linguagem acessível,
+                exercícios práticos e uma estrutura que você consegue aplicar sozinho, no
+                seu ritmo.
+              </p>
+              <p className="mt-4" style={{ color: "#8B5E3C", lineHeight: 1.7 }}>
+                Não é um resumo de conceitos teóricos. É um material construído para quem
+                está no meio da experiência e precisa de algo concreto para começar a se
+                mover diferente.
+              </p>
+
+              <ul className="mt-7 space-y-2.5">
+                {[
+                  "Você sofre com ansiedade frequente ou pensamentos acelerados",
+                  "Já tentou “controlar” e não funcionou",
+                  "Quer ferramentas práticas — não só teoria",
+                  "Está em terapia e quer complementar o processo",
+                  "Não está em terapia e quer um ponto de partida sólido",
+                  "Está pronto para uma relação diferente com o que sente",
+                ].map((t) => (
+                  <li
+                    key={t}
+                    className="flex gap-3"
+                    style={{ color: "#6B4325", fontSize: 16 }}
+                  >
+                    <span style={{ color: "#A8B5A2" }}>✓</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="mt-7"
+                style={{
+                  backgroundColor: "#F2EFE8",
+                  borderRadius: 8,
+                  padding: 16,
+                  color: "#8B5E3C",
+                  fontSize: 14,
+                  lineHeight: 1.6,
+                }}
+              >
+                Este guia tem caráter psicoeducativo. Se você está em crise aguda, com
+                pensamentos de automutilação ou vivendo uma emergência de saúde mental,
+                por favor busque apoio profissional imediatamente.
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Conteúdo ─────────────────────────────────── */
+
+function Conteudo() {
+  const chapters = [
+    {
+      n: "01",
+      t: "Entendendo a ansiedade de verdade",
+      d: "A diferença entre ansiedade funcional e disfuncional. Por que seu sistema de alarme está mal calibrado — não quebrado.",
+    },
+    {
+      n: "02",
+      t: "Por que lutar contra pensamentos piora tudo",
+      d: "O paradoxo do controle e o efeito rebote dos pensamentos. O que a ciência diz sobre tentar suprimir o que sentimos.",
+    },
+    {
+      n: "03",
+      t: "Você não é seus pensamentos",
+      d: "Desfusão cognitiva: como criar distância dos pensamentos automáticos sem lutar contra eles.",
+    },
+    {
+      n: "04",
+      t: "Fazendo espaço para as emoções",
+      d: "Aceitação não é resignação. É parar de fugir para que as emoções parem de dominar você.",
+    },
+    {
+      n: "05",
+      t: "O que realmente importa para você",
+      d: "Clareza de valores: como viver em direção ao que importa mesmo quando a ansiedade está presente.",
+    },
+    {
+      n: "06",
+      t: "Ferramentas para momentos difíceis",
+      d: "Respiração 4-4-6, técnica 5-4-3-2-1 e um protocolo de 3 minutos para quando a ansiedade escala.",
+    },
+    {
+      n: "07",
+      t: "Construindo uma prática real",
+      d: "Uma rotina diária de 5 minutos. Checklist semanal. Como continuar depois do guia.",
+    },
+  ];
+  return (
+    <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#F2EFE8" }}>
+      <div className="max-w-[1100px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#6B4325",
+              lineHeight: 1.15,
+            }}
+          >
+            Sete capítulos.
+            <br /> Uma forma diferente
+            <br /> de se relacionar com a ansiedade.
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid sm:grid-cols-2 gap-5">
+          {chapters.map((c, i) => (
+            <Reveal key={c.n} delay={i * 60}>
+              <div
+                className="h-full transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid rgba(168,181,162,0.4)",
+                  borderRadius: 16,
+                  padding: 28,
+                  boxShadow: "0 4px 24px rgba(107,67,37,0.05)",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontWeight: 700,
+                    fontSize: 40,
+                    color: "rgba(168,181,162,0.6)",
+                    lineHeight: 1,
+                  }}
+                >
+                  {c.n}
+                </div>
+                <h3
+                  className="mt-2"
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontWeight: 600,
+                    fontSize: 22,
+                    color: "#6B4325",
+                  }}
+                >
+                  {c.t}
+                </h3>
+                <p
+                  className="mt-3"
+                  style={{ color: "#8B5E3C", fontSize: 15, lineHeight: 1.65 }}
+                >
+                  {c.d}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── O que você recebe ────────────────────────── */
+
+function Recebe() {
+  return (
+    <section className="px-5 sm:px-10 py-20 sm:py-28" style={{ backgroundColor: "#6B4325" }}>
+      <div className="max-w-[820px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#FFFFFF",
+              lineHeight: 1.15,
+            }}
+          >
+            Tudo que está
+            <br /> incluído no seu acesso.
+          </h2>
+        </Reveal>
+
+        <div className="mt-12 space-y-5">
+          {/* Principal */}
+          <Reveal>
+            <div
+              style={{
+                backgroundColor: "rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.2)",
+                borderRadius: 16,
+                padding: 32,
+              }}
+            >
+              <span
+                className="inline-block"
+                style={{
+                  backgroundColor: "#CC6A39",
+                  color: "#FFFFFF",
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 600,
+                  fontSize: 12,
+                  padding: "5px 14px",
+                  borderRadius: 20,
+                }}
+              >
+                PRODUTO PRINCIPAL
+              </span>
+              <h3
+                className="mt-4"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontWeight: 600,
+                  fontSize: 26,
+                  color: "#FFFFFF",
+                }}
+              >
+                Um Novo Jeito de Lidar com a Ansiedade
+              </h3>
+              <p
+                className="mt-2"
+                style={{
+                  fontSize: 15,
+                  color: "rgba(255,255,255,0.8)",
+                  lineHeight: 1.65,
+                }}
+              >
+                Guia digital em PDF · 7 capítulos completos · Exercícios práticos ·
+                Checklist semanal · Protocolo para crises · Download imediato
+              </p>
+            </div>
+          </Reveal>
+
+          {[
+            {
+              tag: "BÔNUS 01",
+              bg: "#A8B5A2",
+              fg: "#6B4325",
+              title: "Checklist de Gatilhos da Ansiedade",
+              desc: "Um guia rápido para identificar os padrões, situações e contextos que costumam ativar a sua ansiedade — e o que fazer quando isso acontece.",
+              valor: "Valor: R$ 17,00",
+            },
+            {
+              tag: "BÔNUS 02",
+              bg: "#C78162",
+              fg: "#FFFFFF",
+              title: "Cartão de Emergência Emocional",
+              desc: "PDF compacto para salvar no celular. O que fazer (e o que evitar) nos momentos difíceis — com exercício de respiração, técnica de ancoragem, frases de desfusão e lembretes importantes.",
+              valor: "Valor: R$ 12,00",
+            },
+          ].map((b, i) => (
+            <Reveal key={b.tag} delay={i * 80}>
+              <div
+                style={{
+                  backgroundColor: "rgba(255,255,255,0.05)",
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  borderRadius: 16,
+                  padding: 28,
+                }}
+              >
+                <span
+                  className="inline-block"
+                  style={{
+                    backgroundColor: b.bg,
+                    color: b.fg,
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 12,
+                    padding: "5px 14px",
+                    borderRadius: 20,
+                  }}
+                >
+                  {b.tag}
+                </span>
+                <h3
+                  className="mt-4"
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontWeight: 600,
+                    fontSize: 24,
+                    color: "#FFFFFF",
+                  }}
+                >
+                  {b.title}
+                </h3>
+                <p
+                  className="mt-2"
+                  style={{
+                    fontSize: 15,
+                    color: "rgba(255,255,255,0.7)",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {b.desc}
+                </p>
+                <p
+                  className="mt-3"
+                  style={{
+                    fontSize: 13,
+                    color: "rgba(255,255,255,0.35)",
+                    textDecoration: "line-through",
+                  }}
+                >
+                  {b.valor}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={120}>
+          <div className="mt-12 text-center">
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 14 }}>
+              Valor total dos itens: R$ 66,90
+            </p>
+            <p
+              className="mt-2"
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                fontSize: 56,
+                color: "#CC6A39",
+                lineHeight: 1.1,
+              }}
+            >
+              Hoje por R$ 37,90
+            </p>
+            <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 13 }}>
+              Acesso imediato após o pagamento
+            </p>
+            <div className="mt-8 inline-block">
+              <CTAButton size="lg" pulse>
+                Quero tudo isso por R$ 37,90 →
+              </CTAButton>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Sobre Mariana ────────────────────────────── */
+
+function Mariana() {
+  return (
+    <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#F2EFE8" }}>
+      <div className="max-w-[1100px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center md:text-left"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#6B4325",
+              lineHeight: 1.15,
+            }}
+          >
+            Mariana Anício
+          </h2>
+        </Reveal>
+        <div className="mt-10 grid md:grid-cols-[auto_1fr] gap-12 items-start">
+          <Reveal>
+            <div className="flex flex-col items-center gap-3">
+              <div
+                className="grid place-items-center"
+                style={{
+                  width: 220,
+                  height: 220,
+                  borderRadius: "50%",
+                  background: "linear-gradient(145deg, #A8B5A2, #7B8C9B)",
+                  border: "4px solid #CC6A39",
+                  boxShadow: "0 8px 40px rgba(107,67,37,0.2)",
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontWeight: 700,
+                  fontSize: 96,
+                  color: "#F2EFE8",
+                }}
+              >
+                M
+              </div>
+              <a
+                href="https://instagram.com/marianaanicio_"
+                target="_blank"
+                rel="noreferrer"
+                style={{ color: "#CC6A39", fontSize: 14 }}
+              >
+                @marianaanicio_
+              </a>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div>
+              <p
+                style={{
+                  fontFamily: "Inter, sans-serif",
+                  fontWeight: 500,
+                  fontSize: 16,
+                  color: "#7B8C9B",
+                }}
+              >
+                Psicóloga · Especialista em ACT · CRP ___
+              </p>
+              <div
+                className="mt-4"
+                style={{ width: 48, height: 3, backgroundColor: "#CC6A39" }}
+              />
+              <div
+                className="mt-6 space-y-5"
+                style={{ color: "#8B5E3C", lineHeight: 1.7, fontSize: 16 }}
+              >
+                <p>
+                  Trabalho com psicologia orientada por valores — ajudando pessoas a
+                  construírem clareza sobre o que importa de verdade, e a encontrarem
+                  leveza para viver isso.
+                </p>
+                <p>
+                  Sou especializada em ACT (Terapia de Aceitação e Compromisso), uma
+                  abordagem baseada em evidências que vai além do alívio de sintomas — e
+                  trabalha a relação que a pessoa tem com sua própria experiência
+                  interna.
+                </p>
+                <p>
+                  Este guia é uma extensão do que faço na prática clínica. É material
+                  criado com cuidado, para quem está no meio da experiência e precisa de
+                  algo concreto para começar a se mover diferente.
+                </p>
+              </div>
+              <p
+                className="mt-8 text-[20px] sm:text-[22px]"
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontStyle: "italic",
+                  color: "#CC6A39",
+                  lineHeight: 1.4,
+                }}
+              >
+                “O que você vive hoje te aproxima de quem você quer ser?”
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Depoimentos ──────────────────────────────── */
+
+function Depoimentos() {
+  const cards = [
+    {
+      t: "Eu tentava controlar cada pensamento ansioso e ficava exausta. O guia me mostrou que a saída não era controlar mais — era parar de lutar. Parece simples, mas muda tudo.",
+      n: "Ana L.",
+      d: "Professora · São Paulo",
+    },
+    {
+      t: "Já li vários materiais sobre ansiedade. Este foi o primeiro que não me pediu para “pensar positivo”. A abordagem é diferente — e faz sentido de verdade.",
+      n: "Camila R.",
+      d: "Designer · Belo Horizonte",
+    },
+    {
+      t: "Estou em terapia e usei o guia como complemento. Me ajudou a praticar no dia a dia o que trabalhamos nas sessões. O cartão de emergência salvou algumas noites difíceis.",
+      n: "Fernanda M.",
+      d: "Professora · Curitiba",
+    },
+  ];
+  return (
+    <section className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#FFFFFF" }}>
+      <div className="max-w-[1100px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[42px] text-center max-w-3xl mx-auto"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontStyle: "italic",
+              color: "#6B4325",
+              lineHeight: 1.2,
+            }}
+          >
+            Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
+          </h2>
+        </Reveal>
+
+        <div className="mt-14 grid md:grid-cols-3 gap-6">
+          {cards.map((c, i) => (
+            <Reveal key={c.n} delay={i * 100}>
+              <div
+                className="h-full transition-all duration-300 hover:-translate-y-1"
+                style={{
+                  backgroundColor: "#F2EFE8",
+                  border: "1px solid rgba(168,181,162,0.3)",
+                  borderRadius: 20,
+                  padding: 32,
+                  boxShadow: "0 4px 20px rgba(107,67,37,0.05)",
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: "Cormorant Garamond, serif",
+                    fontSize: 72,
+                    color: "rgba(168,181,162,0.5)",
+                    lineHeight: 0.6,
+                  }}
+                >
+                  “
+                </div>
+                <p
+                  className="mt-2"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontStyle: "italic",
+                    fontSize: 16,
+                    color: "#6B4325",
+                    lineHeight: 1.7,
+                  }}
+                >
+                  {c.t}
+                </p>
+                <div
+                  className="my-5"
+                  style={{ height: 1, backgroundColor: "rgba(168,181,162,0.4)" }}
+                />
+                <div style={{ color: "#CC6A39", letterSpacing: 2 }}>★★★★★</div>
+                <p
+                  className="mt-2"
+                  style={{ fontWeight: 600, fontSize: 14, color: "#6B4325" }}
+                >
+                  — {c.n}
+                </p>
+                <p style={{ fontSize: 13, color: "#8B5E3C" }}>{c.d}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+        <p
+          className="mt-8 text-center"
+          style={{ fontSize: 12, color: "#8B5E3C", opacity: 0.7 }}
+        >
+          * Placeholders representativos. A Mariana substituirá pelos depoimentos reais.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── FAQ ──────────────────────────────────────── */
+
 function FAQ() {
   const items = [
     {
-      q: "Isso substitui terapia?",
-      a: "Não. É um material psicoeducativo que complementa — mas não substitui — o trabalho com um(a) psicólogo(a).",
+      q: "Preciso estar em terapia para usar este guia?",
+      a: "Não. O guia foi criado para ser usado de forma independente, no seu ritmo. Se você já está em terapia, ele funciona como um excelente complemento entre sessões. Se não está, é um ponto de partida estruturado e seguro.",
     },
-    { q: "Como recebo o material?", a: "Após a compra, você recebe acesso imediato por e-mail para baixar todos os materiais em PDF." },
-    { q: "Funciona no celular?", a: "Sim. O guia e o Cartão de Emergência Emocional foram otimizados para leitura no celular." },
-    { q: "Quanto tempo leva para ler?", a: "Você pode ler no seu ritmo. Em média, leitores levam de 2 a 4 horas, mas o material foi pensado para ser consultado várias vezes." },
-    { q: "Preciso ter diagnóstico?", a: "Não. O guia é voltado para qualquer pessoa que queira desenvolver uma relação mais saudável com a ansiedade." },
-    { q: "O conteúdo é técnico?", a: "Não. A linguagem é acessível, com exemplos do cotidiano. Os conceitos da ACT são apresentados de forma simples e aplicável." },
-    { q: "E se eu não gostar?", a: "Você tem 7 dias para solicitar reembolso integral, sem precisar justificar." },
-    { q: "Como funciona a garantia?", a: "Basta enviar um e-mail dentro de 7 dias após a compra solicitando o reembolso. Devolvemos 100% do valor." },
+    {
+      q: "Este guia funciona para ansiedade grave ou transtorno diagnosticado?",
+      a: "Este material tem caráter psicoeducativo e foi criado para quem convive com ansiedade no dia a dia — pensamentos acelerados, preocupação excessiva, necessidade de controle. Para ansiedade grave ou transtornos clínicos, o acompanhamento profissional é essencial. O guia pode ser recurso complementar, mas não substitui tratamento.",
+    },
+    {
+      q: "Como vou receber o material?",
+      a: "Após a confirmação do pagamento, você recebe um e-mail com o link de acesso imediatamente. O guia e os dois bônus são arquivos PDF que você salva no celular, tablet ou computador e acessa a qualquer hora — sem precisar de internet depois do download.",
+    },
+    {
+      q: "Tem garantia?",
+      a: "Sim. Se em 7 dias você sentir que o material não trouxe nenhum valor, basta enviar um e-mail e devolvemos o valor integral. Sem burocracia, sem questionamentos.",
+    },
+    {
+      q: "A abordagem ACT é científica? Funciona?",
+      a: "Sim. A Terapia de Aceitação e Compromisso é uma das abordagens da terceira onda das terapias cognitivo-comportamentais, com décadas de pesquisa e ampla evidência clínica. É ensinada em universidades e praticada por psicólogos no mundo inteiro. O guia traz essa abordagem em linguagem acessível — sem jargões.",
+    },
+    {
+      q: "É diferente de outros materiais sobre ansiedade que já vi?",
+      a: "Provavelmente sim. A maioria dos conteúdos ensina a controlar a ansiedade — respirar fundo, pensar positivo, distrair a mente. Este guia parte de uma premissa diferente: a luta contra a ansiedade muitas vezes a intensifica. A ACT não busca eliminar o que você sente — busca mudar sua relação com isso. Essa diferença, na prática, muda tudo.",
+    },
+    {
+      q: "Quanto tempo leva para ler e aplicar?",
+      a: "O guia foi criado para ser lido com calma — um capítulo por vez. Em média, 2 a 4 horas de leitura no total. Os exercícios práticos levam 5 a 15 minutos cada. A rotina sugerida no último capítulo funciona com 5 minutos por dia.",
+    },
+    {
+      q: "Posso compartilhar com alguém que está passando por isso?",
+      a: "O guia é de uso pessoal. Se quiser presentear alguém, a forma mais cuidadosa é adquirir um acesso para essa pessoa — isso garante que ela tenha a experiência completa, com os bônus incluídos.",
+    },
   ];
+  const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-3xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Perguntas frequentes</SectionLabel>
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você ainda tenha dúvidas.
+    <section id="faq" className="px-5 sm:px-10 py-20 sm:py-24" style={{ backgroundColor: "#F2EFE8" }}>
+      <div className="max-w-[820px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#6B4325",
+              lineHeight: 1.15,
+            }}
+          >
+            Antes de decidir —
+            <br /> tire suas dúvidas.
           </h2>
-        </motion.div>
-        <motion.div variants={fadeUp} className="mt-10">
-          {items.map((it) => (
-            <FAQItem key={it.q} q={it.q} a={it.a} />
-          ))}
-        </motion.div>
-      </Reveal>
+        </Reveal>
+        <div className="mt-12 rounded-2xl overflow-hidden" style={{ backgroundColor: "#FFFFFF" }}>
+          {items.map((it, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} style={{ borderBottom: "1px solid rgba(168,181,162,0.3)" }}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 text-left px-6 py-5"
+                  style={{
+                    fontFamily: "Inter, sans-serif",
+                    fontWeight: 600,
+                    fontSize: 16,
+                    color: "#6B4325",
+                  }}
+                >
+                  <span>{it.q}</span>
+                  <span
+                    style={{
+                      color: "#CC6A39",
+                      fontSize: 22,
+                      transition: "transform 0.3s",
+                      transform: isOpen ? "rotate(45deg)" : "rotate(0)",
+                    }}
+                  >
+                    +
+                  </span>
+                </button>
+                <div
+                  style={{
+                    maxHeight: isOpen ? 500 : 0,
+                    overflow: "hidden",
+                    transition:
+                      "max-height 0.35s cubic-bezier(0.4,0,0.2,1), padding 0.35s ease",
+                    paddingLeft: 24,
+                    paddingRight: 24,
+                    paddingBottom: isOpen ? 24 : 0,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "Inter, sans-serif",
+                      fontSize: 15,
+                      color: "#8B5E3C",
+                      lineHeight: 1.7,
+                    }}
+                  >
+                    {it.a}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
 
-function FinalCTA() {
+/* ─────────────────────────────── Oferta ───────────────────────────────────── */
+
+function Oferta() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-[#6B4325] relative overflow-hidden">
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#C78162]/20 blur-3xl" />
-      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#A8B5A2]/15 blur-3xl" />
-      <Reveal className="relative max-w-3xl mx-auto text-center">
-        <motion.h2
-          variants={fadeUp}
-          className="font-display text-white text-3xl sm:text-5xl md:text-[60px] leading-[1.1] font-semibold"
-        >
-          Você não precisa esperar a ansiedade desaparecer para começar a viver a vida que deseja.
-        </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 text-white/80 leading-[1.75] max-w-2xl mx-auto">
-          Talvez a mudança não esteja em controlar mais. Talvez esteja em aprender uma nova forma
-          de lidar com aquilo que sente.
-        </motion.p>
-        <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
-        </motion.div>
-        <motion.ul
-          variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/80"
-        >
-          <li>✓ Acesso imediato</li>
-          <li>✓ Garantia de 7 dias</li>
-          <li>✓ Material digital</li>
-        </motion.ul>
-      </Reveal>
+    <section
+      id="comprar"
+      className="px-5 sm:px-10 py-20 sm:py-28"
+      style={{ background: "linear-gradient(160deg, #F2EFE8 0%, #FFFFFF 100%)" }}
+    >
+      <div className="max-w-[1100px] mx-auto">
+        <Reveal>
+          <h2
+            className="text-[30px] sm:text-[48px] text-center"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#6B4325",
+              lineHeight: 1.15,
+            }}
+          >
+            Tudo que você precisa
+            <br /> para começar hoje.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={120}>
+          <div
+            className="mt-14 mx-auto"
+            style={{
+              maxWidth: 560,
+              backgroundColor: "#FFFFFF",
+              border: "2px solid #A8B5A2",
+              borderRadius: 24,
+              padding: 40,
+              boxShadow: "0 8px 60px rgba(107,67,37,0.12)",
+            }}
+          >
+            <h3
+              style={{
+                fontFamily: "Cormorant Garamond, serif",
+                fontWeight: 700,
+                fontSize: 28,
+                color: "#6B4325",
+                lineHeight: 1.2,
+              }}
+            >
+              Um Novo Jeito de Lidar com a Ansiedade
+            </h3>
+            <p className="mt-1" style={{ fontSize: 14, color: "#8B5E3C" }}>
+              Mariana Anício · Psicóloga ACT
+            </p>
+            <div
+              className="my-6"
+              style={{ height: 1, backgroundColor: "rgba(168,181,162,0.4)" }}
+            />
+            <ul className="space-y-3">
+              {[
+                "Guia principal — PDF · 7 capítulos completos",
+                "Exercícios práticos de desfusão e aceitação",
+                "Protocolo para momentos de crise",
+                "Checklist semanal de prática",
+                "Bônus 01: Checklist de Gatilhos da Ansiedade",
+                "Bônus 02: Cartão de Emergência Emocional",
+                "Download imediato + acesso vitalício",
+              ].map((t) => (
+                <li
+                  key={t}
+                  className="flex gap-3"
+                  style={{ color: "#6B4325", fontSize: 15, lineHeight: 1.55 }}
+                >
+                  <span style={{ color: "#CC6A39" }}>✓</span>
+                  <span>{t}</span>
+                </li>
+              ))}
+            </ul>
+            <div
+              className="my-6"
+              style={{ height: 1, backgroundColor: "rgba(168,181,162,0.4)" }}
+            />
+            <div className="text-center">
+              <p style={{ fontSize: 14, color: "#8B5E3C", textDecoration: "line-through" }}>
+                De R$ 66,90
+              </p>
+              <p
+                style={{
+                  fontFamily: "Cormorant Garamond, serif",
+                  fontWeight: 700,
+                  fontSize: 64,
+                  color: "#CC6A39",
+                  lineHeight: 1.05,
+                }}
+              >
+                R$ 37,90
+              </p>
+              <p style={{ fontSize: 13, color: "#8B5E3C" }}>ou 2× de R$ 19,45</p>
+            </div>
+            <div className="mt-6">
+              <CTAButton full pulse>
+                Quero começar por R$ 37,90 →
+              </CTAButton>
+            </div>
+            <p
+              className="mt-4 text-center"
+              style={{ fontSize: 13, color: "#8B5E3C" }}
+            >
+              🔒 Pagamento seguro · Acesso imediato · Garantia de 7 dias
+            </p>
+            <div className="mt-8 grid grid-cols-3 gap-4 text-center">
+              {[
+                { i: "🔒", t: "Compra segura" },
+                { i: "⬇️", t: "Acesso imediato" },
+                { i: "↩️", t: "Garantia 7 dias" },
+              ].map((s) => (
+                <div key={s.t}>
+                  <div style={{ fontSize: 22 }}>{s.i}</div>
+                  <div style={{ fontSize: 13, color: "#8B5E3C", marginTop: 4 }}>
+                    {s.t}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }
+
+/* ─────────────────────────────── CTA Final ────────────────────────────────── */
+
+function CTAFinal() {
+  return (
+    <section
+      className="relative overflow-hidden px-5 sm:px-10 py-20 sm:py-28"
+      style={{ backgroundColor: "#6B4325" }}
+    >
+      <svg
+        className="absolute -top-20 -right-20 w-[420px] h-[420px] pointer-events-none"
+        viewBox="0 0 400 400"
+        aria-hidden
+      >
+        <path
+          d="M200,40 C300,40 360,120 360,200 C360,300 280,360 200,360 C100,360 40,280 40,200 C40,120 120,40 200,40 Z"
+          fill="#C78162"
+          opacity="0.08"
+        />
+      </svg>
+      <div className="max-w-[820px] mx-auto text-center relative">
+        <Reveal>
+          <h2
+            className="text-[36px] sm:text-[58px]"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontWeight: 700,
+              color: "#FFFFFF",
+              lineHeight: 1.1,
+            }}
+          >
+            Você não precisa esperar
+            <br /> a ansiedade desaparecer
+            <br /> para começar a viver.
+          </h2>
+        </Reveal>
+        <Reveal delay={120}>
+          <p
+            className="mt-6 text-[22px] sm:text-[26px]"
+            style={{
+              fontFamily: "Cormorant Garamond, serif",
+              fontStyle: "italic",
+              color: "#C78162",
+              lineHeight: 1.35,
+            }}
+          >
+            A mudança começa com uma relação diferente
+            <br /> com o que você está sentindo.
+          </p>
+        </Reveal>
+        <Reveal delay={180}>
+          <p
+            className="mt-8 text-[16px] sm:text-[17px]"
+            style={{ color: "rgba(255,255,255,0.8)", lineHeight: 1.7 }}
+          >
+            Este guia é um ponto de partida. Não promete eliminar a ansiedade — promete dar
+            a você ferramentas reais para parar de ser dominado por ela.
+            <br />
+            <br />
+            Por R$ 37,90. Com garantia de 7 dias. Com acesso imediato.
+          </p>
+        </Reveal>
+        <Reveal delay={240}>
+          <div className="mt-10 inline-block">
+            <CTAButton size="lg" pulse>
+              Quero começar — R$ 37,90 →
+            </CTAButton>
+          </div>
+          <p
+            className="mt-5"
+            style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}
+          >
+            🔒 Acesso imediato · Garantia de 7 dias · Compra segura
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────── Rodapé ───────────────────────────────────── */
 
 function Footer() {
   return (
-    <footer className="bg-[#6B4325] text-white/80 px-5 sm:px-8 pt-16 pb-10 border-t border-white/10">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
-        <div>
-          <p className="font-display text-white text-xl leading-tight">
-            Um Novo Jeito de Lidar com a Ansiedade
-          </p>
-          <p className="mt-3 text-sm text-white/60">por Mariana Psicóloga</p>
+    <footer
+      className="px-5 sm:px-10 py-12 text-center"
+      style={{ backgroundColor: "#4A2E17" }}
+    >
+      <div className="max-w-[820px] mx-auto space-y-4">
+        <div
+          style={{
+            fontFamily: "Cormorant Garamond, serif",
+            fontWeight: 600,
+            fontSize: 20,
+            color: "#F2EFE8",
+          }}
+        >
+          Mariana Anício | Psicóloga ACT
         </div>
-        <div>
-          <p className="text-xs tracking-[0.25em] uppercase text-white/50 mb-4">Institucional</p>
-          <ul className="space-y-2 text-sm">
-            <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
-            <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
-          </ul>
+        <div style={{ fontSize: 13, color: "#C78162" }}>
+          Política de Privacidade · Termos de Uso · @marianaanicio_
         </div>
-        <div>
-          <p className="text-xs tracking-[0.25em] uppercase text-white/50 mb-4">Aviso</p>
-          <p className="text-sm leading-[1.7] text-white/70">
-            Este material possui caráter psicoeducativo e não substitui acompanhamento psicológico
-            individual.
-          </p>
+        <div style={{ fontSize: 12, color: "rgba(255,255,255,0.4)" }}>
+          © 2025 Mariana Anício · Todos os direitos reservados
         </div>
-      </div>
-      <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 text-xs text-white/50 flex flex-wrap justify-between gap-3">
-        <span>© {new Date().getFullYear()} Mariana Psicóloga. Todos os direitos reservados.</span>
-        <span>Feito com cuidado e base em evidências.</span>
+        <p
+          style={{
+            fontSize: 12,
+            color: "rgba(255,255,255,0.35)",
+            maxWidth: 560,
+            margin: "0 auto",
+            lineHeight: 1.6,
+          }}
+        >
+          Este material tem caráter psicoeducativo e não substitui o acompanhamento
+          psicológico profissional. Se você está em sofrimento intenso, busque apoio
+          especializado.
+        </p>
       </div>
     </footer>
   );
 }
 
-function Index() {
+/* ─────────────────────────────── Page ─────────────────────────────────────── */
+
+function LandingPage() {
   return (
-    <main
-      className="min-h-screen font-sans text-[#3f3a32] antialiased scroll-smooth"
-      style={{ backgroundColor: "#F2EFE8" }}
-    >
-      <Nav />
+    <main style={{ backgroundColor: "#F2EFE8" }}>
+      <style>{`
+        @keyframes pulse-cta {
+          0%, 100% { box-shadow: 0 0 0 0 rgba(204,106,57,0.4); }
+          50%       { box-shadow: 0 0 0 12px rgba(204,106,57,0); }
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #6B4325; }
+      `}</style>
+      <Header />
       <Hero />
       <Identificacao />
+      <Ciclo />
       <Problema />
       <NovaPerspectiva />
       <Produto />
-      <Receba />
-      <ParaQuem />
-      <Objecoes />
+      <Conteudo />
+      <Recebe />
+      <Mariana />
       <Depoimentos />
-      <SobreMariana />
-      <Pricing />
-      <Garantia />
       <FAQ />
-      <FinalCTA />
+      <Oferta />
+      <CTAFinal />
       <Footer />
     </main>
   );
