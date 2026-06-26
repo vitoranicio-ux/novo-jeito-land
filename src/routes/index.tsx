@@ -780,7 +780,6 @@ function FAQ() {
     <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-3xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Perguntas frequentes</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Talvez você ainda tenha dúvidas.
           </h2>
