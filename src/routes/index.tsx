@@ -32,13 +32,6 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block text-xs tracking-[0.3em] uppercase text-[#7B8C9B] font-medium mb-4">
-      {children}
-    </span>
-  );
-}
 
 function CTA({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
