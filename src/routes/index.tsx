@@ -305,7 +305,6 @@ function NovaPerspectiva() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Uma nova perspectiva</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
             Existe outro caminho.
           </h2>
