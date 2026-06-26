@@ -384,10 +384,6 @@ function Produto() {
             <div className="absolute -inset-8 bg-[#C78162]/15 rounded-full blur-3xl" />
             <div className="relative w-[260px] sm:w-[320px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(107,67,37,0.45)] border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#6B4325] to-[#C78162] p-8 flex flex-col justify-between">
               <div>
-                <div className="text-xs tracking-[0.3em] uppercase text-white/70">Guia Prático</div>
-                <div className="mt-1 text-xs text-white/60">Baseado em ACT</div>
-              </div>
-              <div>
                 <h3 className="font-display text-white text-3xl sm:text-4xl leading-[1.05]">
                   Um Novo Jeito de Lidar com a Ansiedade
                 </h3>
