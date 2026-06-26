@@ -485,7 +485,6 @@ function ParaQuem() {
     <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-5xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Para quem é</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Este guia é para você se…
           </h2>
