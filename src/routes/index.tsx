@@ -815,16 +815,14 @@ function Footer() {
           <p className="mt-3 text-sm text-white/60">por Mariana Psicóloga</p>
         </div>
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase text-white/50 mb-4">Institucional</p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-sm mb-4">
             <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
             <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
             <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
           </ul>
         </div>
         <div>
-          <p className="text-xs tracking-[0.25em] uppercase text-white/50 mb-4">Aviso</p>
-          <p className="text-sm leading-[1.7] text-white/70">
+          <p className="text-sm leading-[1.7] text-white/70 mb-4">
             Este material possui caráter psicoeducativo e não substitui acompanhamento psicológico
             individual.
           </p>
