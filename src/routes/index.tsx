@@ -544,7 +544,6 @@ function Objecoes() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-4xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Objeções honestas</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Talvez você esteja pensando…
           </h2>
