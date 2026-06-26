@@ -221,9 +221,6 @@ function Identificacao() {
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-5xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>Identificação</SectionLabel>
-        </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
