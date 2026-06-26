@@ -653,7 +653,6 @@ function Pricing() {
     <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-2xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Acesso ao guia</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Comece hoje, no seu ritmo.
           </h2>
