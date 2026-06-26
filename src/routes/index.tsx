@@ -375,7 +375,6 @@ function Produto() {
     <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <motion.div variants={fadeUp} className="order-2 md:order-1">
-          <SectionLabel>O guia</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Mais do que um guia. Uma nova forma de lidar com a ansiedade.
           </h2>
