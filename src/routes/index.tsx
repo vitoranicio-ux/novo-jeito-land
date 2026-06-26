@@ -133,18 +133,6 @@ function Hero() {
         variants={stagger}
         className="max-w-4xl mx-auto text-center"
       >
-        <motion.div variants={fadeUp}>
-          <span
-            className="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-[13px] tracking-wide"
-            style={{
-              border: "1px solid #7B8C9B",
-              background: "rgba(123,140,155,0.10)",
-              color: "#7B8C9B",
-            }}
-          >
-            Baseado em ACT • Psicologia baseada em evidências
-          </span>
-        </motion.div>
 
         <motion.h1
           variants={fadeUp}
