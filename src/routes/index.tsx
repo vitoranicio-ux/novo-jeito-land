@@ -32,13 +32,6 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block text-xs tracking-[0.3em] uppercase text-[#7B8C9B] font-medium mb-4">
-      {children}
-    </span>
-  );
-}
 
 function CTA({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
@@ -140,18 +133,6 @@ function Hero() {
         variants={stagger}
         className="max-w-4xl mx-auto text-center"
       >
-        <motion.div variants={fadeUp}>
-          <span
-            className="inline-flex items-center px-4 py-1.5 rounded-full text-xs sm:text-[13px] tracking-wide"
-            style={{
-              border: "1px solid #7B8C9B",
-              background: "rgba(123,140,155,0.10)",
-              color: "#7B8C9B",
-            }}
-          >
-            Baseado em ACT • Psicologia baseada em evidências
-          </span>
-        </motion.div>
 
         <motion.h1
           variants={fadeUp}
@@ -228,9 +209,6 @@ function Identificacao() {
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-5xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>Identificação</SectionLabel>
-        </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
@@ -263,9 +241,6 @@ function Problema() {
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-4xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>O problema</SectionLabel>
-        </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
@@ -318,7 +293,6 @@ function NovaPerspectiva() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Uma nova perspectiva</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
             Existe outro caminho.
           </h2>
@@ -389,7 +363,6 @@ function Produto() {
     <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <motion.div variants={fadeUp} className="order-2 md:order-1">
-          <SectionLabel>O guia</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Mais do que um guia. Uma nova forma de lidar com a ansiedade.
           </h2>
@@ -458,7 +431,6 @@ function Receba() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Conteúdo</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
             O que você recebe
           </h2>
@@ -501,7 +473,6 @@ function ParaQuem() {
     <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-5xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Para quem é</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Este guia é para você se…
           </h2>
@@ -561,7 +532,6 @@ function Objecoes() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-4xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Objeções honestas</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Talvez você esteja pensando…
           </h2>
@@ -605,7 +575,6 @@ function Depoimentos() {
     <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Depoimentos</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             O que leitores estão dizendo
           </h2>
@@ -644,7 +613,6 @@ function SobreMariana() {
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="md:col-span-3">
-          <SectionLabel>Sobre a autora</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Quem criou este guia?
           </h2>
@@ -673,7 +641,6 @@ function Pricing() {
     <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-2xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Acesso ao guia</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Comece hoje, no seu ritmo.
           </h2>
@@ -729,9 +696,6 @@ function Garantia() {
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-3xl mx-auto text-center">
-        <motion.div variants={fadeUp}>
-          <SectionLabel>Garantia</SectionLabel>
-        </motion.div>
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
@@ -804,7 +768,6 @@ function FAQ() {
     <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-3xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <SectionLabel>Perguntas frequentes</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Talvez você ainda tenha dúvidas.
           </h2>
