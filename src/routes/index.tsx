@@ -303,8 +303,7 @@ function NovaPerspectiva() {
             variants={fadeUp}
             className="rounded-3xl p-8 sm:p-10 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
           >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#C78162]">O que a maioria tenta</p>
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mt-2 mb-6">
+            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mb-6">
               O caminho da luta
             </h3>
             <ul className="space-y-4">
@@ -321,8 +320,7 @@ function NovaPerspectiva() {
             variants={fadeUp}
             className="rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 backdrop-blur-sm border border-[#A8B5A2]/40"
           >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#7B8C9B]">O que você aprenderá</p>
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mt-2 mb-6">
+            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mb-6">
               O caminho da flexibilidade
             </h3>
             <ul className="space-y-4">
@@ -444,7 +442,6 @@ function Receba() {
               className="rounded-3xl p-8 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(107,67,37,0.3)]"
             >
               <div className="text-4xl mb-5">{it.e}</div>
-              <div className="text-[11px] tracking-[0.25em] uppercase text-[#7B8C9B] mb-2">{it.tag}</div>
               <h3 className="font-display text-2xl text-[#6B4325] leading-tight">{it.title}</h3>
               <p className="mt-3 text-[#5b5448] leading-[1.7] text-[15px]">{it.desc}</p>
             </motion.div>
@@ -483,7 +480,6 @@ function ParaQuem() {
             variants={fadeUp}
             className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
           >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#7B8C9B] mb-5">Indicado para</p>
             <ul className="space-y-3.5">
               {yes.map((t) => (
                 <li key={t} className="flex gap-3 text-[#3f3a32]">
@@ -497,7 +493,6 @@ function ParaQuem() {
             variants={fadeUp}
             className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
           >
-            <p className="text-xs tracking-[0.25em] uppercase text-[#C78162] mb-5">Não é para você se</p>
             <ul className="space-y-3.5">
               {no.map((t) => (
                 <li key={t} className="flex gap-3 text-[#5b5448]">
@@ -650,8 +645,7 @@ function Pricing() {
           variants={fadeUp}
           className="mt-12 rounded-3xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)]"
         >
-          <p className="text-xs tracking-[0.3em] uppercase text-[#7B8C9B] text-center">Oferta atual</p>
-          <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center mt-2">
+          <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
