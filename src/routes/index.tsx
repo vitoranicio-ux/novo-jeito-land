@@ -625,7 +625,6 @@ function SobreMariana() {
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="md:col-span-3">
-          <SectionLabel>Sobre a autora</SectionLabel>
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Quem criou este guia?
           </h2>
