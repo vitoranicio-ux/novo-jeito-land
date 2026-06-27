@@ -138,15 +138,15 @@ function Hero() {
           variants={fadeUp}
           className="font-display text-[#6B4325] mt-6 text-[32px] leading-[1.1] sm:text-[52px] md:text-[64px] lg:text-[68px] font-semibold tracking-tight"
         >
-          Você não precisa esperar a ansiedade desaparecer para voltar a viver sua vida.
+          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
         >
-          Um guia prático baseado na Terapia de Aceitação e Compromisso (ACT) para ajudar você
-          a desenvolver uma relação mais saudável com pensamentos, emoções e preocupações do dia a dia.
+          Para quem já tentou controlar a ansiedade de todas as formas, e está pronto para
+          experimentar um caminho diferente.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
@@ -205,6 +205,7 @@ function Identificacao() {
     { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
     { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
     { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
+    { e: "🖤", t: "Você deixou de fazer coisas importantes por causa da ansiedade." },
   ];
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
@@ -230,7 +231,7 @@ function Identificacao() {
         </div>
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinho.
+          Se você se identificou com algum desses pontos, saiba que não está sozinho, e que existe uma forma diferente de lidar com isso.
         </motion.p>
       </Reveal>
     </section>
@@ -252,8 +253,11 @@ function Problema() {
         </motion.p>
         <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
           Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
-          Quando lutamos contra uma emoção, ela se intensifica. A ciência mostra: o sofrimento
-          aumenta quando entramos em uma batalha interna que não escolhemos.
+          Quando lutamos contra uma emoção, ela se intensifica.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto italic">
+          Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
+          lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-14">
@@ -261,7 +265,7 @@ function Problema() {
             <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
               <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
               <div className="text-center px-8">
-                <p className="font-display text-[#6B4325] text-xl">Ciclo da luta</p>
+                <p className="font-display text-[#6B4325] text-xl">Reconhece esse ciclo?</p>
                 <p className="text-xs text-[#5b5448] mt-2 leading-relaxed">
                   Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
                 </p>
@@ -269,6 +273,9 @@ function Problema() {
             </div>
           </div>
         </motion.div>
+        <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+          Esse loop não termina com mais controle. Termina quando você muda de estratégia.
+        </motion.p>
       </Reveal>
     </section>
   );
@@ -287,7 +294,7 @@ function NovaPerspectiva() {
     "Fazer espaço para emoções difíceis",
     "Observar pensamentos com mais distância",
     "Agir em direção ao que importa",
-    "Construir uma vida alinhada aos seus valores",
+    "Construir uma vida na direção dos seus valores",
   ];
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
@@ -346,16 +353,53 @@ function NovaPerspectiva() {
   );
 }
 
+function VisaoFuturo() {
+  const items = [
+    "Dormir sem passar horas revivendo tudo o que aconteceu no dia.",
+    "Estar presente em uma conversa sem a mente antecipar tudo o que pode dar errado.",
+    "Aceitar um convite sem desistir por medo ou preocupação.",
+    "Trabalhar, estudar ou cuidar da sua família sem sentir que a ansiedade precise desaparecer antes.",
+    "Perceber que a ansiedade apareceu, e ainda assim, continuar fazendo o que faz sentido para você.",
+  ];
+  return (
+    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+      <Reveal className="max-w-4xl mx-auto text-center">
+        <motion.h2
+          variants={fadeUp}
+          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+        >
+          E se a ansiedade deixasse de comandar suas escolhas?
+        </motion.h2>
+        <motion.p variants={fadeUp} className="mt-6 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+          Imagine conseguir:
+        </motion.p>
+        <motion.ul variants={fadeUp} className="mt-10 max-w-2xl mx-auto space-y-4 text-left">
+          {items.map((t) => (
+            <li key={t} className="flex gap-3 text-[#3f3a32] leading-[1.7]">
+              <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
+              {t}
+            </li>
+          ))}
+        </motion.ul>
+        <motion.p variants={fadeUp} className="mt-12 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+          É isso que significa desenvolver flexibilidade psicológica: não viver sem ansiedade, mas
+          impedir que ela continue decidindo os rumos da sua vida.
+        </motion.p>
+      </Reveal>
+    </section>
+  );
+}
+
 function Produto() {
   const benefits = [
-    "Compreender melhor como a ansiedade funciona",
-    "Identificar padrões emocionais",
-    "Desenvolver mais presença",
-    "Aplicar exercícios práticos",
-    "Construir uma relação mais saudável com pensamentos",
-    "Agir mesmo quando a ansiedade aparece",
-    "Desenvolver clareza emocional",
-    "Reduzir a luta constante contra a ansiedade",
+    "Descobrir como tomar decisões alinhadas aos seus valores, em vez de deixar que a ansiedade determine seus caminhos.",
+    "Entender por que a ansiedade aparece e por que tentar controlá-la costuma aumentar o sofrimento.",
+    "Identificar os gatilhos e padrões que mantêm o ciclo da ansiedade.",
+    "Aprender exercícios práticos para voltar ao momento presente quando sua mente acelerar.",
+    "Observar pensamentos difíceis com mais distância, sem acreditar em tudo o que eles dizem.",
+    "Desenvolver uma relação mais saudável com emoções desconfortáveis.",
+    "Agir mesmo quando sentir ansiedade, em vez de esperar que ela desapareça.",
+    "Caminhar na direção da vida que deseja construir, com mais consciência e liberdade.",
   ];
   return (
     <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
@@ -367,8 +411,9 @@ function Produto() {
           <p className="mt-6 text-[#5b5448] leading-[1.75]">
             Um material cuidadosamente construído para acompanhar você passo a passo no
             desenvolvimento de uma relação mais saudável com pensamentos, emoções e preocupações,
-            apoiado por conceitos centrais da Terapia de Aceitação e Compromisso.
+            apoiado pelos princípios da Terapia de Aceitação e Compromisso (ACT).
           </p>
+          <p className="mt-6 font-display text-[#6B4325] text-xl">O que você vai aprender</p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3">
             {benefits.map((b) => (
               <li key={b} className="flex gap-3 text-[#3f3a32] text-[15px] leading-[1.6]">
@@ -405,20 +450,20 @@ function Receba() {
     {
       e: "📘",
       tag: "Produto principal",
-      title: "Guia Principal",
-      desc: "Um Novo Jeito de Lidar com a Ansiedade — material completo baseado em ACT.",
+      title: "O que vai te guiar: Um Novo Jeito de Lidar com a Ansiedade",
+      desc: "O material completo, baseado em ACT, com explicações claras, exemplos do cotidiano e exercícios práticos.",
     },
     {
       e: "📋",
       tag: "Bônus 01",
       title: "Checklist de Gatilhos da Ansiedade",
-      desc: "Ferramenta prática para identificar padrões, situações e contextos que costumam intensificar a ansiedade.",
+      desc: "Uma ferramenta prática para identificar situações, pensamentos e contextos que costumam intensificar sua ansiedade, e o que fazer quando isso acontece.",
     },
     {
       e: "🚨",
       tag: "Bônus 02",
       title: "Cartão de Emergência Emocional",
-      desc: "PDF otimizado para celular: respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
+      desc: "Um recurso para deixar no celular e consultar sempre que precisar, com exercícios rápidos de respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
     },
   ];
   return (
@@ -428,6 +473,10 @@ function Receba() {
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
             O que você recebe
           </h2>
+          <p className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+            Você receberá um conjunto de materiais que se complementam para ajudar você a aplicar
+            o conteúdo na prática.
+          </p>
         </motion.div>
 
         <div className="mt-14 grid md:grid-cols-3 gap-6">
@@ -450,32 +499,27 @@ function Receba() {
 
 function ParaQuem() {
   const yes = [
-    "Convive com ansiedade",
-    "Pensa demais",
-    "Sente excesso de preocupação",
+    "Convive com ansiedade no dia a dia",
+    "Pensa demais e tem dificuldade de desacelerar",
+    "Vive preocupado com o que pode acontecer",
     "Busca mais leveza emocional",
-    "Deseja ferramentas práticas",
-    "Quer desenvolver autoconhecimento",
+    "Deseja ferramentas práticas, não só teoria",
+    "Quer desenvolver autoconhecimento e clareza sobre o que sente",
   ];
   const no = [
-    "Busca soluções milagrosas",
-    "Quer eliminar emoções difíceis",
+    "Busca uma solução milagrosa que elimine toda a ansiedade",
+    "Quer eliminar emoções difíceis em vez de aprender a lidar com elas",
     "Não pretende aplicar o que aprender",
   ];
   return (
     <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-5xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Este guia é para você se…
-          </h2>
-        </motion.div>
-
-        <div className="mt-14 grid md:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-5 gap-6">
           <motion.div
             variants={fadeUp}
             className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
           >
+            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia é para você se…</h3>
             <ul className="space-y-3.5">
               {yes.map((t) => (
                 <li key={t} className="flex gap-3 text-[#3f3a32]">
@@ -489,6 +533,7 @@ function ParaQuem() {
             variants={fadeUp}
             className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
           >
+            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia não é para você se…</h3>
             <ul className="space-y-3.5">
               {no.map((t) => (
                 <li key={t} className="flex gap-3 text-[#5b5448]">
@@ -508,15 +553,15 @@ function Objecoes() {
   const items = [
     {
       q: "Isso substitui terapia?",
-      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o trabalho individual com um(a) psicólogo(a). Se você já faz terapia, pode ser um excelente apoio entre sessões.",
+      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o acompanhamento psicológico individual. Se você já faz terapia, pode ser um excelente apoio entre as sessões. Se não faz, é um ponto de partida sólido e acessível.",
     },
     {
       q: "Preciso ter conhecimento prévio?",
-      a: "Nenhum. A linguagem é acessível, sem jargões técnicos, com exemplos do cotidiano e exercícios passo a passo para quem está começando a entender a ansiedade.",
+      a: "Nenhum. A linguagem é simples, acessível e livre de jargões técnicos. Você vai encontrar exemplos do cotidiano e exercícios explicados passo a passo, pensado para quem está começando a entender a própria ansiedade.",
     },
     {
       q: "E se eu me identificar muito com os sintomas?",
-      a: "Se identificar faz parte. O guia foi construído com acolhimento e ritmo. Caso sinta necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo.",
+      a: "Isso é esperado. O guia foi construído com acolhimento e respeito ao seu ritmo. Se sentir necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo, e este material pode ajudar você nessa caminhada também.",
     },
   ];
   return (
@@ -549,12 +594,12 @@ function Depoimentos() {
     {
       n: "Luiza M.",
       r: "Professora",
-      t: "Pela primeira vez entendi que não precisava ‘parar de sentir’ para voltar a viver. O guia me trouxe um respiro real.",
+      t: "Pela primeira vez entendi que não precisava parar de sentir para voltar a viver. O guia me trouxe um respiro real.",
     },
     {
       n: "Rafael S.",
       r: "Engenheiro",
-      t: "Os exercícios práticos me ajudaram a observar meus pensamentos com mais distância. Algo simples, mas que mudou meu dia a dia.",
+      t: "Achei que precisaria de anos de terapia para entender minha ansiedade. O guia me deu clareza em dias.",
     },
     {
       n: "Camila A.",
@@ -567,7 +612,7 @@ function Depoimentos() {
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            O que leitores estão dizendo
+            Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
           </h2>
         </motion.div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
@@ -608,12 +653,24 @@ function SobreMariana() {
             Quem criou este guia?
           </h2>
           <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Mariana é psicóloga e atua com base na Terapia de Aceitação e Compromisso (ACT),
-            abordagem reconhecida por ajudar pessoas a desenvolverem mais flexibilidade
-            psicológica e construírem uma vida alinhada ao que realmente importa.
+            Sou Mariana Anício, psicóloga e pós-graduada em Terapia de Aceitação e Compromisso (ACT).
           </p>
           <p className="mt-4 text-[#5b5448] leading-[1.75]">
-            Seu trabalho busca unir ciência, acolhimento e aplicabilidade prática.
+            Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
+            padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
+            lugar de identidade. Talvez você mesma(o) já tenha se pegado dizendo: “Eu sou
+            ansiosa(o)”. Foi justamente a partir dessa experiência que criei este guia.
+          </p>
+          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+            Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
+            vai entender por que ela aparece, o que ela está tentando comunicar e como agir de
+            maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser
+            controlada(o) por ela.
+          </p>
+          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+            A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
+            Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
+            você construa uma vida mais alinhada ao que realmente importa.
           </p>
         </motion.div>
       </Reveal>
@@ -623,10 +680,9 @@ function SobreMariana() {
 
 function Pricing() {
   const features = [
-    "Guia Completo",
-    "Checklist de Gatilhos da Ansiedade",
-    "Cartão de Emergência Emocional",
-    "Acesso Imediato",
+    "Guia Principal - Um Novo Jeito de Lidar com a Ansiedade",
+    "Bônus 1 - Checklist de Gatilhos da Ansiedade",
+    "Bônus 2 - Cartão de Emergência Emocional",
   ];
   return (
     <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
@@ -645,15 +701,9 @@ function Pricing() {
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
-          <div className="mt-6 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 67,90</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
-              R$ 37,90
-            </span>
-          </div>
-          <p className="text-center text-xs text-[#5b5448] mt-2">à vista • acesso imediato</p>
+          <p className="mt-6 text-center font-display text-xl text-[#6B4325]">Hoje você recebe:</p>
 
-          <ul className="mt-8 space-y-3">
+          <ul className="mt-5 space-y-3">
             {features.map((f) => (
               <li key={f} className="flex gap-3 text-[#3f3a32]">
                 <span className="text-[#A8B5A2] shrink-0">✓</span>
@@ -661,6 +711,17 @@ function Pricing() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 text-center text-sm text-[#5b5448]">Tudo isso por apenas</p>
+          <div className="mt-2 flex items-end justify-center gap-3">
+            <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
+            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
+              R$ 37,90
+            </span>
+          </div>
+          <p className="text-center text-xs text-[#5b5448] mt-3 leading-relaxed">
+            Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
+          </p>
 
           <div className="mt-8 flex justify-center">
             <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
@@ -671,7 +732,7 @@ function Pricing() {
           </p>
 
           <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
-            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias</p>
+            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias.</p>
             <p className="text-xs text-[#5b5448] mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
@@ -690,15 +751,15 @@ function Garantia() {
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
         >
-          Você não tem nada a perder.
+          Garantia incondicional de 7 dias.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75]">
-          Você tem 7 dias completos para acessar o guia e os bônus. Se sentir que o material não é
-          para você, é só nos enviar uma mensagem e devolvemos 100% do valor investido — sem
-          burocracia, sem perguntas constrangedoras.
+          Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
+          não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
+          investido, sem burocracia, sem perguntas constrangedoras.
         </motion.p>
         <motion.p variants={fadeUp} className="mt-4 text-[#5b5448] leading-[1.75]">
-          Queremos que sua decisão seja tranquila — porque escolher cuidar de si já é, por si só,
+          Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
           um passo importante.
         </motion.p>
       </Reveal>
@@ -744,22 +805,22 @@ function FAQ() {
   const items = [
     {
       q: "Isso substitui terapia?",
-      a: "Não. É um material psicoeducativo que complementa — mas não substitui — o trabalho com um(a) psicólogo(a).",
+      a: "Não. Este guia tem caráter psicoeducativo e complementa, mas não substitui, o acompanhamento psicológico individual.",
     },
-    { q: "Como recebo o material?", a: "Após a compra, você recebe acesso imediato por e-mail para baixar todos os materiais em PDF." },
-    { q: "Funciona no celular?", a: "Sim. O guia e o Cartão de Emergência Emocional foram otimizados para leitura no celular." },
-    { q: "Quanto tempo leva para ler?", a: "Você pode ler no seu ritmo. Em média, leitores levam de 2 a 4 horas, mas o material foi pensado para ser consultado várias vezes." },
-    { q: "Preciso ter diagnóstico?", a: "Não. O guia é voltado para qualquer pessoa que queira desenvolver uma relação mais saudável com a ansiedade." },
-    { q: "O conteúdo é técnico?", a: "Não. A linguagem é acessível, com exemplos do cotidiano. Os conceitos da ACT são apresentados de forma simples e aplicável." },
-    { q: "E se eu não gostar?", a: "Você tem 7 dias para solicitar reembolso integral, sem precisar justificar." },
-    { q: "Como funciona a garantia?", a: "Basta enviar um e-mail dentro de 7 dias após a compra solicitando o reembolso. Devolvemos 100% do valor." },
+    { q: "Como recebo o material?", a: "O acesso é enviado imediatamente após a confirmação do pagamento, diretamente para o seu e-mail." },
+    { q: "Funciona no celular?", a: "Sim. Todo o conteúdo foi desenvolvido para funcionar perfeitamente no celular, tablet ou computador." },
+    { q: "Quanto tempo leva para ler?", a: "Você avança no seu próprio ritmo. O material pode ser revisitado quantas vezes desejar." },
+    { q: "Preciso ter diagnóstico?", a: "Não. O guia foi pensado para qualquer pessoa que queira compreender e melhorar sua relação com a ansiedade." },
+    { q: "O conteúdo é técnico?", a: "Não. Foi escrito em linguagem simples e acessível, mantendo o rigor científico." },
+    { q: "E se eu não gostar?", a: "Você tem garantia incondicional de 7 dias. Basta entrar em contato e devolvemos 100% do valor — sem burocracia." },
+    { q: "Como funciona a garantia?", a: "Entre em contato dentro do prazo de 7 dias e devolvemos integralmente o valor pago. Sem questionamentos." },
   ];
   return (
     <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-3xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você ainda tenha dúvidas.
+            Perguntas frequentes
           </h2>
         </motion.div>
         <motion.div variants={fadeUp} className="mt-10">
@@ -782,11 +843,25 @@ function FinalCTA() {
           variants={fadeUp}
           className="font-display text-white text-3xl sm:text-5xl md:text-[60px] leading-[1.1] font-semibold"
         >
-          Você não precisa esperar a ansiedade desaparecer para começar a viver a vida que deseja.
+          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-white/80 leading-[1.75] max-w-2xl mx-auto">
-          Talvez a mudança não esteja em controlar mais. Talvez esteja em aprender uma nova forma
-          de lidar com aquilo que sente.
+          A ansiedade talvez ainda apareça amanhã.<br />Na semana que vem também.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          E isso não significa que ela precise continuar decidindo por você.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/90 leading-[1.75] max-w-2xl mx-auto font-display italic">
+          Você pode continuar tentando vencer a ansiedade todos os dias.<br />
+          Ou pode começar hoje a construir uma nova relação com ela.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          A mudança começa quando você aprende uma nova forma de responder ao que sente, com mais
+          consciência, mais flexibilidade e mais liberdade para agir na direção da vida que deseja
+          construir.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          Se este guia ajudar você a dar esse primeiro passo, ele já terá cumprido o seu propósito.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
           <CTA>Quero acessar o guia →</CTA>
@@ -812,7 +887,7 @@ function Footer() {
           <p className="font-display text-white text-xl leading-tight">
             Um Novo Jeito de Lidar com a Ansiedade
           </p>
-          <p className="mt-3 text-sm text-white/60">por Mariana Psicóloga</p>
+          <p className="mt-3 text-sm text-white/60">por Mariana Anício · Psicóloga ACT</p>
         </div>
         <div>
           <ul className="space-y-2 text-sm mb-4">
@@ -829,8 +904,8 @@ function Footer() {
         </div>
       </div>
       <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 text-xs text-white/50 flex flex-wrap justify-between gap-3">
-        <span>© {new Date().getFullYear()} Mariana Psicóloga. Todos os direitos reservados.</span>
-        <span>Feito com cuidado e base em evidências.</span>
+        <span>© 2026 Mariana Anício. Todos os direitos reservados.</span>
+        <span>Vamos construir uma vida guiada pelo que realmente importa?</span>
       </div>
     </footer>
   );
@@ -847,6 +922,7 @@ function Index() {
       <Identificacao />
       <Problema />
       <NovaPerspectiva />
+      <VisaoFuturo />
       <Produto />
       <Receba />
       <ParaQuem />
