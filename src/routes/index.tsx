@@ -514,13 +514,7 @@ function ParaQuem() {
   return (
     <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-5xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Este guia é para você se…
-          </h2>
-        </motion.div>
-
-        <div className="mt-14 grid md:grid-cols-5 gap-6">
+        <div className="grid md:grid-cols-5 gap-6">
           <motion.div
             variants={fadeUp}
             className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
