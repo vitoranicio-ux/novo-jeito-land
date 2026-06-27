@@ -138,15 +138,15 @@ function Hero() {
           variants={fadeUp}
           className="font-display text-[#6B4325] mt-6 text-[32px] leading-[1.1] sm:text-[52px] md:text-[64px] lg:text-[68px] font-semibold tracking-tight"
         >
-          Você não precisa esperar a ansiedade desaparecer para voltar a viver sua vida.
+          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
         >
-          Um guia prático baseado na Terapia de Aceitação e Compromisso (ACT) para ajudar você
-          a desenvolver uma relação mais saudável com pensamentos, emoções e preocupações do dia a dia.
+          Para quem já tentou controlar a ansiedade de todas as formas, e está pronto para
+          experimentar um caminho diferente.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
@@ -205,6 +205,7 @@ function Identificacao() {
     { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
     { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
     { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
+    { e: "🖤", t: "Você deixou de fazer coisas importantes por causa da ansiedade." },
   ];
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
@@ -230,7 +231,7 @@ function Identificacao() {
         </div>
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinho.
+          Se você se identificou com algum desses pontos, saiba que não está sozinho, e que existe uma forma diferente de lidar com isso.
         </motion.p>
       </Reveal>
     </section>
@@ -252,8 +253,11 @@ function Problema() {
         </motion.p>
         <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
           Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
-          Quando lutamos contra uma emoção, ela se intensifica. A ciência mostra: o sofrimento
-          aumenta quando entramos em uma batalha interna que não escolhemos.
+          Quando lutamos contra uma emoção, ela se intensifica.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto italic">
+          Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
+          lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-14">
@@ -261,7 +265,7 @@ function Problema() {
             <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
               <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
               <div className="text-center px-8">
-                <p className="font-display text-[#6B4325] text-xl">Ciclo da luta</p>
+                <p className="font-display text-[#6B4325] text-xl">Reconhece esse ciclo?</p>
                 <p className="text-xs text-[#5b5448] mt-2 leading-relaxed">
                   Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
                 </p>
@@ -269,6 +273,9 @@ function Problema() {
             </div>
           </div>
         </motion.div>
+        <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+          Esse loop não termina com mais controle. Termina quando você muda de estratégia.
+        </motion.p>
       </Reveal>
     </section>
   );
@@ -287,7 +294,7 @@ function NovaPerspectiva() {
     "Fazer espaço para emoções difíceis",
     "Observar pensamentos com mais distância",
     "Agir em direção ao que importa",
-    "Construir uma vida alinhada aos seus valores",
+    "Construir uma vida na direção dos seus valores",
   ];
   return (
     <section className="px-5 sm:px-8 py-24 sm:py-32">
