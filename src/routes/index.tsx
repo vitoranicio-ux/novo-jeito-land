@@ -355,14 +355,14 @@ function NovaPerspectiva() {
 
 function Produto() {
   const benefits = [
-    "Compreender melhor como a ansiedade funciona",
-    "Identificar padrões emocionais",
-    "Desenvolver mais presença",
-    "Aplicar exercícios práticos",
-    "Construir uma relação mais saudável com pensamentos",
-    "Agir mesmo quando a ansiedade aparece",
-    "Desenvolver clareza emocional",
-    "Reduzir a luta constante contra a ansiedade",
+    "Descobrir como tomar decisões alinhadas aos seus valores, em vez de deixar que a ansiedade determine seus caminhos.",
+    "Entender por que a ansiedade aparece e por que tentar controlá-la costuma aumentar o sofrimento.",
+    "Identificar os gatilhos e padrões que mantêm o ciclo da ansiedade.",
+    "Aprender exercícios práticos para voltar ao momento presente quando sua mente acelerar.",
+    "Observar pensamentos difíceis com mais distância, sem acreditar em tudo o que eles dizem.",
+    "Desenvolver uma relação mais saudável com emoções desconfortáveis.",
+    "Agir mesmo quando sentir ansiedade, em vez de esperar que ela desapareça.",
+    "Caminhar na direção da vida que deseja construir, com mais consciência e liberdade.",
   ];
   return (
     <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
@@ -374,8 +374,9 @@ function Produto() {
           <p className="mt-6 text-[#5b5448] leading-[1.75]">
             Um material cuidadosamente construído para acompanhar você passo a passo no
             desenvolvimento de uma relação mais saudável com pensamentos, emoções e preocupações,
-            apoiado por conceitos centrais da Terapia de Aceitação e Compromisso.
+            apoiado pelos princípios da Terapia de Aceitação e Compromisso (ACT).
           </p>
+          <p className="mt-6 font-display text-[#6B4325] text-xl">O que você vai aprender</p>
           <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3">
             {benefits.map((b) => (
               <li key={b} className="flex gap-3 text-[#3f3a32] text-[15px] leading-[1.6]">
@@ -412,20 +413,20 @@ function Receba() {
     {
       e: "📘",
       tag: "Produto principal",
-      title: "Guia Principal",
-      desc: "Um Novo Jeito de Lidar com a Ansiedade — material completo baseado em ACT.",
+      title: "O que vai te guiar: Um Novo Jeito de Lidar com a Ansiedade",
+      desc: "O material completo, baseado em ACT, com explicações claras, exemplos do cotidiano e exercícios práticos.",
     },
     {
       e: "📋",
       tag: "Bônus 01",
       title: "Checklist de Gatilhos da Ansiedade",
-      desc: "Ferramenta prática para identificar padrões, situações e contextos que costumam intensificar a ansiedade.",
+      desc: "Uma ferramenta prática para identificar situações, pensamentos e contextos que costumam intensificar sua ansiedade, e o que fazer quando isso acontece.",
     },
     {
       e: "🚨",
       tag: "Bônus 02",
       title: "Cartão de Emergência Emocional",
-      desc: "PDF otimizado para celular: respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
+      desc: "Um recurso para deixar no celular e consultar sempre que precisar, com exercícios rápidos de respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
     },
   ];
   return (
@@ -435,6 +436,10 @@ function Receba() {
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
             O que você recebe
           </h2>
+          <p className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+            Você receberá um conjunto de materiais que se complementam para ajudar você a aplicar
+            o conteúdo na prática.
+          </p>
         </motion.div>
 
         <div className="mt-14 grid md:grid-cols-3 gap-6">
@@ -457,16 +462,16 @@ function Receba() {
 
 function ParaQuem() {
   const yes = [
-    "Convive com ansiedade",
-    "Pensa demais",
-    "Sente excesso de preocupação",
+    "Convive com ansiedade no dia a dia",
+    "Pensa demais e tem dificuldade de desacelerar",
+    "Vive preocupado com o que pode acontecer",
     "Busca mais leveza emocional",
-    "Deseja ferramentas práticas",
-    "Quer desenvolver autoconhecimento",
+    "Deseja ferramentas práticas, não só teoria",
+    "Quer desenvolver autoconhecimento e clareza sobre o que sente",
   ];
   const no = [
-    "Busca soluções milagrosas",
-    "Quer eliminar emoções difíceis",
+    "Busca uma solução milagrosa que elimine toda a ansiedade",
+    "Quer eliminar emoções difíceis em vez de aprender a lidar com elas",
     "Não pretende aplicar o que aprender",
   ];
   return (
@@ -483,6 +488,7 @@ function ParaQuem() {
             variants={fadeUp}
             className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
           >
+            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia é para você se…</h3>
             <ul className="space-y-3.5">
               {yes.map((t) => (
                 <li key={t} className="flex gap-3 text-[#3f3a32]">
@@ -496,6 +502,7 @@ function ParaQuem() {
             variants={fadeUp}
             className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
           >
+            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia não é para você se…</h3>
             <ul className="space-y-3.5">
               {no.map((t) => (
                 <li key={t} className="flex gap-3 text-[#5b5448]">
