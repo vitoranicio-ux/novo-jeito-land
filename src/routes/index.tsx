@@ -774,22 +774,22 @@ function FAQ() {
   const items = [
     {
       q: "Isso substitui terapia?",
-      a: "Não. É um material psicoeducativo que complementa — mas não substitui — o trabalho com um(a) psicólogo(a).",
+      a: "Não. Este guia tem caráter psicoeducativo e complementa, mas não substitui, o acompanhamento psicológico individual.",
     },
-    { q: "Como recebo o material?", a: "Após a compra, você recebe acesso imediato por e-mail para baixar todos os materiais em PDF." },
-    { q: "Funciona no celular?", a: "Sim. O guia e o Cartão de Emergência Emocional foram otimizados para leitura no celular." },
-    { q: "Quanto tempo leva para ler?", a: "Você pode ler no seu ritmo. Em média, leitores levam de 2 a 4 horas, mas o material foi pensado para ser consultado várias vezes." },
-    { q: "Preciso ter diagnóstico?", a: "Não. O guia é voltado para qualquer pessoa que queira desenvolver uma relação mais saudável com a ansiedade." },
-    { q: "O conteúdo é técnico?", a: "Não. A linguagem é acessível, com exemplos do cotidiano. Os conceitos da ACT são apresentados de forma simples e aplicável." },
-    { q: "E se eu não gostar?", a: "Você tem 7 dias para solicitar reembolso integral, sem precisar justificar." },
-    { q: "Como funciona a garantia?", a: "Basta enviar um e-mail dentro de 7 dias após a compra solicitando o reembolso. Devolvemos 100% do valor." },
+    { q: "Como recebo o material?", a: "O acesso é enviado imediatamente após a confirmação do pagamento, diretamente para o seu e-mail." },
+    { q: "Funciona no celular?", a: "Sim. Todo o conteúdo foi desenvolvido para funcionar perfeitamente no celular, tablet ou computador." },
+    { q: "Quanto tempo leva para ler?", a: "Você avança no seu próprio ritmo. O material pode ser revisitado quantas vezes desejar." },
+    { q: "Preciso ter diagnóstico?", a: "Não. O guia foi pensado para qualquer pessoa que queira compreender e melhorar sua relação com a ansiedade." },
+    { q: "O conteúdo é técnico?", a: "Não. Foi escrito em linguagem simples e acessível, mantendo o rigor científico." },
+    { q: "E se eu não gostar?", a: "Você tem garantia incondicional de 7 dias. Basta entrar em contato e devolvemos 100% do valor — sem burocracia." },
+    { q: "Como funciona a garantia?", a: "Entre em contato dentro do prazo de 7 dias e devolvemos integralmente o valor pago. Sem questionamentos." },
   ];
   return (
     <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
       <Reveal className="max-w-3xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você ainda tenha dúvidas.
+            Perguntas frequentes
           </h2>
         </motion.div>
         <motion.div variants={fadeUp} className="mt-10">
@@ -812,11 +812,25 @@ function FinalCTA() {
           variants={fadeUp}
           className="font-display text-white text-3xl sm:text-5xl md:text-[60px] leading-[1.1] font-semibold"
         >
-          Você não precisa esperar a ansiedade desaparecer para começar a viver a vida que deseja.
+          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-white/80 leading-[1.75] max-w-2xl mx-auto">
-          Talvez a mudança não esteja em controlar mais. Talvez esteja em aprender uma nova forma
-          de lidar com aquilo que sente.
+          A ansiedade talvez ainda apareça amanhã.<br />Na semana que vem também.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          E isso não significa que ela precise continuar decidindo por você.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/90 leading-[1.75] max-w-2xl mx-auto font-display italic">
+          Você pode continuar tentando vencer a ansiedade todos os dias.<br />
+          Ou pode começar hoje a construir uma nova relação com ela.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          A mudança começa quando você aprende uma nova forma de responder ao que sente, com mais
+          consciência, mais flexibilidade e mais liberdade para agir na direção da vida que deseja
+          construir.
+        </motion.p>
+        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+          Se este guia ajudar você a dar esse primeiro passo, ele já terá cumprido o seu propósito.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
           <CTA>Quero acessar o guia →</CTA>
@@ -842,7 +856,7 @@ function Footer() {
           <p className="font-display text-white text-xl leading-tight">
             Um Novo Jeito de Lidar com a Ansiedade
           </p>
-          <p className="mt-3 text-sm text-white/60">por Mariana Psicóloga</p>
+          <p className="mt-3 text-sm text-white/60">por Mariana Anício · Psicóloga ACT</p>
         </div>
         <div>
           <ul className="space-y-2 text-sm mb-4">
@@ -859,8 +873,8 @@ function Footer() {
         </div>
       </div>
       <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 text-xs text-white/50 flex flex-wrap justify-between gap-3">
-        <span>© {new Date().getFullYear()} Mariana Psicóloga. Todos os direitos reservados.</span>
-        <span>Feito com cuidado e base em evidências.</span>
+        <span>© 2026 Mariana Anício. Todos os direitos reservados.</span>
+        <span>Vamos construir uma vida guiada pelo que realmente importa?</span>
       </div>
     </footer>
   );
