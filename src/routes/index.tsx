@@ -522,15 +522,15 @@ function Objecoes() {
   const items = [
     {
       q: "Isso substitui terapia?",
-      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o trabalho individual com um(a) psicólogo(a). Se você já faz terapia, pode ser um excelente apoio entre sessões.",
+      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o acompanhamento psicológico individual. Se você já faz terapia, pode ser um excelente apoio entre as sessões. Se não faz, é um ponto de partida sólido e acessível.",
     },
     {
       q: "Preciso ter conhecimento prévio?",
-      a: "Nenhum. A linguagem é acessível, sem jargões técnicos, com exemplos do cotidiano e exercícios passo a passo para quem está começando a entender a ansiedade.",
+      a: "Nenhum. A linguagem é simples, acessível e livre de jargões técnicos. Você vai encontrar exemplos do cotidiano e exercícios explicados passo a passo, pensado para quem está começando a entender a própria ansiedade.",
     },
     {
       q: "E se eu me identificar muito com os sintomas?",
-      a: "Se identificar faz parte. O guia foi construído com acolhimento e ritmo. Caso sinta necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo.",
+      a: "Isso é esperado. O guia foi construído com acolhimento e respeito ao seu ritmo. Se sentir necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo, e este material pode ajudar você nessa caminhada também.",
     },
   ];
   return (
@@ -563,12 +563,12 @@ function Depoimentos() {
     {
       n: "Luiza M.",
       r: "Professora",
-      t: "Pela primeira vez entendi que não precisava ‘parar de sentir’ para voltar a viver. O guia me trouxe um respiro real.",
+      t: "Pela primeira vez entendi que não precisava parar de sentir para voltar a viver. O guia me trouxe um respiro real.",
     },
     {
       n: "Rafael S.",
       r: "Engenheiro",
-      t: "Os exercícios práticos me ajudaram a observar meus pensamentos com mais distância. Algo simples, mas que mudou meu dia a dia.",
+      t: "Achei que precisaria de anos de terapia para entender minha ansiedade. O guia me deu clareza em dias.",
     },
     {
       n: "Camila A.",
@@ -581,7 +581,7 @@ function Depoimentos() {
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            O que leitores estão dizendo
+            Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
           </h2>
         </motion.div>
         <div className="mt-14 grid md:grid-cols-3 gap-6">
@@ -622,12 +622,24 @@ function SobreMariana() {
             Quem criou este guia?
           </h2>
           <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Mariana é psicóloga e atua com base na Terapia de Aceitação e Compromisso (ACT),
-            abordagem reconhecida por ajudar pessoas a desenvolverem mais flexibilidade
-            psicológica e construírem uma vida alinhada ao que realmente importa.
+            Sou Mariana Anício, psicóloga e pós-graduada em Terapia de Aceitação e Compromisso (ACT).
           </p>
           <p className="mt-4 text-[#5b5448] leading-[1.75]">
-            Seu trabalho busca unir ciência, acolhimento e aplicabilidade prática.
+            Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
+            padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
+            lugar de identidade. Talvez você mesma(o) já tenha se pegado dizendo: “Eu sou
+            ansiosa(o)”. Foi justamente a partir dessa experiência que criei este guia.
+          </p>
+          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+            Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
+            vai entender por que ela aparece, o que ela está tentando comunicar e como agir de
+            maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser
+            controlada(o) por ela.
+          </p>
+          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+            A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
+            Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
+            você construa uma vida mais alinhada ao que realmente importa.
           </p>
         </motion.div>
       </Reveal>
@@ -637,10 +649,9 @@ function SobreMariana() {
 
 function Pricing() {
   const features = [
-    "Guia Completo",
-    "Checklist de Gatilhos da Ansiedade",
-    "Cartão de Emergência Emocional",
-    "Acesso Imediato",
+    "Guia Principal - Um Novo Jeito de Lidar com a Ansiedade",
+    "Bônus 1 - Checklist de Gatilhos da Ansiedade",
+    "Bônus 2 - Cartão de Emergência Emocional",
   ];
   return (
     <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
@@ -659,15 +670,9 @@ function Pricing() {
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
-          <div className="mt-6 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 67,90</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
-              R$ 37,90
-            </span>
-          </div>
-          <p className="text-center text-xs text-[#5b5448] mt-2">à vista • acesso imediato</p>
+          <p className="mt-6 text-center font-display text-xl text-[#6B4325]">Hoje você recebe:</p>
 
-          <ul className="mt-8 space-y-3">
+          <ul className="mt-5 space-y-3">
             {features.map((f) => (
               <li key={f} className="flex gap-3 text-[#3f3a32]">
                 <span className="text-[#A8B5A2] shrink-0">✓</span>
@@ -675,6 +680,17 @@ function Pricing() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 text-center text-sm text-[#5b5448]">Tudo isso por apenas</p>
+          <div className="mt-2 flex items-end justify-center gap-3">
+            <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
+            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
+              R$ 37,90
+            </span>
+          </div>
+          <p className="text-center text-xs text-[#5b5448] mt-3 leading-relaxed">
+            Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
+          </p>
 
           <div className="mt-8 flex justify-center">
             <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
@@ -685,7 +701,7 @@ function Pricing() {
           </p>
 
           <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
-            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias</p>
+            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias.</p>
             <p className="text-xs text-[#5b5448] mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
@@ -704,15 +720,15 @@ function Garantia() {
           variants={fadeUp}
           className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
         >
-          Você não tem nada a perder.
+          Garantia incondicional de 7 dias.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75]">
-          Você tem 7 dias completos para acessar o guia e os bônus. Se sentir que o material não é
-          para você, é só nos enviar uma mensagem e devolvemos 100% do valor investido — sem
-          burocracia, sem perguntas constrangedoras.
+          Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
+          não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
+          investido, sem burocracia, sem perguntas constrangedoras.
         </motion.p>
         <motion.p variants={fadeUp} className="mt-4 text-[#5b5448] leading-[1.75]">
-          Queremos que sua decisão seja tranquila — porque escolher cuidar de si já é, por si só,
+          Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
           um passo importante.
         </motion.p>
       </Reveal>
