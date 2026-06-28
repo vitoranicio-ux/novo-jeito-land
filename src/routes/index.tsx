@@ -979,7 +979,9 @@ function Index() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }
+
 
