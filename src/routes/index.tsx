@@ -468,6 +468,15 @@ function Produto() {
   );
 }
 
+function CTAProduto() {
+  return (
+    <CTABlock
+      text="Se faz sentido para você, este pode ser o momento de dar o primeiro passo."
+      button="Quero começar agora →"
+    />
+  );
+}
+
 function Receba() {
   const items = [
     {
