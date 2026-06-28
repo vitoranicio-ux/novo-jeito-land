@@ -295,6 +295,15 @@ function Problema() {
   );
 }
 
+function CTAProblema() {
+  return (
+    <CTABlock
+      text="O próximo passo é aprender uma nova forma de se relacionar com ela."
+      button="Quero acessar o guia →"
+    />
+  );
+}
+
 function NovaPerspectiva() {
   const left = [
     "Controlar pensamentos",
