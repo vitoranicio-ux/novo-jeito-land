@@ -962,13 +962,16 @@ function Index() {
       <Hero />
       <Identificacao />
       <Problema />
+      <CTAProblema />
       <NovaPerspectiva />
       <VisaoFuturo />
       <Produto />
+      <CTAProduto />
       <Receba />
       <ParaQuem />
       <Objecoes />
       <Depoimentos />
+      <CTADepoimentos />
       <SobreMariana />
       <Pricing />
       <Garantia />
@@ -978,3 +981,4 @@ function Index() {
     </main>
   );
 }
+
