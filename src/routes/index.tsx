@@ -33,10 +33,10 @@ const stagger = {
 };
 
 
-function CTA({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+function CTA({ children, className = "", href = "#pricing" }: { children: React.ReactNode; className?: string; href?: string }) {
   return (
     <a
-      href="#pricing"
+      href={href}
       className={
         "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#CC6A39] text-white font-medium tracking-wide shadow-[0_10px_30px_-10px_rgba(204,106,57,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(204,106,57,0.65)] active:translate-y-0 " +
         className
@@ -46,6 +46,20 @@ function CTA({ children, className = "" }: { children: React.ReactNode; classNam
     </a>
   );
 }
+
+function CTABlock({ text, button }: { text: string; button: string }) {
+  return (
+    <section className="px-5 sm:px-8 py-12 bg-white/40">
+      <div className="max-w-4xl mx-auto text-center">
+        <p className="text-[17px] text-[#5b5448] leading-[1.75] mb-8">
+          {text}
+        </p>
+        <CTA>{button}</CTA>
+      </div>
+    </section>
+  );
+}
+
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
