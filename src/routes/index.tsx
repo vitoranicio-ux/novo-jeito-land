@@ -668,6 +668,15 @@ function Depoimentos() {
   );
 }
 
+function CTADepoimentos() {
+  return (
+    <CTABlock
+      text="Você também pode começar hoje a construir uma relação mais leve com a ansiedade."
+      button="Quero acessar o guia →"
+    />
+  );
+}
+
 function SobreMariana() {
   return (
     <section id="mariana" className="px-5 sm:px-8 py-24 sm:py-32">
