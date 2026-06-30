@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import sobreVoce from "@/assets/Sobre_Você.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -684,9 +685,11 @@ function SobreMariana() {
         <motion.div variants={fadeUp} className="md:col-span-2 flex justify-center">
           <div className="relative">
             <div className="absolute -inset-6 bg-[#A8B5A2]/30 rounded-full blur-2xl" />
-            <div className="relative w-56 h-56 sm:w-64 sm:h-64 rounded-full overflow-hidden border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#A8B5A2] to-[#7B8C9B] grid place-items-center">
-              <span className="font-display text-white text-7xl">M</span>
-            </div>
+            <img
+              src={sobreVoce.url}
+              alt="Mariana Anício, psicóloga e criadora do guia"
+              className="relative w-full max-w-[320px] rounded-2xl shadow-[0_24px_60px_-20px_rgba(107,67,37,0.35)]"
+            />
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="md:col-span-3">
