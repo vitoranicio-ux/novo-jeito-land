@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import sobreVoce from "@/assets/Sobre_Você.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
