@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "sdk_version": "0.22.2",
+  "path": "/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "mariana-anicio-guide-mcp",
+      "version": "0.1.0",
+      "title": "Guia Mariana Anício MCP"
+    },
+    "tools": [
+      {
+        "name": "get_guide_info",
+        "title": "Get guide info",
+        "description": "Returns public information about the anxiety guide by Mariana Anício: title, positioning, what the reader will learn, and the checkout anchor.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_author_info",
+        "title": "Get author info",
+        "description": "Returns public information about the author Mariana Anício, creator of the anxiety guide.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {}
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
