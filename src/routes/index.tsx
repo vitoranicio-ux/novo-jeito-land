@@ -760,7 +760,7 @@ function Pricing() {
           <div className="mt-2 flex items-end justify-center gap-3">
             <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
             <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
-              R$ 37,90
+              R$ 47,90
             </span>
           </div>
           <p className="text-center text-xs text-[#5b5448] mt-3 leading-relaxed">
