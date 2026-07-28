@@ -160,7 +160,7 @@ function Hero() {
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
         >
-          Para quem já tentou controlar a ansiedade de todas as formas, e está pronto para
+          Para quem já tentou controlar a ansiedade de todas as formas, e está pronta para
           experimentar um caminho diferente.
         </motion.p>
 
@@ -216,7 +216,7 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 function Identificacao() {
   const items = [
     { e: "🧠", t: "Sua mente parece nunca desacelerar." },
-    { e: "⚠️", t: "Você vive preocupado com o que pode acontecer." },
+    { e: "⚠️", t: "Você vive preocupada com o que pode acontecer." },
     { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
     { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
     { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
@@ -246,7 +246,7 @@ function Identificacao() {
         </div>
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinho, e que existe uma forma diferente de lidar com isso.
+          Se você se identificou com algum desses pontos, saiba que não está sozinha, e que existe uma forma diferente de lidar com isso.
         </motion.p>
       </Reveal>
     </section>
@@ -264,7 +264,7 @@ function Problema() {
           O problema não é sentir ansiedade.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
-          O problema é ficar preso na luta contra ela.
+          O problema é ficar presa na luta contra ela.
         </motion.p>
         <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
           Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
@@ -534,7 +534,7 @@ function ParaQuem() {
   const yes = [
     "Convive com ansiedade no dia a dia",
     "Pensa demais e tem dificuldade de desacelerar",
-    "Vive preocupado com o que pode acontecer",
+    "Vive preocupada com o que pode acontecer",
     "Busca mais leveza emocional",
     "Deseja ferramentas práticas, não só teoria",
     "Quer desenvolver autoconhecimento e clareza sobre o que sente",
@@ -702,8 +702,8 @@ function SobreMariana() {
           <p className="mt-4 text-[#5b5448] leading-[1.75]">
             Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
             padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
-            lugar de identidade. Talvez você mesma(o) já tenha se pegado dizendo: “Eu sou
-            ansiosa(o)”. Foi justamente a partir dessa experiência que criei este guia.
+            lugar de identidade. Talvez você mesma já tenha se pegado dizendo: “Eu sou
+            ansiosa”. Foi justamente a partir dessa experiência que criei este guia.
           </p>
           <p className="mt-4 text-[#5b5448] leading-[1.75]">
             Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
