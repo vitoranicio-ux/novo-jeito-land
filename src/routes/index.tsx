@@ -625,19 +625,61 @@ function Objecoes() {
 function Depoimentos() {
   const items = [
     {
-      n: "Luiza M.",
-      r: "Professora",
-      t: "Pela primeira vez entendi que não precisava parar de sentir para voltar a viver. O guia me trouxe um respiro real.",
+      n: "Flávia",
+      t: [
+        "Era péssimo. Sentia meu coração acelerado, não conseguia parar de pensar nisso. Ficava nervosa por qualquer motivo e chorava algumas vezes.",
+        "Hoje sou uma nova mulher, com certeza. Eu tenho tranquilidade e paz no meu coração. Eu consigo lidar com meus sentimentos de forma mais leve.",
+        "Que procure a Mari e faça terapia. Ela consegue te ajudar a entender como superar momentos difíceis.",
+      ],
     },
     {
-      n: "Rafael S.",
-      r: "Engenheiro",
-      t: "Achei que precisaria de anos de terapia para entender minha ansiedade. O guia me deu clareza em dias.",
+      n: "Nome preservado a pedido",
+      t: [
+        "Perturbador. Pensamentos acelerados e muitas preocupações. Ainda tenho, mas acho que hoje lido melhor.",
+        "Não precisa ser uma cura. Pode ser uma mudança sutil na forma como você lida com os pensamentos, com o desconforto ou com situações que antes eram difíceis.",
+        "Ela existe lá e eu posso coexistir com ela. Posso fazer meu trabalho e sentir ansiedade. Percebia que antes ela me limitava e impedia que eu fizesse outras coisas.",
+        "Não dá para viver plenamente sem olhar para si. A ansiedade atrapalha muito em muitas coisas e, às vezes, é o que impede de alcançar objetivos, melhorar as relações etc. Acredito que buscar ajuda o quanto antes é a melhor saída.",
+      ],
     },
     {
-      n: "Camila A.",
-      r: "Designer",
-      t: "Material acolhedor, sem promessas mágicas. Senti que estava sendo conduzida por alguém que entende de verdade do assunto.",
+      n: "Isabella C.",
+      t: [
+        "Não dormia bem. Acordava muito à noite. Ficava dias ou semanas com sensações de angústia frequentemente. Quando tinha algo para acontecer, ficava estressada.",
+        "Hoje tento conviver com a ansiedade da melhor forma, sabendo que ela não vai desaparecer, mas não vai mais me consumir igual antes. Uso muitas falas, técnicas e pensamentos aprendidos na terapia.",
+        "Você não precisa passar por isso sozinha. Existem formas de viver melhor, sem tanta angústia, e muitas ferramentas para te ajudar.",
+      ],
+    },
+    {
+      n: "Thaís",
+      t: [
+        "O estresse que me gerava por conta do excesso de preocupações afetava meu sono, meu trabalho e minha relação com meu filho.",
+        "Eu tento entender o que essa ansiedade está querendo me dizer, pois vejo ela como um sinal. E, a partir daí, pensar racionalmente no que eu posso fazer, no que está sob meu controle e em como posso resolver determinada situação.",
+        "Ansiedade é um sinal de alerta para você olhar para algo que está te incomodando, te deixando insegura. E ela não pode ser negligenciada. É fundamental pedir ajuda.",
+      ],
+    },
+    {
+      n: "M. C. S.",
+      t: [
+        "Nos relacionamentos em geral era mais tranquilo, mas, no meu namoro, a ansiedade me deixava insegura, porque tinha diversos pensamentos automáticos imaginando catástrofes que não condiziam com a realidade do momento. Além disso, perdia o sono por vários dias ou dormia a noite toda, mas acordava cansada. Ainda tinha a dificuldade para aceitar novos desafios, já que eu não reconhecia potencial em mim mesma.",
+        "Creio que tenho conseguido racionalizar melhor meus momentos de ansiedade. Não deixo de sentir, mas consigo manejar melhor. Consigo identificar a causa e, assim, desemaranhar (muito chique, aprendi com a Mari rsrs) meus pensamentos. Então vejo de forma mais clara o que me angustia.",
+        "TERAPIA NO CE!! rsrs Incentivaria a busca pela terapia. Muda tudo. ❤️",
+      ],
+    },
+    {
+      n: "Guilherme",
+      t: [
+        "Tinha muita ansiedade de desempenho. Sofria por medo de falhar ou passar vergonha. Isso me deixava mais inseguro e indeciso.",
+        "Consegui trabalhar isso melhor. Hoje lido com mais leveza com meus erros e tenho menos medo deles.",
+        "Diria para procurar a psicoterapia e indicaria também a ACT, a depender do perfil da pessoa. Também falaria sobre meu processo e de como a terapia me ajudou.",
+      ],
+    },
+    {
+      n: "Nome preservado a pedido",
+      t: [
+        "Vivia pilhado durante todo o meu dia, me achando insuficiente, não merecedor. Era muito ruim, porque eu não conseguia sair desses pensamentos, mesmo que tentasse.",
+        "Comecei a respeitar mais os meus sentimentos e a entender que pensamentos existem, mas são apenas pensamentos. E, assim, aprendi a administrar as situações que me causavam estresse, decidindo o que eu iria internalizar ou não.",
+        "Diria que a terapia é fundamental nos dias de hoje, pois o excesso de informações que temos no nosso cotidiano acaba interferindo no nosso emocional, mesmo que indiretamente.",
+      ],
     },
   ];
   return (
@@ -647,23 +689,40 @@ function Depoimentos() {
           <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
             Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
           </h2>
+          <p className="mt-5 text-[#3f3a32] leading-[1.75] max-w-2xl mx-auto">
+            Cada pessoa vive a ansiedade de uma forma diferente. Estas são experiências reais de
+            pessoas acompanhadas pela Mariana.
+          </p>
         </motion.div>
-        <div className="mt-14 grid md:grid-cols-3 gap-6">
-          {items.map((it) => (
+        <div className="mt-14 columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:balance]">
+          {items.map((it, i) => (
             <motion.div
-              key={it.n}
+              key={i}
               variants={fadeUp}
-              className="rounded-3xl p-8 bg-white/65 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
+              className="mb-6 break-inside-avoid rounded-3xl p-8 bg-white/65 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
             >
               <div className="font-display text-[#C78162] text-5xl leading-none mb-2">“</div>
-              <p className="text-[#3f3a32] leading-[1.75]">{it.t}</p>
+              <div className="space-y-4">
+                {it.t.map((p, j) => (
+                  <p key={j} className="text-[#3f3a32] leading-[1.75]">
+                    {p}
+                  </p>
+                ))}
+              </div>
               <div className="mt-6 pt-5 border-t border-[rgba(107,67,37,0.15)]">
                 <p className="font-display text-[#6B4325] text-lg">{it.n}</p>
-                <p className="text-xs text-[#7B8C9B] tracking-wide uppercase mt-1">{it.r}</p>
               </div>
             </motion.div>
           ))}
         </div>
+        <motion.p
+          variants={fadeUp}
+          className="mt-10 text-sm text-[#7B8C9B] leading-relaxed max-w-3xl mx-auto text-center"
+        >
+          Os depoimentos acima foram compartilhados voluntariamente por pacientes que autorizaram
+          sua utilização para fins institucionais. Cada processo terapêutico é único e os resultados
+          variam de acordo com a história, o contexto e o envolvimento de cada pessoa.
+        </motion.p>
       </Reveal>
     </section>
   );
