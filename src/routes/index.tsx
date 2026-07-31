@@ -636,7 +636,6 @@ function Depoimentos() {
       n: "Nome preservado a pedido",
       t: [
         "Perturbador. Pensamentos acelerados e muitas preocupações. Ainda tenho, mas acho que hoje lido melhor.",
-        "Não precisa ser uma cura. Pode ser uma mudança sutil na forma como você lida com os pensamentos, com o desconforto ou com situações que antes eram difíceis.",
         "Ela existe lá e eu posso coexistir com ela. Posso fazer meu trabalho e sentir ansiedade. Percebia que antes ela me limitava e impedia que eu fizesse outras coisas.",
         "Não dá para viver plenamente sem olhar para si. A ansiedade atrapalha muito em muitas coisas e, às vezes, é o que impede de alcançar objetivos, melhorar as relações etc. Acredito que buscar ajuda o quanto antes é a melhor saída.",
       ],
