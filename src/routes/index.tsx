@@ -530,57 +530,6 @@ function Receba() {
   );
 }
 
-function ParaQuem() {
-  const yes = [
-    "Convive com ansiedade no dia a dia",
-    "Pensa demais e tem dificuldade de desacelerar",
-    "Vive preocupada com o que pode acontecer",
-    "Busca mais leveza emocional",
-    "Deseja ferramentas práticas, não só teoria",
-    "Quer desenvolver autoconhecimento e clareza sobre o que sente",
-  ];
-  const no = [
-    "Busca uma solução milagrosa que elimine toda a ansiedade",
-    "Quer eliminar emoções difíceis em vez de aprender a lidar com elas",
-    "Não pretende aplicar o que aprender",
-  ];
-  return (
-    <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-5 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
-          >
-            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia é para você se…</h3>
-            <ul className="space-y-3.5">
-              {yes.map((t) => (
-                <li key={t} className="flex gap-3 text-[#3f3a32]">
-                  <span className="text-[#7B8C9B] shrink-0">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
-          >
-            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia não é para você se…</h3>
-            <ul className="space-y-3.5">
-              {no.map((t) => (
-                <li key={t} className="flex gap-3 text-[#5b5448]">
-                  <span className="text-[#C78162] shrink-0">✕</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
 
 
 function Depoimentos() {
