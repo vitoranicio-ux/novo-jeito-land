@@ -414,60 +414,6 @@ function VisaoFuturo() {
   );
 }
 
-function Produto() {
-  const benefits = [
-    "Descobrir como tomar decisões alinhadas aos seus valores, em vez de deixar que a ansiedade determine seus caminhos.",
-    "Entender por que a ansiedade aparece e por que tentar controlá-la costuma aumentar o sofrimento.",
-    "Identificar os gatilhos e padrões que mantêm o ciclo da ansiedade.",
-    "Aprender exercícios práticos para voltar ao momento presente quando sua mente acelerar.",
-    "Observar pensamentos difíceis com mais distância, sem acreditar em tudo o que eles dizem.",
-    "Desenvolver uma relação mais saudável com emoções desconfortáveis.",
-    "Agir mesmo quando sentir ansiedade, em vez de esperar que ela desapareça.",
-    "Caminhar na direção da vida que deseja construir, com mais consciência e liberdade.",
-  ];
-  return (
-    <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <motion.div variants={fadeUp} className="order-2 md:order-1">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Mais do que um guia. Uma nova forma de lidar com a ansiedade.
-          </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Um material cuidadosamente construído para acompanhar você passo a passo no
-            desenvolvimento de uma relação mais saudável com pensamentos, emoções e preocupações,
-            apoiado pelos princípios da Terapia de Aceitação e Compromisso (ACT).
-          </p>
-          <p className="mt-6 font-display text-[#6B4325] text-xl">O que você vai aprender</p>
-          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-            {benefits.map((b) => (
-              <li key={b} className="flex gap-3 text-[#3f3a32] text-[15px] leading-[1.6]">
-                <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="order-1 md:order-2 flex justify-center">
-          <div className="relative">
-            <div className="absolute -inset-8 bg-[#C78162]/15 rounded-full blur-3xl" />
-            <div className="relative w-[260px] sm:w-[320px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(107,67,37,0.45)] border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#6B4325] to-[#C78162] p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="font-display text-white text-3xl sm:text-4xl leading-[1.05]">
-                  Um Novo Jeito de Lidar com a Ansiedade
-                </h3>
-              </div>
-              <div className="text-white/80 text-sm">
-                <div className="h-px bg-white/30 mb-3" />
-                Mariana Psicóloga
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
 
 function CTAProduto() {
   return (
