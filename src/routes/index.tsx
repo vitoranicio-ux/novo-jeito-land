@@ -582,45 +582,6 @@ function ParaQuem() {
   );
 }
 
-function Objecoes() {
-  const items = [
-    {
-      q: "Isso substitui terapia?",
-      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o acompanhamento psicológico individual. Se você já faz terapia, pode ser um excelente apoio entre as sessões. Se não faz, é um ponto de partida sólido e acessível.",
-    },
-    {
-      q: "Preciso ter conhecimento prévio?",
-      a: "Nenhum. A linguagem é simples, acessível e livre de jargões técnicos. Você vai encontrar exemplos do cotidiano e exercícios explicados passo a passo, pensado para quem está começando a entender a própria ansiedade.",
-    },
-    {
-      q: "E se eu me identificar muito com os sintomas?",
-      a: "Isso é esperado. O guia foi construído com acolhimento e respeito ao seu ritmo. Se sentir necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo, e este material pode ajudar você nessa caminhada também.",
-    },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-4xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você esteja pensando…
-          </h2>
-        </motion.div>
-        <div className="mt-12 space-y-5">
-          {items.map((it) => (
-            <motion.div
-              key={it.q}
-              variants={fadeUp}
-              className="rounded-2xl p-7 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
-            >
-              <h3 className="font-display text-xl sm:text-2xl text-[#6B4325]">{it.q}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.75]">{it.a}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
 
 function Depoimentos() {
   const items = [
