@@ -809,13 +809,9 @@ function Index() {
       <Identificacao />
       <Problema />
       <CTAProblema />
-      <NovaPerspectiva />
       <VisaoFuturo />
-      <Produto />
       <CTAProduto />
       <Receba />
-      <ParaQuem />
-      <Objecoes />
       <Depoimentos />
       <CTADepoimentos />
       <SobreMariana />
@@ -827,4 +823,5 @@ function Index() {
     </main>
   );
 }
+
 
