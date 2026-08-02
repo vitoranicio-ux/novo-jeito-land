@@ -305,77 +305,6 @@ function CTAProblema() {
   );
 }
 
-function NovaPerspectiva() {
-  const left = [
-    "Controlar pensamentos",
-    "Eliminar emoções difíceis",
-    "Esperar se sentir melhor para agir",
-    "Buscar segurança absoluta",
-    "Evitar desconfortos",
-  ];
-  const right = [
-    "Desenvolver flexibilidade psicológica",
-    "Fazer espaço para emoções difíceis",
-    "Observar pensamentos com mais distância",
-    "Agir em direção ao que importa",
-    "Construir uma vida na direção dos seus valores",
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-6xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
-            Existe outro caminho.
-          </h2>
-        </motion.div>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="rounded-3xl p-8 sm:p-10 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
-          >
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mb-6">
-              O caminho da luta
-            </h3>
-            <ul className="space-y-4">
-              {left.map((t) => (
-                <li key={t} className="flex gap-3 text-[#5b5448] leading-[1.7]">
-                  <span className="text-[#C78162] shrink-0">✕</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 backdrop-blur-sm border border-[#A8B5A2]/40"
-          >
-            <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] mb-6">
-              O caminho da flexibilidade
-            </h3>
-            <ul className="space-y-4">
-              {right.map((t) => (
-                <li key={t} className="flex gap-3 text-[#3f3a32] leading-[1.7]">
-                  <span className="text-[#7B8C9B] shrink-0">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-
-        <motion.p
-          variants={fadeUp}
-          className="mt-16 max-w-3xl mx-auto text-center font-display italic text-xl sm:text-2xl text-[#6B4325] leading-snug"
-        >
-          A mudança não acontece quando a ansiedade desaparece. Ela acontece quando você aprende
-          uma nova forma de se relacionar com ela.
-        </motion.p>
-      </Reveal>
-    </section>
-  );
-}
 
 function VisaoFuturo() {
   const items = [
@@ -414,60 +343,6 @@ function VisaoFuturo() {
   );
 }
 
-function Produto() {
-  const benefits = [
-    "Descobrir como tomar decisões alinhadas aos seus valores, em vez de deixar que a ansiedade determine seus caminhos.",
-    "Entender por que a ansiedade aparece e por que tentar controlá-la costuma aumentar o sofrimento.",
-    "Identificar os gatilhos e padrões que mantêm o ciclo da ansiedade.",
-    "Aprender exercícios práticos para voltar ao momento presente quando sua mente acelerar.",
-    "Observar pensamentos difíceis com mais distância, sem acreditar em tudo o que eles dizem.",
-    "Desenvolver uma relação mais saudável com emoções desconfortáveis.",
-    "Agir mesmo quando sentir ansiedade, em vez de esperar que ela desapareça.",
-    "Caminhar na direção da vida que deseja construir, com mais consciência e liberdade.",
-  ];
-  return (
-    <section id="produto" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <motion.div variants={fadeUp} className="order-2 md:order-1">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Mais do que um guia. Uma nova forma de lidar com a ansiedade.
-          </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
-            Um material cuidadosamente construído para acompanhar você passo a passo no
-            desenvolvimento de uma relação mais saudável com pensamentos, emoções e preocupações,
-            apoiado pelos princípios da Terapia de Aceitação e Compromisso (ACT).
-          </p>
-          <p className="mt-6 font-display text-[#6B4325] text-xl">O que você vai aprender</p>
-          <ul className="mt-8 grid sm:grid-cols-2 gap-x-6 gap-y-3">
-            {benefits.map((b) => (
-              <li key={b} className="flex gap-3 text-[#3f3a32] text-[15px] leading-[1.6]">
-                <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
-                {b}
-              </li>
-            ))}
-          </ul>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="order-1 md:order-2 flex justify-center">
-          <div className="relative">
-            <div className="absolute -inset-8 bg-[#C78162]/15 rounded-full blur-3xl" />
-            <div className="relative w-[260px] sm:w-[320px] aspect-[3/4] rounded-2xl overflow-hidden shadow-[0_40px_80px_-30px_rgba(107,67,37,0.45)] border border-[rgba(107,67,37,0.2)] bg-gradient-to-br from-[#6B4325] to-[#C78162] p-8 flex flex-col justify-between">
-              <div>
-                <h3 className="font-display text-white text-3xl sm:text-4xl leading-[1.05]">
-                  Um Novo Jeito de Lidar com a Ansiedade
-                </h3>
-              </div>
-              <div className="text-white/80 text-sm">
-                <div className="h-px bg-white/30 mb-3" />
-                Mariana Psicóloga
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </Reveal>
-    </section>
-  );
-}
 
 function CTAProduto() {
   return (
@@ -530,97 +405,7 @@ function Receba() {
   );
 }
 
-function ParaQuem() {
-  const yes = [
-    "Convive com ansiedade no dia a dia",
-    "Pensa demais e tem dificuldade de desacelerar",
-    "Vive preocupada com o que pode acontecer",
-    "Busca mais leveza emocional",
-    "Deseja ferramentas práticas, não só teoria",
-    "Quer desenvolver autoconhecimento e clareza sobre o que sente",
-  ];
-  const no = [
-    "Busca uma solução milagrosa que elimine toda a ansiedade",
-    "Quer eliminar emoções difíceis em vez de aprender a lidar com elas",
-    "Não pretende aplicar o que aprender",
-  ];
-  return (
-    <section id="para-quem" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
-      <Reveal className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-5 gap-6">
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-3 rounded-3xl p-8 sm:p-10 bg-[#A8B5A2]/15 border border-[#A8B5A2]/40"
-          >
-            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia é para você se…</h3>
-            <ul className="space-y-3.5">
-              {yes.map((t) => (
-                <li key={t} className="flex gap-3 text-[#3f3a32]">
-                  <span className="text-[#7B8C9B] shrink-0">✓</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-          <motion.div
-            variants={fadeUp}
-            className="md:col-span-2 rounded-3xl p-8 sm:p-10 bg-white/55 border border-[rgba(107,67,37,0.15)]"
-          >
-            <h3 className="font-display text-xl text-[#6B4325] mb-5">Este guia não é para você se…</h3>
-            <ul className="space-y-3.5">
-              {no.map((t) => (
-                <li key={t} className="flex gap-3 text-[#5b5448]">
-                  <span className="text-[#C78162] shrink-0">✕</span>
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
 
-function Objecoes() {
-  const items = [
-    {
-      q: "Isso substitui terapia?",
-      a: "Não. Este guia é um material psicoeducativo. Ele complementa, mas não substitui, o acompanhamento psicológico individual. Se você já faz terapia, pode ser um excelente apoio entre as sessões. Se não faz, é um ponto de partida sólido e acessível.",
-    },
-    {
-      q: "Preciso ter conhecimento prévio?",
-      a: "Nenhum. A linguagem é simples, acessível e livre de jargões técnicos. Você vai encontrar exemplos do cotidiano e exercícios explicados passo a passo, pensado para quem está começando a entender a própria ansiedade.",
-    },
-    {
-      q: "E se eu me identificar muito com os sintomas?",
-      a: "Isso é esperado. O guia foi construído com acolhimento e respeito ao seu ritmo. Se sentir necessidade de um suporte mais próximo, recomendamos buscar acompanhamento psicológico individual em paralelo, e este material pode ajudar você nessa caminhada também.",
-    },
-  ];
-  return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
-      <Reveal className="max-w-4xl mx-auto">
-        <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
-            Talvez você esteja pensando…
-          </h2>
-        </motion.div>
-        <div className="mt-12 space-y-5">
-          {items.map((it) => (
-            <motion.div
-              key={it.q}
-              variants={fadeUp}
-              className="rounded-2xl p-7 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)]"
-            >
-              <h3 className="font-display text-xl sm:text-2xl text-[#6B4325]">{it.q}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.75]">{it.a}</p>
-            </motion.div>
-          ))}
-        </div>
-      </Reveal>
-    </section>
-  );
-}
 
 function Depoimentos() {
   const items = [
@@ -1024,13 +809,9 @@ function Index() {
       <Identificacao />
       <Problema />
       <CTAProblema />
-      <NovaPerspectiva />
       <VisaoFuturo />
-      <Produto />
       <CTAProduto />
       <Receba />
-      <ParaQuem />
-      <Objecoes />
       <Depoimentos />
       <CTADepoimentos />
       <SobreMariana />
@@ -1042,4 +823,5 @@ function Index() {
     </main>
   );
 }
+
 
