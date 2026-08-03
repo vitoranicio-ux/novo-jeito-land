@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import sobreVoce from "@/assets/Sobre_Você.jpg.asset.json";
+import capaGuia from "@/assets/capa-guia.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -76,7 +77,7 @@ function Nav() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-md bg-[#F2EFE8]/75 border-b border-[rgba(107,67,37,0.10)]"
+          ? "backdrop-blur-md bg-white/75 border-b border-[rgba(107,67,37,0.10)]"
           : "bg-transparent"
       }`}
     >
@@ -797,7 +798,7 @@ function Index() {
   return (
     <main
       className="min-h-screen font-sans text-[#3f3a32] antialiased scroll-smooth"
-      style={{ backgroundColor: "#F2EFE8" }}
+      style={{ backgroundColor: "#FFFFFF" }}
     >
       <Nav />
       <Hero />
