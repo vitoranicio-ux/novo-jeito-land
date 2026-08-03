@@ -578,8 +578,18 @@ function Pricing() {
 
         <motion.div
           variants={fadeUp}
-          className="mt-12 rounded-3xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)]"
+          className="mt-12 rounded-3xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)] md:flex md:items-start md:gap-10"
         >
+          <div className="mx-auto md:mx-0 shrink-0 w-[180px] md:w-[220px] lg:w-[240px] mb-8 md:mb-0">
+            <img
+              src={capaGuia.url}
+              alt="Capa do guia Um Novo Jeito de Lidar com a Ansiedade, de Mariana Anício"
+              loading="lazy"
+              className="w-full h-auto rounded-lg shadow-[0_25px_50px_-15px_rgba(107,67,37,0.45)]"
+            />
+          </div>
+
+          <div className="min-w-0 flex-1">
           <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
@@ -619,6 +629,7 @@ function Pricing() {
             <p className="text-xs text-[#5b5448] mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
+          </div>
           </div>
         </motion.div>
       </Reveal>
