@@ -81,8 +81,8 @@ function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a href="#top" className="font-display text-[#6B4325] text-lg sm:text-xl leading-tight max-w-[60%] truncate">
-          Um Novo Jeito de Lidar com a Ansiedade
+        <a href="#top" className="font-display text-[#6B4325] text-lg sm:text-xl leading-tight whitespace-nowrap">
+          Um Novo Jeito…
         </a>
         <a
           href="#pricing"
