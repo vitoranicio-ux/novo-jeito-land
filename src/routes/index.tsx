@@ -664,15 +664,15 @@ function Garantia() {
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-[rgba(107,67,37,0.15)]">
+    <div className="border-b border-brand-sage">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-4 py-6 text-left"
       >
-        <span className="font-display text-lg sm:text-xl text-[#6B4325]">{q}</span>
+        <span className="font-display type-h3 text-brand-brown">{q}</span>
         <span
-          className={`shrink-0 w-8 h-8 rounded-full border border-[rgba(107,67,37,0.2)] grid place-items-center transition-transform duration-300 ${
-            open ? "rotate-45 bg-[#CC6A39] text-white border-transparent" : "text-[#6B4325]"
+          className={`shrink-0 w-8 h-8 rounded-full border border-brand-sage grid place-items-center transition-transform duration-300 ${
+            open ? "rotate-45 bg-brand-terracota text-brand-white border-transparent" : "text-brand-brown"
           }`}
         >
           +
@@ -687,7 +687,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-[#5b5448] leading-[1.75]">{a}</p>
+            <p className="pb-6 type-body text-brand-brown leading-[1.75]">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
