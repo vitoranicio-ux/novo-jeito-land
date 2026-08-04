@@ -141,7 +141,7 @@ function Hero() {
     <section id="top" className="relative min-h-screen pt-28 sm:pt-32 pb-16 px-5 sm:px-8">
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute -top-40 -left-40 w-[520px] h-[520px] rounded-full bg-[#A8B5A2]/25 blur-3xl" />
-        <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full bg-[#C78162]/20 blur-3xl" />
+        <div className="absolute -bottom-40 -right-40 w-[520px] h-[520px] rounded-full bg-brand-sage/20 blur-3xl" />
       </div>
       <motion.div
         initial="hidden"
