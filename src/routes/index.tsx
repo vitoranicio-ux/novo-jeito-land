@@ -643,16 +643,16 @@ function Garantia() {
       <Reveal className="max-w-3xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
+          className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold"
         >
           Garantia incondicional de 7 dias.
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75]">
+        <motion.p variants={fadeUp} className="mt-6 type-body text-brand-brown leading-[1.75]">
           Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
           não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
           investido, sem burocracia, sem perguntas constrangedoras.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-[#5b5448] leading-[1.75]">
+        <motion.p variants={fadeUp} className="mt-4 type-body text-brand-brown leading-[1.75]">
           Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
           um passo importante.
         </motion.p>
