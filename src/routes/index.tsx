@@ -228,7 +228,7 @@ function Identificacao() {
       <Reveal className="max-w-5xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold"
         >
           Você se reconhece em alguma dessas situações?
         </motion.h2>
@@ -238,15 +238,15 @@ function Identificacao() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="rounded-2xl p-7 text-left bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-transform duration-300 hover:-translate-y-1"
+              className="rounded-xl p-7 text-left bg-brand-card-warm border border-brand-card-warm-border transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="text-3xl mb-3">{it.e}</div>
-              <p className="text-[#3f3a32] leading-[1.7]">{it.t}</p>
+              <p className="type-card text-brand-brown leading-[1.7]">{it.t}</p>
             </motion.div>
           ))}
         </div>
 
-        <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-12 font-display italic text-brand-brown type-h3">
           Se você se identificou com algum desses pontos, saiba que não está sozinha, e que existe uma forma diferente de lidar com isso.
         </motion.p>
       </Reveal>
