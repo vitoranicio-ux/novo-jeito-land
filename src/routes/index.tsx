@@ -152,32 +152,32 @@ function Hero() {
 
         <motion.h1
           variants={fadeUp}
-          className="font-display text-[#6B4325] mt-6 text-[32px] leading-[1.1] sm:text-[52px] md:text-[64px] lg:text-[68px] font-semibold tracking-tight"
+          className="font-display text-brand-sage mt-6 type-h1 leading-[1.1] font-semibold tracking-tight"
         >
           Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
+          className="mt-6 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto"
         >
           Para quem já tentou controlar a ansiedade de todas as formas, e está pronta para
           experimentar um caminho diferente.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
-          <p className="text-sm text-[#6B4325]/80 mb-3 font-display italic text-lg">
+          <p className="text-brand-brown mb-3 font-display italic type-h3">
             Assista ao vídeo antes de continuar 👇
           </p>
-          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[rgba(107,67,37,0.15)] shadow-[0_30px_60px_-30px_rgba(107,67,37,0.35)] bg-white/40 backdrop-blur-sm">
-            <div className="aspect-video w-full bg-gradient-to-br from-[#A8B5A2]/30 to-[#7B8C9B]/30 grid place-items-center">
+          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden border border-brand-sage shadow-[0_30px_60px_-30px_rgba(107,67,37,0.35)] bg-brand-white backdrop-blur-sm">
+            <div className="aspect-video w-full bg-brand-sage/30 grid place-items-center">
               {/* REPLACE WITH YOUTUBE URL */}
               <motion.div
                 animate={{ scale: [1, 1.06, 1] }}
                 transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-                className="w-20 h-20 rounded-full bg-white/80 backdrop-blur grid place-items-center shadow-xl"
+                className="w-20 h-20 rounded-full bg-brand-white backdrop-blur grid place-items-center shadow-xl"
               >
-                <div className="w-0 h-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-[#CC6A39] ml-1.5" />
+                <div className="w-0 h-0 border-y-[12px] border-y-transparent border-l-[18px] border-l-brand-terracota ml-1.5" />
               </motion.div>
             </div>
           </div>
@@ -189,11 +189,11 @@ function Hero() {
 
         <motion.ul
           variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#5b5448]"
+          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 type-small text-brand-brown"
         >
-          <li>✓ Acesso imediato</li>
-          <li>✓ Funciona no celular</li>
-          <li>✓ Garantia de 7 dias</li>
+          <li><span className="text-brand-green">✓</span> Acesso imediato</li>
+          <li><span className="text-brand-green">✓</span> Funciona no celular</li>
+          <li><span className="text-brand-green">✓</span> Garantia de 7 dias</li>
         </motion.ul>
       </motion.div>
     </section>
