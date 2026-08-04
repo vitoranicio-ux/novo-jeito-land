@@ -51,7 +51,7 @@ function CTA({ children, className = "", href = "#pricing" }: { children: React.
 
 function CTABlock({ text, button }: { text: string; button: string }) {
   return (
-    <section className="px-5 sm:px-8 py-12 bg-white/40">
+    <section className="px-5 sm:px-8 py-12 bg-brand-white">
       <div className="max-w-4xl mx-auto text-center">
         <p className="type-body text-brand-brown leading-[1.75] mb-8">
           {text}
