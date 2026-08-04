@@ -523,7 +523,7 @@ function SobreMariana() {
       <Reveal className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
         <motion.div variants={fadeUp} className="md:col-span-2 flex justify-center">
           <div className="relative">
-            <div className="absolute -inset-6 bg-[#A8B5A2]/30 rounded-full blur-2xl" />
+            <div className="absolute -inset-6 bg-brand-sage/30 rounded-full blur-2xl" />
             <img
               src={sobreVoce.url}
               alt="Mariana Anício, psicóloga e criadora do guia"
@@ -532,25 +532,25 @@ function SobreMariana() {
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="md:col-span-3">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold">
             Quem criou este guia?
           </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
+          <p className="mt-6 type-body text-brand-brown leading-[1.75]">
             Sou Mariana Anício, psicóloga e pós-graduada em Terapia de Aceitação e Compromisso (ACT).
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 type-body text-brand-brown leading-[1.75]">
             Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
             padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
             lugar de identidade. Talvez você mesma já tenha se pegado dizendo: “Eu sou
             ansiosa”. Foi justamente a partir dessa experiência que criei este guia.
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 type-body text-brand-brown leading-[1.75]">
             Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
             vai entender por que ela aparece, o que ela está tentando comunicar e como agir de
             maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser
             controlada(o) por ela.
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 type-body text-brand-brown leading-[1.75]">
             A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
             Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
             você construa uma vida mais alinhada ao que realmente importa.
