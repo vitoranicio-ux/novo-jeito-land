@@ -463,13 +463,13 @@ function Depoimentos() {
     },
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-brand-white">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold">
             Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
           </h2>
-          <p className="mt-5 text-[#3f3a32] leading-[1.75] max-w-2xl mx-auto">
+          <p className="mt-5 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto">
             Cada pessoa vive a ansiedade de uma forma diferente. Estas são experiências reais de
             pessoas acompanhadas pela Mariana.
           </p>
@@ -479,25 +479,25 @@ function Depoimentos() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="mb-6 break-inside-avoid rounded-3xl p-8 bg-white/65 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
+              className="mb-6 break-inside-avoid rounded-r-xl rounded-l-none p-8 bg-brand-white border-l-4 border-l-brand-terracota transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
             >
-              <div className="font-display text-[#C78162] text-5xl leading-none mb-2">“</div>
+              <div className="font-display text-brand-terracota text-5xl leading-none mb-2">“</div>
               <div className="space-y-4">
                 {it.t.map((p, j) => (
-                  <p key={j} className="text-[#3f3a32] leading-[1.75]">
+                  <p key={j} className="type-quote text-brand-brown leading-[1.75]">
                     {p}
                   </p>
                 ))}
               </div>
-              <div className="mt-6 pt-5 border-t border-[rgba(107,67,37,0.15)]">
-                <p className="font-display text-[#6B4325] text-lg">{it.n}</p>
+              <div className="mt-6 pt-5 border-t border-brand-sage">
+                <p className="font-display type-name text-brand-terracota">{it.n}</p>
               </div>
             </motion.div>
           ))}
         </div>
         <motion.p
           variants={fadeUp}
-          className="mt-10 text-sm text-[#7B8C9B] leading-relaxed max-w-3xl mx-auto text-center"
+          className="mt-10 type-small text-brand-brown leading-relaxed max-w-3xl mx-auto text-center"
         >
           Os depoimentos acima foram compartilhados voluntariamente por pacientes que autorizaram
           sua utilização para fins institucionais. Cada processo terapêutico é único e os resultados
