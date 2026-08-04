@@ -256,40 +256,40 @@ function Identificacao() {
 
 function Problema() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-brand-white">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold"
         >
           O problema não é sentir ansiedade.
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
+        <motion.p variants={fadeUp} className="mt-5 font-display type-h3 text-brand-terracota italic">
           O problema é ficar presa na luta contra ela.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-8 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto">
           Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
           Quando lutamos contra uma emoção, ela se intensifica.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto italic">
+        <motion.p variants={fadeUp} className="mt-6 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto italic">
           Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
           lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-14">
           <div className="relative mx-auto max-w-md">
-            <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
-              <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
+            <div className="aspect-square rounded-full border border-dashed border-brand-sage grid place-items-center relative">
+              <div className="absolute inset-8 rounded-full border border-dashed border-brand-sage/60" />
               <div className="text-center px-8">
-                <p className="font-display text-[#6B4325] text-xl">Reconhece esse ciclo?</p>
-                <p className="text-xs text-[#5b5448] mt-2 leading-relaxed">
+                <p className="font-display text-brand-brown type-h3">Reconhece esse ciclo?</p>
+                <p className="type-small text-brand-brown mt-2 leading-relaxed">
                   Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
-        <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-10 font-display italic text-brand-brown type-h3">
           Esse loop não termina com mais controle. Termina quando você muda de estratégia.
         </motion.p>
       </Reveal>
