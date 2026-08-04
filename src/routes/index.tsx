@@ -82,23 +82,23 @@ function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a href="#top" className="font-display text-[#6B4325] text-lg sm:text-xl leading-tight whitespace-nowrap">
+        <a href="#top" className="font-display text-brand-brown text-lg sm:text-xl leading-tight whitespace-nowrap">
           Um Novo Jeito…
         </a>
         <a
           href="#pricing"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
+          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-terracota text-brand-white type-cta transition-all duration-300 hover:bg-brand-terracota-hover hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
         >
           Quero acessar o guia →
         </a>
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
-          className="sm:hidden w-10 h-10 grid place-items-center rounded-full border border-[rgba(107,67,37,0.15)] text-[#6B4325]"
+          className="sm:hidden w-10 h-10 grid place-items-center rounded-full border border-brand-sage text-brand-brown"
         >
           <div className="space-y-1.5">
-            <span className="block w-4 h-px bg-[#6B4325]" />
-            <span className="block w-4 h-px bg-[#6B4325]" />
+            <span className="block w-4 h-px bg-brand-brown" />
+            <span className="block w-4 h-px bg-brand-brown" />
           </div>
         </button>
       </div>
@@ -110,21 +110,21 @@ function Nav() {
             exit={{ opacity: 0, y: -8 }}
             className="sm:hidden px-5 pb-5"
           >
-            <div className="rounded-2xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-4 flex flex-col gap-3">
+            <div className="rounded-2xl bg-brand-white backdrop-blur-md border border-brand-sage p-4 flex flex-col gap-3">
               {[
                 ["O guia", "#produto"],
                 ["Para quem é", "#para-quem"],
                 ["Sobre Mariana", "#mariana"],
                 ["Perguntas", "#faq"],
               ].map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} className="text-[#6B4325] text-sm">
+                <a key={href} href={href} onClick={() => setOpen(false)} className="text-brand-brown type-small">
                   {label}
                 </a>
               ))}
               <a
                 href="#pricing"
                 onClick={() => setOpen(false)}
-                className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#CC6A39] text-white text-sm font-medium"
+                className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-brand-terracota text-brand-white type-cta hover:bg-brand-terracota-hover"
               >
                 Quero acessar o guia →
               </a>
