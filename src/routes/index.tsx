@@ -568,17 +568,17 @@ function Pricing() {
     "Bônus 2 - Cartão de Emergência Emocional",
   ];
   return (
-    <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-brand-white">
       <Reveal className="max-w-2xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold">
             Comece hoje, no seu ritmo.
           </h2>
         </motion.div>
 
         <motion.div
           variants={fadeUp}
-          className="mt-12 rounded-3xl bg-white/70 backdrop-blur-md border border-[rgba(107,67,37,0.15)] p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)] md:flex md:items-start md:gap-10"
+          className="mt-12 rounded-xl bg-brand-white border border-brand-sage p-8 sm:p-10 shadow-[0_30px_70px_-30px_rgba(107,67,37,0.35)] md:flex md:items-start md:gap-10"
         >
           <div className="mx-auto md:mx-0 shrink-0 w-[180px] md:w-[220px] lg:w-[240px] mb-8 md:mb-0">
             <img
@@ -590,43 +590,43 @@ function Pricing() {
           </div>
 
           <div className="min-w-0 flex-1">
-          <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center">
+          <h3 className="font-display type-h3 text-brand-brown text-center">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
-          <p className="mt-6 text-center font-display text-xl text-[#6B4325]">Hoje você recebe:</p>
+          <p className="mt-6 text-center font-display type-h3 text-brand-brown">Hoje você recebe:</p>
 
           <ul className="mt-5 space-y-3">
             {features.map((f) => (
-              <li key={f} className="flex gap-3 text-[#3f3a32]">
-                <span className="text-[#A8B5A2] shrink-0">✓</span>
+              <li key={f} className="flex gap-3 type-body text-brand-brown">
+                <span className="text-brand-green shrink-0">✓</span>
                 {f}
               </li>
             ))}
           </ul>
 
-          <p className="mt-8 text-center text-sm text-[#5b5448]">Tudo isso por apenas</p>
+          <p className="mt-8 text-center type-small text-brand-brown">Tudo isso por apenas</p>
           <div className="mt-2 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
+            <span className="type-body text-brand-sage line-through">R$ 87,00</span>
+            <span className="font-display text-5xl sm:text-6xl text-brand-brown leading-none">
               R$ 47,90
             </span>
           </div>
-          <p className="text-center text-xs text-[#5b5448] mt-3 leading-relaxed">
+          <p className="text-center type-small text-brand-brown mt-3 leading-relaxed">
             Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
           </p>
 
           <div className="mt-8 flex justify-center">
-            <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
+            <CTA className="w-full sm:w-auto">Quero acessar o guia →</CTA>
           </div>
 
-          <p className="mt-5 text-center text-xs text-[#7B8C9B] tracking-wide">
+          <p className="mt-5 text-center type-small text-brand-brown tracking-wide">
             🔒 Pagamento seguro
           </p>
 
-          <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
-            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias.</p>
-            <p className="text-xs text-[#5b5448] mt-1">
+          <div className="mt-6 rounded-xl border border-dashed border-brand-sage bg-brand-card-green p-5 text-center">
+            <p className="font-display text-brand-brown type-h3">Garantia incondicional de 7 dias.</p>
+            <p className="type-small text-brand-brown mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
           </div>
