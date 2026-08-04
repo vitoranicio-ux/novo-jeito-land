@@ -15,6 +15,31 @@
   --color-cta: #CC6A39;
 }
 
+/* Paleta oficial da landing page */
+:root {
+  --brand-white: #FFFFFF;
+  --brand-sage: #A8B5A2;
+  --brand-green: #6B9E68;
+  --brand-terracota: #CC6A39;
+  --brand-terracota-hover: #A84E22;
+  --brand-brown: #6B4325;
+  --brand-card-warm: #F5F0EB;
+  --brand-card-warm-border: #E8E4DF;
+  --brand-card-green: #EDF2EC;
+}
+
+@theme inline {
+  --color-brand-white: var(--brand-white);
+  --color-brand-sage: var(--brand-sage);
+  --color-brand-green: var(--brand-green);
+  --color-brand-terracota: var(--brand-terracota);
+  --color-brand-terracota-hover: var(--brand-terracota-hover);
+  --color-brand-brown: var(--brand-brown);
+  --color-brand-card-warm: var(--brand-card-warm);
+  --color-brand-card-warm-border: var(--brand-card-warm-border);
+  --color-brand-card-green: var(--brand-card-green);
+}
+
 /*
  * Design system definition.
  *
