@@ -379,10 +379,10 @@ function Receba() {
     <section className="px-5 sm:px-8 py-24 sm:py-32">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
+          <h2 className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold">
             O que você recebe
           </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+          <p className="mt-6 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto">
             Você receberá um conjunto de materiais que se complementam para ajudar você a aplicar
             o conteúdo na prática.
           </p>
@@ -393,11 +393,11 @@ function Receba() {
             <motion.div
               key={it.title}
               variants={fadeUp}
-              className="rounded-3xl p-8 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(107,67,37,0.3)]"
+              className="rounded-xl p-8 bg-brand-card-green border border-brand-sage transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(107,67,37,0.3)]"
             >
               <div className="text-4xl mb-5">{it.e}</div>
-              <h3 className="font-display text-2xl text-[#6B4325] leading-tight">{it.title}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.7] text-[15px]">{it.desc}</p>
+              <h3 className="font-display type-h3 text-brand-brown leading-tight">{it.title}</h3>
+              <p className="mt-3 type-card text-brand-brown leading-[1.7]">{it.desc}</p>
             </motion.div>
           ))}
         </div>
