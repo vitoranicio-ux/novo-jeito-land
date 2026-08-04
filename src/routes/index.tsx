@@ -775,29 +775,29 @@ function FinalCTA() {
 
 function Footer() {
   return (
-    <footer className="bg-[#6B4325] text-white/80 px-5 sm:px-8 pt-16 pb-10 border-t border-white/10">
+    <footer className="bg-brand-brown text-brand-white/80 px-5 sm:px-8 pt-16 pb-10 border-t border-white/10">
       <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10">
         <div>
-          <p className="font-display text-white text-xl leading-tight">
+          <p className="font-display text-brand-white type-h3 leading-tight">
             Um Novo Jeito de Lidar com a Ansiedade
           </p>
-          <p className="mt-3 text-sm text-white/60">por Mariana Anício · Psicóloga ACT</p>
+          <p className="mt-3 type-small text-brand-white/60">por Mariana Anício · Psicóloga ACT</p>
         </div>
         <div>
-          <ul className="space-y-2 text-sm mb-4">
+          <ul className="space-y-2 type-small mb-4">
             <li><a href="#" className="hover:text-white transition-colors">Política de Privacidade</a></li>
             <li><a href="#" className="hover:text-white transition-colors">Termos de Uso</a></li>
             <li><a href="#" className="hover:text-white transition-colors">Contato</a></li>
           </ul>
         </div>
         <div>
-          <p className="text-sm leading-[1.7] text-white/70 mb-4">
+          <p className="type-small leading-[1.7] text-brand-white/70 mb-4">
             Este material possui caráter psicoeducativo e não substitui acompanhamento psicológico
             individual.
           </p>
         </div>
       </div>
-      <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 text-xs text-white/50 flex flex-wrap justify-between gap-3">
+      <div className="max-w-6xl mx-auto mt-12 pt-6 border-t border-white/10 type-small text-brand-white/50 flex flex-wrap justify-between gap-3">
         <span>© 2026 Mariana Anício. Todos os direitos reservados.</span>
         <span>Vamos construir uma vida guiada pelo que realmente importa?</span>
       </div>
@@ -808,8 +808,7 @@ function Footer() {
 function Index() {
   return (
     <main
-      className="min-h-screen font-sans text-[#3f3a32] antialiased scroll-smooth"
-      style={{ backgroundColor: "#FFFFFF" }}
+      className="min-h-screen font-sans type-body text-brand-brown antialiased scroll-smooth bg-brand-white"
     >
       <Nav />
       <Hero />
