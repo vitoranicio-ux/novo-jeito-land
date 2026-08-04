@@ -729,32 +729,32 @@ function FAQ() {
 
 function FinalCTA() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-[#6B4325] relative overflow-hidden">
-      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#C78162]/20 blur-3xl" />
-      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#A8B5A2]/15 blur-3xl" />
+    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-brand-brown relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-brand-terracota/20 blur-3xl" />
+      <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-brand-sage/15 blur-3xl" />
       <Reveal className="relative max-w-3xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-white text-3xl sm:text-5xl md:text-[60px] leading-[1.1] font-semibold"
+          className="font-display text-brand-white type-h2 leading-[1.1] font-semibold"
         >
           Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-6 type-body text-brand-white/80 leading-[1.75] max-w-2xl mx-auto">
           A ansiedade talvez ainda apareça amanhã.<br />Na semana que vem também.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-4 type-body text-brand-white/80 leading-[1.75] max-w-2xl mx-auto">
           E isso não significa que ela precise continuar decidindo por você.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/90 leading-[1.75] max-w-2xl mx-auto font-display italic">
+        <motion.p variants={fadeUp} className="mt-4 type-body text-brand-white/90 leading-[1.75] max-w-2xl mx-auto font-display italic">
           Você pode continuar tentando vencer a ansiedade todos os dias.<br />
           Ou pode começar hoje a construir uma nova relação com ela.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-4 type-body text-brand-white/80 leading-[1.75] max-w-2xl mx-auto">
           A mudança começa quando você aprende uma nova forma de responder ao que sente, com mais
           consciência, mais flexibilidade e mais liberdade para agir na direção da vida que deseja
           construir.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-4 type-body text-brand-white/80 leading-[1.75] max-w-2xl mx-auto">
           Se este guia ajudar você a dar esse primeiro passo, ele já terá cumprido o seu propósito.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
@@ -762,11 +762,11 @@ function FinalCTA() {
         </motion.div>
         <motion.ul
           variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-white/80"
+          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 type-small text-brand-white/80"
         >
-          <li>✓ Acesso imediato</li>
-          <li>✓ Garantia de 7 dias</li>
-          <li>✓ Material digital</li>
+          <li><span className="text-brand-green">✓</span> Acesso imediato</li>
+          <li><span className="text-brand-green">✓</span> Garantia de 7 dias</li>
+          <li><span className="text-brand-green">✓</span> Material digital</li>
         </motion.ul>
       </Reveal>
     </section>
