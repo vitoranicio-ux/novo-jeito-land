@@ -316,26 +316,26 @@ function VisaoFuturo() {
     "Perceber que a ansiedade apareceu, e ainda assim, continuar fazendo o que faz sentido para você.",
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-brand-white">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-brand-sage type-h2 leading-[1.1] font-semibold"
         >
           E se a ansiedade deixasse de comandar suas escolhas?
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-6 font-display italic text-brand-brown type-h3">
           Imagine conseguir:
         </motion.p>
         <motion.ul variants={fadeUp} className="mt-10 max-w-2xl mx-auto space-y-4 text-left">
           {items.map((t) => (
-            <li key={t} className="flex gap-3 text-[#3f3a32] leading-[1.7]">
-              <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
+            <li key={t} className="flex gap-3 type-body text-brand-brown leading-[1.7]">
+              <span className="text-brand-green shrink-0 mt-0.5">✓</span>
               {t}
             </li>
           ))}
         </motion.ul>
-        <motion.p variants={fadeUp} className="mt-12 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-12 type-body text-brand-brown leading-[1.75] max-w-2xl mx-auto">
           É isso que significa desenvolver flexibilidade psicológica: não viver sem ansiedade, mas
           impedir que ela continue decidindo os rumos da sua vida.
         </motion.p>
