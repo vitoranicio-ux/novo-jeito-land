@@ -460,20 +460,20 @@ function Receba() {
     {
       e: "📘",
       tag: "Produto principal",
-      title: "O que vai te guiar: Um Novo Jeito de Lidar com a Ansiedade",
-      desc: "O material completo, baseado em ACT, com explicações claras, exemplos do cotidiano e exercícios práticos.",
+      title: "Um Novo Jeito de Lidar com a Ansiedade",
+      desc: "Não é um guia para ler e guardar. É um material para usar quando a ansiedade aparecer — com explicações que fazem sentido e exercícios que funcionam fora do consultório.",
     },
     {
       e: "📋",
       tag: "Bônus 01",
       title: "Checklist de Gatilhos da Ansiedade",
-      desc: "Uma ferramenta prática para identificar situações, pensamentos e contextos que costumam intensificar sua ansiedade, e o que fazer quando isso acontece.",
+      desc: "Você provavelmente sente ansiedade mas não sabe exatamente o que a aciona. Esse checklist ajuda a identificar seus padrões — porque quando você nomeia o que dispara a ansiedade, ela perde parte do poder que tem sobre você.",
     },
     {
       e: "🚨",
       tag: "Bônus 02",
       title: "Cartão de Emergência Emocional",
-      desc: "Um recurso para deixar no celular e consultar sempre que precisar, com exercícios rápidos de respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
+      desc: "Para o momento em que a ansiedade bate forte e você não sabe o que fazer. Deixa no celular. Quando precisar, ele está lá — com passos concretos para atravessar o momento sem ser consumida por ele.",
     },
   ];
   return (
@@ -497,7 +497,9 @@ function Receba() {
               className="rounded-xl p-7 sm:p-8 bg-[#EAF0EC] transition-all duration-300 sm:hover:-translate-y-1"
             >
               <div className="text-4xl mb-5">{it.e}</div>
-              <h3 className="font-display text-[22px] sm:text-[24px] text-[#2D5A3D] leading-tight">{it.title}</h3>
+              <h3 className="font-display text-[22px] sm:text-[24px] font-bold text-[#2D5A3D] leading-tight">
+                {it.title}
+              </h3>
               <p className="mt-3 text-[17px] text-[#5C5C5C] leading-[1.7]">{it.desc}</p>
             </motion.div>
           ))}
