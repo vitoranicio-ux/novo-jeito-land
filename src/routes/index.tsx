@@ -217,12 +217,21 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 
 function Identificacao() {
   const items = [
-    { e: "🧠", t: "Sua mente parece nunca desacelerar." },
-    { e: "⚠️", t: "Você vive preocupada com o que pode acontecer." },
-    { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
-    { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
-    { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
-    { e: "🖤", t: "Você deixou de fazer coisas importantes por causa da ansiedade." },
+    {
+      e: "🧠",
+      t: "Você deita para dormir e, justamente quando tudo fica em silêncio, sua cabeça começa a revirar tudo o que aconteceu — e tudo o que pode acontecer amanhã.",
+    },
+    {
+      e: "⚠️",
+      t: "Você cria dezenas de cenários antes mesmo das coisas acontecerem — e quase sempre sofre por algo que nunca aconteceu.",
+    },
+    { e: "😮‍💨", t: "Até nos momentos em que deveria descansar, seu corpo continua em estado de alerta." },
+    { e: "🔄", t: "Você tenta se acalmar, mas quanto mais tenta, mais parece que a ansiedade aumenta." },
+    { e: "💭", t: "Você está numa conversa, mas parte da sua cabeça já está no próximo problema." },
+    {
+      e: "🖤",
+      t: "Você já cancelou planos, recusou oportunidades ou ficou em silêncio quando queria falar — por causa da ansiedade.",
+    },
   ];
   return (
     <section className="px-5 sm:px-8 py-16 sm:py-28">
@@ -248,7 +257,8 @@ function Identificacao() {
         </div>
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinha, e que existe uma forma diferente de lidar com isso.
+          Se você se identificou com algum desses pontos, saiba que não está sozinha. E que existe
+          uma forma diferente — não de eliminar a ansiedade, mas de parar de ser governada por ela.
         </motion.p>
       </Reveal>
     </section>
