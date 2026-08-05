@@ -154,15 +154,16 @@ function Hero() {
           variants={fadeUp}
           className="font-display text-[#2D5A3D] mt-6 text-[36px] leading-[1.15] sm:text-[44px] md:text-[52px] font-semibold tracking-tight"
         >
-          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
+          Você não precisa esperar a ansiedade desaparecer para{" "}
+          <strong className="font-bold text-[#2D5A3D]">voltar a viver</strong>.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto"
         >
-          Para quem já tentou controlar a ansiedade de todas as formas, e está pronta para
-          experimentar um caminho diferente.
+          Para quem já pesquisou, já respirou fundo, já tentou “pensar positivo” — e ainda assim
+          sente que <em className="italic">a ansiedade sempre vence</em>.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
