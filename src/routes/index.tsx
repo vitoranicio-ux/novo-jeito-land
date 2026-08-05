@@ -265,41 +265,114 @@ function Identificacao() {
   );
 }
 
+function CicloInfografico() {
+  const steps = [
+    {
+      icon: "🧠",
+      label: "1. PENSAMENTO",
+      color: "#CC6A39",
+      desc: "Você tem um pensamento difícil.",
+      pos: "left-1/2 -translate-x-1/2 top-0",
+    },
+    {
+      icon: "🛡️",
+      label: "2. RESISTÊNCIA",
+      color: "#6B4325",
+      desc: "Você tenta controlar, evitar ou lutar contra.",
+      pos: "right-0 top-1/2 -translate-y-1/2",
+    },
+    {
+      icon: "🌀",
+      label: "3. MAIS ANSIEDADE",
+      color: "#6E8091",
+      desc: "A emoção aumenta e se intensifica.",
+      pos: "left-1/2 -translate-x-1/2 bottom-0",
+    },
+    {
+      icon: "🪫",
+      label: "4. ESGOTAMENTO",
+      color: "#2D5A3D",
+      desc: "Você se sente exausta, sobrecarregada e sem energia.",
+      pos: "left-0 top-1/2 -translate-y-1/2",
+    },
+  ];
+  const arcs = [
+    { d: "M 318 92 A 175 175 0 0 1 428 202", color: "#CC6A39", id: "a1" },
+    { d: "M 428 318 A 175 175 0 0 1 318 428", color: "#7BA05B", id: "a2" },
+    { d: "M 202 428 A 175 175 0 0 1 92 318", color: "#6E8091", id: "a3" },
+    { d: "M 92 202 A 175 175 0 0 1 202 92", color: "#2D5A3D", id: "a4" },
+  ];
+  return (
+    <div className="relative w-full max-w-[520px] mx-auto aspect-square">
+      <svg viewBox="0 0 520 520" className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <defs>
+          {arcs.map((a) => (
+            <marker
+              key={a.id}
+              id={`arrow-${a.id}`}
+              markerWidth="7"
+              markerHeight="7"
+              refX="5"
+              refY="3.5"
+              orient="auto"
+            >
+              <path d="M0,0 L7,3.5 L0,7 z" fill={a.color} />
+            </marker>
+          ))}
+        </defs>
+        {arcs.map((a) => (
+          <path
+            key={a.id}
+            d={a.d}
+            fill="none"
+            stroke={a.color}
+            strokeWidth="2"
+            strokeLinecap="round"
+            markerEnd={`url(#arrow-${a.id})`}
+          />
+        ))}
+      </svg>
+
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[38%] aspect-square grid place-items-center text-center px-3 border-2 border-[#CC6A39]"
+        style={{ borderRadius: "48% 52% 45% 55% / 55% 46% 54% 45%" }}
+      >
+        <p className="font-display italic text-[#6B4325] text-[15px] sm:text-[20px] leading-snug">
+          Reconhece esse ciclo?
+        </p>
+      </div>
+
+      {steps.map((s) => (
+        <div key={s.label} className={`absolute ${s.pos} w-[42%] sm:w-[38%] text-center`}>
+          <div className="text-xl sm:text-2xl">{s.icon}</div>
+          <p
+            className="mt-1 text-[11px] sm:text-[13px] font-semibold tracking-wide"
+            style={{ color: s.color }}
+          >
+            {s.label}
+          </p>
+          <p className="mt-1 text-[11px] sm:text-[13px] text-[#5C5C5C] leading-snug">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Problema() {
   return (
-    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
+    <section className="px-5 sm:px-8 py-16 bg-[#F8F7F4]">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
-          O problema não é sentir ansiedade.
+          <strong className="font-bold">O problema não é sentir ansiedade. O problema é ficar presa na luta contra ela.</strong>
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
-          O problema é ficar presa na luta contra ela.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-8 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
-          Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
-          Quando lutamos contra uma emoção, ela se intensifica.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto italic">
-          Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
-          lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
-        </motion.p>
 
         <motion.div variants={fadeUp} className="mt-14">
-          <div className="relative mx-auto max-w-md">
-            <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
-              <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
-              <div className="text-center px-8">
-                <p className="font-display text-[#2D5A3D] text-xl">Reconhece esse ciclo?</p>
-                <p className="text-xs text-[#5C5C5C] mt-2 leading-relaxed">
-                  Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
-                </p>
-              </div>
-            </div>
-          </div>
+          <CicloInfografico />
         </motion.div>
+
         <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Esse loop não termina com mais controle. Termina quando você muda de estratégia.
         </motion.p>
