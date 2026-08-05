@@ -87,9 +87,9 @@ function Nav() {
         </a>
         <a
           href="#pricing"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
+          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm text-center leading-tight max-w-[260px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
         >
-          Quero acessar o guia →
+          Quero começar a me relacionar diferente com a ansiedade →
         </a>
         <button
           onClick={() => setOpen((v) => !v)}
@@ -126,7 +126,7 @@ function Nav() {
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#CC6A39] text-white text-sm font-medium"
               >
-                Quero acessar o guia →
+                Quero começar a me relacionar diferente com a ansiedade →
               </a>
             </div>
           </motion.div>
@@ -154,15 +154,16 @@ function Hero() {
           variants={fadeUp}
           className="font-display text-[#2D5A3D] mt-6 text-[36px] leading-[1.15] sm:text-[44px] md:text-[52px] font-semibold tracking-tight"
         >
-          Você não precisa esperar a ansiedade desaparecer para voltar a viver.
+          Você não precisa esperar a ansiedade desaparecer para{" "}
+          <strong className="font-bold text-[#2D5A3D]">voltar a viver</strong>.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto"
         >
-          Para quem já tentou controlar a ansiedade de todas as formas, e está pronta para
-          experimentar um caminho diferente.
+          Para quem já pesquisou, já respirou fundo, já tentou “pensar positivo” — e ainda assim
+          sente que <em className="italic">a ansiedade sempre vence</em>.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
@@ -184,7 +185,7 @@ function Hero() {
         </motion.div>
 
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
+          <CTA>Quero começar a me relacionar diferente com a ansiedade →</CTA>
         </motion.div>
 
         <motion.ul
@@ -216,12 +217,21 @@ function Reveal({ children, className = "" }: { children: React.ReactNode; class
 
 function Identificacao() {
   const items = [
-    { e: "🧠", t: "Sua mente parece nunca desacelerar." },
-    { e: "⚠️", t: "Você vive preocupada com o que pode acontecer." },
-    { e: "😮‍💨", t: "Parece difícil simplesmente relaxar." },
-    { e: "🔄", t: "Quanto mais tenta controlar a ansiedade, pior ela parece ficar." },
-    { e: "💭", t: "A ansiedade está ocupando espaço demais na sua vida." },
-    { e: "🖤", t: "Você deixou de fazer coisas importantes por causa da ansiedade." },
+    {
+      e: "🧠",
+      t: "Você deita para dormir e, justamente quando tudo fica em silêncio, sua cabeça começa a revirar tudo o que aconteceu — e tudo o que pode acontecer amanhã.",
+    },
+    {
+      e: "⚠️",
+      t: "Você cria dezenas de cenários antes mesmo das coisas acontecerem — e quase sempre sofre por algo que nunca aconteceu.",
+    },
+    { e: "😮‍💨", t: "Até nos momentos em que deveria descansar, seu corpo continua em estado de alerta." },
+    { e: "🔄", t: "Você tenta se acalmar, mas quanto mais tenta, mais parece que a ansiedade aumenta." },
+    { e: "💭", t: "Você está numa conversa, mas parte da sua cabeça já está no próximo problema." },
+    {
+      e: "🖤",
+      t: "Você já cancelou planos, recusou oportunidades ou ficou em silêncio quando queria falar — por causa da ansiedade.",
+    },
   ];
   return (
     <section className="px-5 sm:px-8 py-16 sm:py-28">
@@ -247,48 +257,122 @@ function Identificacao() {
         </div>
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
-          Se você se identificou com algum desses pontos, saiba que não está sozinha, e que existe uma forma diferente de lidar com isso.
+          Se você se identificou com algum desses pontos, saiba que não está sozinha. E que existe
+          uma forma diferente — não de eliminar a ansiedade, mas de parar de ser governada por ela.
         </motion.p>
       </Reveal>
     </section>
   );
 }
 
+function CicloInfografico() {
+  const steps = [
+    {
+      icon: "🧠",
+      label: "1. PENSAMENTO",
+      color: "#CC6A39",
+      desc: "Você tem um pensamento difícil.",
+      pos: "left-1/2 -translate-x-1/2 top-0",
+    },
+    {
+      icon: "🛡️",
+      label: "2. RESISTÊNCIA",
+      color: "#6B4325",
+      desc: "Você tenta controlar, evitar ou lutar contra.",
+      pos: "right-0 top-1/2 -translate-y-1/2",
+    },
+    {
+      icon: "🌀",
+      label: "3. MAIS ANSIEDADE",
+      color: "#6E8091",
+      desc: "A emoção aumenta e se intensifica.",
+      pos: "left-1/2 -translate-x-1/2 bottom-0",
+    },
+    {
+      icon: "🪫",
+      label: "4. ESGOTAMENTO",
+      color: "#2D5A3D",
+      desc: "Você se sente exausta, sobrecarregada e sem energia.",
+      pos: "left-0 top-1/2 -translate-y-1/2",
+    },
+  ];
+  const arcs = [
+    { d: "M 318 92 A 175 175 0 0 1 428 202", color: "#CC6A39", id: "a1" },
+    { d: "M 428 318 A 175 175 0 0 1 318 428", color: "#7BA05B", id: "a2" },
+    { d: "M 202 428 A 175 175 0 0 1 92 318", color: "#6E8091", id: "a3" },
+    { d: "M 92 202 A 175 175 0 0 1 202 92", color: "#2D5A3D", id: "a4" },
+  ];
+  return (
+    <div className="relative w-full max-w-[520px] mx-auto aspect-square">
+      <svg viewBox="0 0 520 520" className="absolute inset-0 w-full h-full" aria-hidden="true">
+        <defs>
+          {arcs.map((a) => (
+            <marker
+              key={a.id}
+              id={`arrow-${a.id}`}
+              markerWidth="7"
+              markerHeight="7"
+              refX="5"
+              refY="3.5"
+              orient="auto"
+            >
+              <path d="M0,0 L7,3.5 L0,7 z" fill={a.color} />
+            </marker>
+          ))}
+        </defs>
+        {arcs.map((a) => (
+          <path
+            key={a.id}
+            d={a.d}
+            fill="none"
+            stroke={a.color}
+            strokeWidth="2"
+            strokeLinecap="round"
+            markerEnd={`url(#arrow-${a.id})`}
+          />
+        ))}
+      </svg>
+
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[38%] aspect-square grid place-items-center text-center px-3 border-2 border-[#CC6A39]"
+        style={{ borderRadius: "48% 52% 45% 55% / 55% 46% 54% 45%" }}
+      >
+        <p className="font-display italic text-[#6B4325] text-[15px] sm:text-[20px] leading-snug">
+          Reconhece esse ciclo?
+        </p>
+      </div>
+
+      {steps.map((s) => (
+        <div key={s.label} className={`absolute ${s.pos} w-[42%] sm:w-[38%] text-center`}>
+          <div className="text-xl sm:text-2xl">{s.icon}</div>
+          <p
+            className="mt-1 text-[11px] sm:text-[13px] font-semibold tracking-wide"
+            style={{ color: s.color }}
+          >
+            {s.label}
+          </p>
+          <p className="mt-1 text-[11px] sm:text-[13px] text-[#5C5C5C] leading-snug">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Problema() {
   return (
-    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
+    <section className="px-5 sm:px-8 py-16 bg-[#F8F7F4]">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
           className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
-          O problema não é sentir ansiedade.
+          <strong className="font-bold">O problema não é sentir ansiedade. O problema é ficar presa na luta contra ela.</strong>
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
-          O problema é ficar presa na luta contra ela.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-8 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
-          Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
-          Quando lutamos contra uma emoção, ela se intensifica.
-        </motion.p>
-        <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto italic">
-          Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
-          lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
-        </motion.p>
 
         <motion.div variants={fadeUp} className="mt-14">
-          <div className="relative mx-auto max-w-md">
-            <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
-              <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
-              <div className="text-center px-8">
-                <p className="font-display text-[#2D5A3D] text-xl">Reconhece esse ciclo?</p>
-                <p className="text-xs text-[#5C5C5C] mt-2 leading-relaxed">
-                  Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
-                </p>
-              </div>
-            </div>
-          </div>
+          <CicloInfografico />
         </motion.div>
+
         <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Esse loop não termina com mais controle. Termina quando você muda de estratégia.
         </motion.p>
@@ -301,19 +385,33 @@ function CTAProblema() {
   return (
     <CTABlock
       text="O próximo passo é aprender uma nova forma de se relacionar com ela."
-      button="Quero acessar o guia →"
+      button="Quero começar a me relacionar diferente com a ansiedade →"
     />
   );
 }
 
 
 function VisaoFuturo() {
-  const items = [
-    "Dormir sem passar horas revivendo tudo o que aconteceu no dia.",
-    "Estar presente em uma conversa sem a mente antecipar tudo o que pode dar errado.",
-    "Aceitar um convite sem desistir por medo ou preocupação.",
-    "Trabalhar, estudar ou cuidar da sua família sem sentir que a ansiedade precise desaparecer antes.",
-    "Perceber que a ansiedade apareceu, e ainda assim, continuar fazendo o que faz sentido para você.",
+  const items: { k: string; node: React.ReactNode }[] = [
+    { k: "1", node: "Dormir sem passar horas revivendo tudo o que aconteceu no dia." },
+    { k: "2", node: "Estar presente em uma conversa sem a mente antecipar tudo o que pode dar errado." },
+    { k: "3", node: "Aceitar um convite sem desistir por medo ou preocupação." },
+    {
+      k: "4",
+      node: "Trabalhar, estudar ou cuidar da sua família sem sentir que a ansiedade precise desaparecer antes.",
+    },
+    {
+      k: "5",
+      node: (
+        <span>
+          Perceber que a ansiedade apareceu,{" "}
+          <strong className="font-bold text-[#2D5A3D]">
+            e ainda assim, continuar fazendo o que faz sentido para você
+          </strong>
+          .
+        </span>
+      ),
+    },
   ];
   return (
     <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
@@ -329,15 +427,18 @@ function VisaoFuturo() {
         </motion.p>
         <motion.ul variants={fadeUp} className="mt-10 max-w-2xl mx-auto space-y-4 text-left">
           {items.map((t) => (
-            <li key={t} className="flex gap-3 text-[17px] text-[#5C5C5C] leading-[1.7]">
+            <li key={t.k} className="flex gap-3 text-[17px] text-[#5C5C5C] leading-[1.7]">
               <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
-              {t}
+              {t.node}
             </li>
           ))}
         </motion.ul>
         <motion.p variants={fadeUp} className="mt-12 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
-          É isso que significa desenvolver flexibilidade psicológica: não viver sem ansiedade, mas
-          impedir que ela continue decidindo os rumos da sua vida.
+          É isso que significa desenvolver{" "}
+          <em className="italic underline decoration-[#CC6A39] decoration-[1px] underline-offset-4">
+            flexibilidade psicológica
+          </em>
+          : não viver sem ansiedade, mas impedir que ela continue decidindo os rumos da sua vida.
         </motion.p>
       </Reveal>
     </section>
@@ -359,20 +460,20 @@ function Receba() {
     {
       e: "📘",
       tag: "Produto principal",
-      title: "O que vai te guiar: Um Novo Jeito de Lidar com a Ansiedade",
-      desc: "O material completo, baseado em ACT, com explicações claras, exemplos do cotidiano e exercícios práticos.",
+      title: "Um Novo Jeito de Lidar com a Ansiedade",
+      desc: "Não é um guia para ler e guardar. É um material para usar quando a ansiedade aparecer — com explicações que fazem sentido e exercícios que funcionam fora do consultório.",
     },
     {
       e: "📋",
       tag: "Bônus 01",
       title: "Checklist de Gatilhos da Ansiedade",
-      desc: "Uma ferramenta prática para identificar situações, pensamentos e contextos que costumam intensificar sua ansiedade, e o que fazer quando isso acontece.",
+      desc: "Você provavelmente sente ansiedade mas não sabe exatamente o que a aciona. Esse checklist ajuda a identificar seus padrões — porque quando você nomeia o que dispara a ansiedade, ela perde parte do poder que tem sobre você.",
     },
     {
       e: "🚨",
       tag: "Bônus 02",
       title: "Cartão de Emergência Emocional",
-      desc: "Um recurso para deixar no celular e consultar sempre que precisar, com exercícios rápidos de respiração, ancoragem, frases de desfusão e passos práticos para momentos difíceis.",
+      desc: "Para o momento em que a ansiedade bate forte e você não sabe o que fazer. Deixa no celular. Quando precisar, ele está lá — com passos concretos para atravessar o momento sem ser consumida por ele.",
     },
   ];
   return (
@@ -396,7 +497,9 @@ function Receba() {
               className="rounded-xl p-7 sm:p-8 bg-[#EAF0EC] transition-all duration-300 sm:hover:-translate-y-1"
             >
               <div className="text-4xl mb-5">{it.e}</div>
-              <h3 className="font-display text-[22px] sm:text-[24px] text-[#2D5A3D] leading-tight">{it.title}</h3>
+              <h3 className="font-display text-[22px] sm:text-[24px] font-bold text-[#2D5A3D] leading-tight">
+                {it.title}
+              </h3>
               <p className="mt-3 text-[17px] text-[#5C5C5C] leading-[1.7]">{it.desc}</p>
             </motion.div>
           ))}
@@ -413,52 +516,43 @@ function Depoimentos() {
     {
       n: "Flávia",
       t: [
-        "Era péssimo. Sentia meu coração acelerado, não conseguia parar de pensar nisso. Ficava nervosa por qualquer motivo e chorava algumas vezes.",
-        "Hoje sou uma nova mulher, com certeza. Eu tenho tranquilidade e paz no meu coração. Eu consigo lidar com meus sentimentos de forma mais leve.",
+        "Era péssimo. Sentia meu coração acelerado, não conseguia parar de pensar nisso. Ficava nervosa por qualquer motivo e chorava algumas vezes. “Hoje sou uma nova mulher, com certeza.” Eu tenho tranquilidade e paz no meu coração. Eu consigo lidar com meus sentimentos de forma mais leve.",
       ],
     },
     {
       n: "Nome preservado a pedido",
       t: [
-        "Perturbador. Pensamentos acelerados e muitas preocupações. Ainda tenho, mas acho que hoje lido melhor.",
-        "Ela existe lá e eu posso coexistir com ela. Posso fazer meu trabalho e sentir ansiedade. Percebia que antes ela me limitava e impedia que eu fizesse outras coisas.",
-        "Não dá para viver plenamente sem olhar para si. A ansiedade atrapalha muito em muitas coisas e, às vezes, é o que impede de alcançar objetivos, melhorar as relações etc.",
+        "“Ela existe lá e eu posso coexistir com ela.” Posso fazer meu trabalho e sentir ansiedade. Percebia que antes ela me limitava e impedia que eu fizesse outras coisas. Não dá para viver plenamente sem olhar para si.",
       ],
     },
     {
       n: "Isabella C.",
       t: [
-        "Não dormia bem. Acordava muito à noite. Ficava dias ou semanas com sensações de angústia frequentemente. Quando tinha algo para acontecer, ficava estressada.",
-        "Hoje tento conviver com a ansiedade da melhor forma, sabendo que ela não vai desaparecer, mas não vai mais me consumir igual antes. Uso muitas falas, técnicas e pensamentos aprendidos na terapia. Você não precisa passar por isso sozinha. Existem formas de viver melhor, sem tanta angústia, e muitas ferramentas para te ajudar.",
+        "Não dormia bem. Acordava muito à noite. Ficava dias ou semanas com sensações de angústia. Hoje tento conviver com a ansiedade da melhor forma, sabendo que ela não vai desaparecer, mas “não vai mais me consumir igual antes.” Você não precisa passar por isso sozinha.",
       ],
     },
     {
       n: "Thaís",
       t: [
-        "O estresse que me gerava por conta do excesso de preocupações afetava meu sono, meu trabalho e minha relação com meu filho.",
-        "Eu tento entender o que essa ansiedade está querendo me dizer, pois vejo ela como um sinal. E, a partir daí, pensar racionalmente no que eu posso fazer, no que está sob meu controle e em como posso resolver determinada situação.",
-        "Ansiedade é um sinal de alerta para você olhar para algo que está te incomodando, te deixando insegura. E ela não pode ser negligenciada.",
+        "O estresse por conta do excesso de preocupações afetava meu sono, meu trabalho e minha relação com meu filho. Hoje “vejo a ansiedade como um sinal” — e a partir daí penso racionalmente no que posso fazer, no que está sob meu controle.",
       ],
     },
     {
       n: "M. C. S.",
       t: [
-        "Nos relacionamentos em geral era mais tranquilo, mas, no meu namoro, a ansiedade me deixava insegura, porque tinha diversos pensamentos automáticos imaginando catástrofes que não condiziam com a realidade do momento. Além disso, perdia o sono por vários dias ou dormia a noite toda, mas acordava cansada. Ainda tinha a dificuldade para aceitar novos desafios, já que eu não reconhecia potencial em mim mesma.",
-        "Creio que tenho conseguido racionalizar melhor meus momentos de ansiedade. Não deixo de sentir, mas consigo manejar melhor. Consigo identificar a causa e, assim, desemaranhar (muito chique, aprendi com a Mari rsrs) meus pensamentos. Então vejo de forma mais clara o que me angustia.",
+        "Tenho conseguido racionalizar melhor meus momentos de ansiedade. Consigo identificar a causa e “desemaranhar” (muito chique, aprendi com a Mari rsrs) meus pensamentos. Então vejo de forma mais clara o que me angustia.",
       ],
     },
     {
       n: "Guilherme",
       t: [
-        "Tinha muita ansiedade de desempenho. Sofria por medo de falhar ou passar vergonha. Isso me deixava mais inseguro e indeciso.",
-        "Consegui trabalhar isso melhor. Hoje lido com mais leveza com meus erros e tenho menos medo deles.",
+        "Tinha muita ansiedade de desempenho. Sofria por medo de falhar ou passar vergonha. “Hoje lido com mais leveza com meus erros.” Tenho menos medo deles.",
       ],
     },
     {
       n: "Nome preservado a pedido",
       t: [
-        "Vivia pilhado durante todo o meu dia, me achando insuficiente, não merecedor. Era muito ruim, porque eu não conseguia sair desses pensamentos, mesmo que tentasse.",
-        "Comecei a respeitar mais os meus sentimentos e a entender que pensamentos existem, mas são apenas pensamentos. E, assim, aprendi a administrar as situações que me causavam estresse, decidindo o que eu iria internalizar ou não.",
+        "Comecei a respeitar mais os meus sentimentos e a entender que “pensamentos existem, mas são apenas pensamentos.” Aprendi a administrar as situações que me causavam estresse, decidindo o que eu iria internalizar ou não.",
       ],
     },
   ];
@@ -512,7 +606,7 @@ function CTADepoimentos() {
   return (
     <CTABlock
       text="Você também pode começar hoje a construir uma relação mais leve com a ansiedade."
-      button="Quero acessar o guia →"
+      button="Quero começar a me relacionar diferente com a ansiedade →"
     />
   );
 }
@@ -551,9 +645,9 @@ function SobreMariana() {
             controlada(o) por ela.
           </p>
           <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-            A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
-            Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
-            você construa uma vida mais alinhada ao que realmente importa.
+            Criei este guia porque vi, em anos de consultório, que a maioria das pessoas não
+            precisa de mais informação sobre ansiedade. Precisa de uma forma concreta de agir
+            diferente quando ela aparece. É isso que este material entrega.
           </p>
         </motion.div>
       </Reveal>
@@ -607,17 +701,17 @@ function Pricing() {
 
           <p className="mt-8 text-center text-[14px] text-[#5C5C5C]">Tudo isso por apenas</p>
           <div className="mt-2 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#2D5A3D] leading-none">
+            <span className="text-[#999999] text-[15px] line-through">R$ 87,00</span>
+            <span className="font-display text-5xl sm:text-6xl font-bold text-[#2D5A3D] leading-none">
               R$ 47,90
             </span>
           </div>
-          <p className="text-center text-[14px] text-[#5C5C5C] mt-3 leading-relaxed">
-            Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
+          <p className="text-center text-[14px] text-[#5C5C5C] italic mt-3 leading-relaxed">
+            Pagamento único. Acesso imediato. Garantia de 7 dias.
           </p>
 
           <div className="mt-8 flex justify-center">
-            <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
+            <CTA className="w-full sm:w-auto text-base">Quero começar a me relacionar diferente com a ansiedade →</CTA>
           </div>
 
           <p className="mt-5 text-center text-[14px] text-[#5C5C5C] tracking-wide">
@@ -649,12 +743,13 @@ function Garantia() {
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
           Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
-          não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
-          investido, sem burocracia, sem perguntas constrangedoras.
+          não faz sentido para você, basta solicitar o reembolso e{" "}
+          <strong className="font-bold text-[#2D5A3D]">devolvemos 100% do valor investido</strong>,
+          sem burocracia, sem perguntas constrangedoras.
         </motion.p>
         <motion.p variants={fadeUp} className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-          Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
-          um passo importante.
+          Queremos que sua decisão seja tranquila, porque{" "}
+          <em className="italic">escolher cuidar de si já é, por si só, um passo importante</em>.
         </motion.p>
       </Reveal>
     </section>
@@ -754,11 +849,15 @@ function FinalCTA() {
           consciência, mais flexibilidade e mais liberdade para agir na direção da vida que deseja
           construir.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
-          Se este guia ajudar você a dar esse primeiro passo, ele já terá cumprido o seu propósito.
+        <motion.p
+          variants={fadeUp}
+          className="mt-6 text-white font-bold text-[20px] sm:text-[24px] leading-[1.6] max-w-2xl mx-auto text-center"
+        >
+          A ansiedade pode continuar aparecendo. Mas ela não precisa continuar conduzindo a sua
+          vida.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
+          <CTA>Quero começar a me relacionar diferente com a ansiedade →</CTA>
         </motion.div>
         <motion.ul
           variants={fadeUp}
@@ -821,9 +920,9 @@ function StickyMobileCTA() {
     >
       <a
         href="#pricing"
-        className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold"
+        className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold text-center leading-tight px-4 py-3"
       >
-        Quero acessar o guia →
+        Quero começar a me relacionar diferente com a ansiedade →
       </a>
     </div>
   );
