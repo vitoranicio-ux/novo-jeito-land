@@ -392,12 +392,26 @@ function CTAProblema() {
 
 
 function VisaoFuturo() {
-  const items = [
-    "Dormir sem passar horas revivendo tudo o que aconteceu no dia.",
-    "Estar presente em uma conversa sem a mente antecipar tudo o que pode dar errado.",
-    "Aceitar um convite sem desistir por medo ou preocupação.",
-    "Trabalhar, estudar ou cuidar da sua família sem sentir que a ansiedade precise desaparecer antes.",
-    "Perceber que a ansiedade apareceu, e ainda assim, continuar fazendo o que faz sentido para você.",
+  const items: { k: string; node: React.ReactNode }[] = [
+    { k: "1", node: "Dormir sem passar horas revivendo tudo o que aconteceu no dia." },
+    { k: "2", node: "Estar presente em uma conversa sem a mente antecipar tudo o que pode dar errado." },
+    { k: "3", node: "Aceitar um convite sem desistir por medo ou preocupação." },
+    {
+      k: "4",
+      node: "Trabalhar, estudar ou cuidar da sua família sem sentir que a ansiedade precise desaparecer antes.",
+    },
+    {
+      k: "5",
+      node: (
+        <span>
+          Perceber que a ansiedade apareceu,{" "}
+          <strong className="font-bold text-[#2D5A3D]">
+            e ainda assim, continuar fazendo o que faz sentido para você
+          </strong>
+          .
+        </span>
+      ),
+    },
   ];
   return (
     <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
@@ -413,15 +427,18 @@ function VisaoFuturo() {
         </motion.p>
         <motion.ul variants={fadeUp} className="mt-10 max-w-2xl mx-auto space-y-4 text-left">
           {items.map((t) => (
-            <li key={t} className="flex gap-3 text-[17px] text-[#5C5C5C] leading-[1.7]">
+            <li key={t.k} className="flex gap-3 text-[17px] text-[#5C5C5C] leading-[1.7]">
               <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
-              {t}
+              {t.node}
             </li>
           ))}
         </motion.ul>
         <motion.p variants={fadeUp} className="mt-12 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
-          É isso que significa desenvolver flexibilidade psicológica: não viver sem ansiedade, mas
-          impedir que ela continue decidindo os rumos da sua vida.
+          É isso que significa desenvolver{" "}
+          <em className="italic underline decoration-[#CC6A39] decoration-[1px] underline-offset-4">
+            flexibilidade psicológica
+          </em>
+          : não viver sem ansiedade, mas impedir que ela continue decidindo os rumos da sua vida.
         </motion.p>
       </Reveal>
     </section>
