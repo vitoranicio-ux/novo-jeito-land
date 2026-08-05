@@ -645,9 +645,9 @@ function SobreMariana() {
             controlada(o) por ela.
           </p>
           <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-            A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
-            Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
-            você construa uma vida mais alinhada ao que realmente importa.
+            Criei este guia porque vi, em anos de consultório, que a maioria das pessoas não
+            precisa de mais informação sobre ansiedade. Precisa de uma forma concreta de agir
+            diferente quando ela aparece. É isso que este material entrega.
           </p>
         </motion.div>
       </Reveal>
@@ -701,13 +701,13 @@ function Pricing() {
 
           <p className="mt-8 text-center text-[14px] text-[#5C5C5C]">Tudo isso por apenas</p>
           <div className="mt-2 flex items-end justify-center gap-3">
-            <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#2D5A3D] leading-none">
+            <span className="text-[#999999] text-[15px] line-through">R$ 87,00</span>
+            <span className="font-display text-5xl sm:text-6xl font-bold text-[#2D5A3D] leading-none">
               R$ 47,90
             </span>
           </div>
-          <p className="text-center text-[14px] text-[#5C5C5C] mt-3 leading-relaxed">
-            Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
+          <p className="text-center text-[14px] text-[#5C5C5C] italic mt-3 leading-relaxed">
+            Pagamento único. Acesso imediato. Garantia de 7 dias.
           </p>
 
           <div className="mt-8 flex justify-center">
@@ -743,12 +743,13 @@ function Garantia() {
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
           Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
-          não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
-          investido, sem burocracia, sem perguntas constrangedoras.
+          não faz sentido para você, basta solicitar o reembolso e{" "}
+          <strong className="font-bold text-[#2D5A3D]">devolvemos 100% do valor investido</strong>,
+          sem burocracia, sem perguntas constrangedoras.
         </motion.p>
         <motion.p variants={fadeUp} className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-          Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
-          um passo importante.
+          Queremos que sua decisão seja tranquila, porque{" "}
+          <em className="italic">escolher cuidar de si já é, por si só, um passo importante</em>.
         </motion.p>
       </Reveal>
     </section>
@@ -848,8 +849,12 @@ function FinalCTA() {
           consciência, mais flexibilidade e mais liberdade para agir na direção da vida que deseja
           construir.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-white/80 leading-[1.75] max-w-2xl mx-auto">
-          Se este guia ajudar você a dar esse primeiro passo, ele já terá cumprido o seu propósito.
+        <motion.p
+          variants={fadeUp}
+          className="mt-6 text-white font-bold text-[20px] sm:text-[24px] leading-[1.6] max-w-2xl mx-auto text-center"
+        >
+          A ansiedade pode continuar aparecendo. Mas ela não precisa continuar conduzindo a sua
+          vida.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
           <CTA>Quero acessar o guia →</CTA>
