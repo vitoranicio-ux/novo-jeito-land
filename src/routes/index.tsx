@@ -40,7 +40,7 @@ function CTA({ children, className = "", href = "#pricing" }: { children: React.
     <a
       href={href}
       className={
-        "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#CC6A39] text-white font-medium tracking-wide shadow-[0_10px_30px_-10px_rgba(204,106,57,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(204,106,57,0.65)] active:translate-y-0 " +
+        "inline-flex w-full sm:w-auto min-h-[52px] items-center justify-center gap-2 px-8 py-4 rounded-full bg-[#CC6A39] hover:bg-[#A84E22] text-white text-[18px] font-semibold tracking-wide shadow-[0_10px_30px_-10px_rgba(204,106,57,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-12px_rgba(204,106,57,0.65)] active:translate-y-0 " +
         className
       }
     >
@@ -51,9 +51,9 @@ function CTA({ children, className = "", href = "#pricing" }: { children: React.
 
 function CTABlock({ text, button }: { text: string; button: string }) {
   return (
-    <section className="px-5 sm:px-8 py-12 bg-white/40">
+    <section className="px-5 sm:px-8 py-12 bg-white">
       <div className="max-w-4xl mx-auto text-center">
-        <p className="text-[17px] text-[#5b5448] leading-[1.75] mb-8">
+        <p className="text-[17px] text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] mb-8">
           {text}
         </p>
         <CTA>{button}</CTA>
@@ -82,7 +82,7 @@ function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-5 sm:px-8 h-16 sm:h-20 flex items-center justify-between">
-        <a href="#top" className="font-display text-[#6B4325] text-lg sm:text-xl leading-tight whitespace-nowrap">
+        <a href="#top" className="font-display text-[#2D5A3D] text-lg sm:text-xl leading-tight whitespace-nowrap">
           Um Novo Jeito…
         </a>
         <a
@@ -94,7 +94,7 @@ function Nav() {
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
-          className="sm:hidden w-10 h-10 grid place-items-center rounded-full border border-[rgba(107,67,37,0.15)] text-[#6B4325]"
+          className="sm:hidden w-10 h-10 grid place-items-center rounded-full border border-[rgba(107,67,37,0.15)] text-[#2D5A3D]"
         >
           <div className="space-y-1.5">
             <span className="block w-4 h-px bg-[#6B4325]" />
@@ -117,7 +117,7 @@ function Nav() {
                 ["Sobre Mariana", "#mariana"],
                 ["Perguntas", "#faq"],
               ].map(([label, href]) => (
-                <a key={href} href={href} onClick={() => setOpen(false)} className="text-[#6B4325] text-sm">
+                <a key={href} href={href} onClick={() => setOpen(false)} className="text-[#2D5A3D] text-sm">
                   {label}
                 </a>
               ))}
@@ -152,24 +152,24 @@ function Hero() {
 
         <motion.h1
           variants={fadeUp}
-          className="font-display text-[#6B4325] mt-6 text-[32px] leading-[1.1] sm:text-[52px] md:text-[64px] lg:text-[68px] font-semibold tracking-tight"
+          className="font-display text-[#2D5A3D] mt-6 text-[36px] leading-[1.15] sm:text-[44px] md:text-[52px] font-semibold tracking-tight"
         >
           Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h1>
 
         <motion.p
           variants={fadeUp}
-          className="mt-6 text-[15px] sm:text-base text-[#5b5448] leading-[1.75] max-w-2xl mx-auto"
+          className="mt-6 text-[15px] sm:text-base text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto"
         >
           Para quem já tentou controlar a ansiedade de todas as formas, e está pronta para
           experimentar um caminho diferente.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10">
-          <p className="text-sm text-[#6B4325]/80 mb-3 font-display italic text-lg">
+          <p className="text-sm text-[#2D5A3D]/80 mb-3 font-display italic text-lg">
             Assista ao vídeo antes de continuar 👇
           </p>
-          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[rgba(107,67,37,0.15)] shadow-[0_30px_60px_-30px_rgba(107,67,37,0.35)] bg-white/40 backdrop-blur-sm">
+          <div className="relative max-w-3xl mx-auto rounded-2xl overflow-hidden border border-[rgba(107,67,37,0.15)] shadow-[0_30px_60px_-30px_rgba(107,67,37,0.35)] bg-white backdrop-blur-sm">
             <div className="aspect-video w-full bg-gradient-to-br from-[#A8B5A2]/30 to-[#7B8C9B]/30 grid place-items-center">
               {/* REPLACE WITH YOUTUBE URL */}
               <motion.div
@@ -189,7 +189,7 @@ function Hero() {
 
         <motion.ul
           variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#5b5448]"
+          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#5C5C5C]"
         >
           <li>✓ Acesso imediato</li>
           <li>✓ Funciona no celular</li>
@@ -224,11 +224,11 @@ function Identificacao() {
     { e: "🖤", t: "Você deixou de fazer coisas importantes por causa da ansiedade." },
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
+    <section className="px-5 sm:px-8 py-16 sm:py-28">
       <Reveal className="max-w-5xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
           Você se reconhece em alguma dessas situações?
         </motion.h2>
@@ -238,15 +238,15 @@ function Identificacao() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="rounded-2xl p-7 text-left bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-transform duration-300 hover:-translate-y-1"
+              className="rounded-xl p-7 text-left bg-[#F2EFE8] border border-[#A8B5A2]/40 transition-transform duration-300 sm:hover:-translate-y-1"
             >
               <div className="text-3xl mb-3">{it.e}</div>
-              <p className="text-[#3f3a32] leading-[1.7]">{it.t}</p>
+              <p className="text-[17px] text-[#5C5C5C] leading-[1.7]">{it.t}</p>
             </motion.div>
           ))}
         </div>
 
-        <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Se você se identificou com algum desses pontos, saiba que não está sozinha, e que existe uma forma diferente de lidar com isso.
         </motion.p>
       </Reveal>
@@ -256,22 +256,22 @@ function Identificacao() {
 
 function Problema() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
           O problema não é sentir ansiedade.
         </motion.h2>
         <motion.p variants={fadeUp} className="mt-5 font-display text-2xl sm:text-3xl text-[#C78162] italic">
           O problema é ficar presa na luta contra ela.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-8 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-8 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
           Quando tentamos empurrar pensamentos difíceis para longe, eles voltam com mais força.
           Quando lutamos contra uma emoção, ela se intensifica.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto italic">
+        <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto italic">
           Na prática clínica e nas pesquisas sobre ansiedade, observamos um padrão: quanto mais
           lutamos contra determinadas emoções, mais espaço elas tendem a ocupar.
         </motion.p>
@@ -281,15 +281,15 @@ function Problema() {
             <div className="aspect-square rounded-full border border-dashed border-[#C78162]/50 grid place-items-center relative">
               <div className="absolute inset-8 rounded-full border border-dashed border-[#7B8C9B]/40" />
               <div className="text-center px-8">
-                <p className="font-display text-[#6B4325] text-xl">Reconhece esse ciclo?</p>
-                <p className="text-xs text-[#5b5448] mt-2 leading-relaxed">
+                <p className="font-display text-[#2D5A3D] text-xl">Reconhece esse ciclo?</p>
+                <p className="text-xs text-[#5C5C5C] mt-2 leading-relaxed">
                   Pensamento → Resistência → Mais ansiedade → Mais controle → Esgotamento
                 </p>
               </div>
             </div>
           </div>
         </motion.div>
-        <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Esse loop não termina com mais controle. Termina quando você muda de estratégia.
         </motion.p>
       </Reveal>
@@ -316,26 +316,26 @@ function VisaoFuturo() {
     "Perceber que a ansiedade apareceu, e ainda assim, continuar fazendo o que faz sentido para você.",
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
       <Reveal className="max-w-4xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold"
+          className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
           E se a ansiedade deixasse de comandar suas escolhas?
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 font-display italic text-[#6B4325] text-xl sm:text-2xl">
+        <motion.p variants={fadeUp} className="mt-6 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Imagine conseguir:
         </motion.p>
         <motion.ul variants={fadeUp} className="mt-10 max-w-2xl mx-auto space-y-4 text-left">
           {items.map((t) => (
-            <li key={t} className="flex gap-3 text-[#3f3a32] leading-[1.7]">
+            <li key={t} className="flex gap-3 text-[17px] text-[#5C5C5C] leading-[1.7]">
               <span className="text-[#A8B5A2] shrink-0 mt-0.5">✓</span>
               {t}
             </li>
           ))}
         </motion.ul>
-        <motion.p variants={fadeUp} className="mt-12 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+        <motion.p variants={fadeUp} className="mt-12 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
           É isso que significa desenvolver flexibilidade psicológica: não viver sem ansiedade, mas
           impedir que ela continue decidindo os rumos da sua vida.
         </motion.p>
@@ -376,13 +376,13 @@ function Receba() {
     },
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
+    <section className="px-5 sm:px-8 py-16 sm:py-28">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl md:text-[56px] leading-[1.1] font-semibold">
+          <h2 className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold">
             O que você recebe
           </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75] max-w-2xl mx-auto">
+          <p className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
             Você receberá um conjunto de materiais que se complementam para ajudar você a aplicar
             o conteúdo na prática.
           </p>
@@ -393,11 +393,11 @@ function Receba() {
             <motion.div
               key={it.title}
               variants={fadeUp}
-              className="rounded-3xl p-8 bg-white/55 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_-25px_rgba(107,67,37,0.3)]"
+              className="rounded-xl p-7 sm:p-8 bg-[#EAF0EC] transition-all duration-300 sm:hover:-translate-y-1"
             >
               <div className="text-4xl mb-5">{it.e}</div>
-              <h3 className="font-display text-2xl text-[#6B4325] leading-tight">{it.title}</h3>
-              <p className="mt-3 text-[#5b5448] leading-[1.7] text-[15px]">{it.desc}</p>
+              <h3 className="font-display text-[22px] sm:text-[24px] text-[#2D5A3D] leading-tight">{it.title}</h3>
+              <p className="mt-3 text-[17px] text-[#5C5C5C] leading-[1.7]">{it.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -463,13 +463,13 @@ function Depoimentos() {
     },
   ];
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
       <Reveal className="max-w-6xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold">
             Pessoas que desenvolveram uma relação mais saudável com a ansiedade relatam:
           </h2>
-          <p className="mt-5 text-[#3f3a32] leading-[1.75] max-w-2xl mx-auto">
+          <p className="mt-5 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto">
             Cada pessoa vive a ansiedade de uma forma diferente. Estas são experiências reais de
             pessoas acompanhadas pela Mariana.
           </p>
@@ -479,18 +479,18 @@ function Depoimentos() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="mb-6 break-inside-avoid rounded-3xl p-8 bg-white/65 backdrop-blur-sm border border-[rgba(107,67,37,0.15)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_50px_-25px_rgba(107,67,37,0.3)]"
+              className="mb-6 break-inside-avoid rounded-xl p-7 sm:p-8 bg-[#EAF0EC] transition-all duration-300 sm:hover:-translate-y-1"
             >
               <div className="font-display text-[#C78162] text-5xl leading-none mb-2">“</div>
               <div className="space-y-4">
                 {it.t.map((p, j) => (
-                  <p key={j} className="text-[#3f3a32] leading-[1.75]">
+                  <p key={j} className="text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
                     {p}
                   </p>
                 ))}
               </div>
               <div className="mt-6 pt-5 border-t border-[rgba(107,67,37,0.15)]">
-                <p className="font-display text-[#6B4325] text-lg">{it.n}</p>
+                <p className="font-display text-[#2D5A3D] text-[16px]">{it.n}</p>
               </div>
             </motion.div>
           ))}
@@ -519,7 +519,7 @@ function CTADepoimentos() {
 
 function SobreMariana() {
   return (
-    <section id="mariana" className="px-5 sm:px-8 py-24 sm:py-32">
+    <section id="mariana" className="px-5 sm:px-8 py-16 sm:py-28">
       <Reveal className="max-w-5xl mx-auto grid md:grid-cols-5 gap-12 items-center">
         <motion.div variants={fadeUp} className="md:col-span-2 flex justify-center">
           <div className="relative">
@@ -532,25 +532,25 @@ function SobreMariana() {
           </div>
         </motion.div>
         <motion.div variants={fadeUp} className="md:col-span-3">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold">
             Quem criou este guia?
           </h2>
-          <p className="mt-6 text-[#5b5448] leading-[1.75]">
+          <p className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
             Sou Mariana Anício, psicóloga e pós-graduada em Terapia de Aceitação e Compromisso (ACT).
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
             Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
             padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
             lugar de identidade. Talvez você mesma já tenha se pegado dizendo: “Eu sou
             ansiosa”. Foi justamente a partir dessa experiência que criei este guia.
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
             Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
             vai entender por que ela aparece, o que ela está tentando comunicar e como agir de
             maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser
             controlada(o) por ela.
           </p>
-          <p className="mt-4 text-[#5b5448] leading-[1.75]">
+          <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
             A ideia não é eliminar a ansiedade, mas fazer com que ela deixe de conduzir sua vida.
             Afinal, ela faz parte da experiência humana e não precisa ser um obstáculo para que
             você construa uma vida mais alinhada ao que realmente importa.
@@ -568,10 +568,10 @@ function Pricing() {
     "Bônus 2 - Cartão de Emergência Emocional",
   ];
   return (
-    <section id="pricing" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section id="pricing" className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
       <Reveal className="max-w-2xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold">
             Comece hoje, no seu ritmo.
           </h2>
         </motion.div>
@@ -590,29 +590,29 @@ function Pricing() {
           </div>
 
           <div className="min-w-0 flex-1">
-          <h3 className="font-display text-2xl sm:text-3xl text-[#6B4325] text-center">
+          <h3 className="font-display text-2xl sm:text-3xl text-[#2D5A3D] text-center">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
-          <p className="mt-6 text-center font-display text-xl text-[#6B4325]">Hoje você recebe:</p>
+          <p className="mt-6 text-center font-display text-xl text-[#2D5A3D]">Hoje você recebe:</p>
 
           <ul className="mt-5 space-y-3">
             {features.map((f) => (
-              <li key={f} className="flex gap-3 text-[#3f3a32]">
+              <li key={f} className="flex gap-3 text-[#5C5C5C]">
                 <span className="text-[#A8B5A2] shrink-0">✓</span>
                 {f}
               </li>
             ))}
           </ul>
 
-          <p className="mt-8 text-center text-sm text-[#5b5448]">Tudo isso por apenas</p>
+          <p className="mt-8 text-center text-sm text-[#5C5C5C]">Tudo isso por apenas</p>
           <div className="mt-2 flex items-end justify-center gap-3">
             <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
-            <span className="font-display text-5xl sm:text-6xl text-[#6B4325] leading-none">
+            <span className="font-display text-5xl sm:text-6xl text-[#2D5A3D] leading-none">
               R$ 47,90
             </span>
           </div>
-          <p className="text-center text-xs text-[#5b5448] mt-3 leading-relaxed">
+          <p className="text-center text-xs text-[#5C5C5C] mt-3 leading-relaxed">
             Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
           </p>
 
@@ -625,8 +625,8 @@ function Pricing() {
           </p>
 
           <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
-            <p className="font-display text-[#6B4325] text-lg">Garantia incondicional de 7 dias.</p>
-            <p className="text-xs text-[#5b5448] mt-1">
+            <p className="font-display text-[#2D5A3D] text-lg">Garantia incondicional de 7 dias.</p>
+            <p className="text-xs text-[#5C5C5C] mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
           </div>
@@ -639,20 +639,20 @@ function Pricing() {
 
 function Garantia() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32">
+    <section className="px-5 sm:px-8 py-16 sm:py-28">
       <Reveal className="max-w-3xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold"
+          className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
           Garantia incondicional de 7 dias.
         </motion.h2>
-        <motion.p variants={fadeUp} className="mt-6 text-[#5b5448] leading-[1.75]">
+        <motion.p variants={fadeUp} className="mt-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
           Você tem sete dias completos para acessar todo o conteúdo. Se perceber que este material
           não faz sentido para você, basta solicitar o reembolso e devolvemos 100% do valor
           investido, sem burocracia, sem perguntas constrangedoras.
         </motion.p>
-        <motion.p variants={fadeUp} className="mt-4 text-[#5b5448] leading-[1.75]">
+        <motion.p variants={fadeUp} className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
           Queremos que sua decisão seja tranquila, porque escolher cuidar de si já é, por si só,
           um passo importante.
         </motion.p>
@@ -669,10 +669,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-4 py-6 text-left"
       >
-        <span className="font-display text-lg sm:text-xl text-[#6B4325]">{q}</span>
+        <span className="font-display text-lg sm:text-xl text-[#2D5A3D]">{q}</span>
         <span
           className={`shrink-0 w-8 h-8 rounded-full border border-[rgba(107,67,37,0.2)] grid place-items-center transition-transform duration-300 ${
-            open ? "rotate-45 bg-[#CC6A39] text-white border-transparent" : "text-[#6B4325]"
+            open ? "rotate-45 bg-[#CC6A39] text-white border-transparent" : "text-[#2D5A3D]"
           }`}
         >
           +
@@ -687,7 +687,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-[#5b5448] leading-[1.75]">{a}</p>
+            <p className="pb-6 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -710,10 +710,10 @@ function FAQ() {
     { q: "Como funciona a garantia?", a: "Entre em contato dentro do prazo de 7 dias e devolvemos integralmente o valor pago. Sem questionamentos." },
   ];
   return (
-    <section id="faq" className="px-5 sm:px-8 py-24 sm:py-32 bg-white/40">
+    <section id="faq" className="px-5 sm:px-8 py-16 sm:py-28 bg-white">
       <Reveal className="max-w-3xl mx-auto">
         <motion.div variants={fadeUp} className="text-center">
-          <h2 className="font-display text-[#6B4325] text-3xl sm:text-5xl leading-[1.1] font-semibold">
+          <h2 className="font-display text-[#2D5A3D] text-[28px] sm:text-[36px] leading-[1.2] font-semibold">
             Perguntas frequentes
           </h2>
         </motion.div>
@@ -729,13 +729,13 @@ function FAQ() {
 
 function FinalCTA() {
   return (
-    <section className="px-5 sm:px-8 py-24 sm:py-32 bg-[#6B4325] relative overflow-hidden">
+    <section className="px-5 sm:px-8 py-16 sm:py-28 bg-[#6B4325] relative overflow-hidden">
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-[#C78162]/20 blur-3xl" />
       <div className="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#A8B5A2]/15 blur-3xl" />
       <Reveal className="relative max-w-3xl mx-auto text-center">
         <motion.h2
           variants={fadeUp}
-          className="font-display text-white text-3xl sm:text-5xl md:text-[60px] leading-[1.1] font-semibold"
+          className="font-display text-white text-[28px] sm:text-[36px] leading-[1.2] font-semibold"
         >
           Você não precisa esperar a ansiedade desaparecer para voltar a viver.
         </motion.h2>
@@ -808,7 +808,7 @@ function Footer() {
 function Index() {
   return (
     <main
-      className="min-h-screen font-sans text-[#3f3a32] antialiased scroll-smooth"
+      className="min-h-screen font-sans text-[17px] sm:text-[18px] text-[#5C5C5C] antialiased scroll-smooth pb-[76px] sm:pb-0"
       style={{ backgroundColor: "#FFFFFF" }}
     >
       <Nav />
