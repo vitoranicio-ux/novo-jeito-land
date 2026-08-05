@@ -189,7 +189,7 @@ function Hero() {
 
         <motion.ul
           variants={fadeUp}
-          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-[#5C5C5C]"
+          className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-[16px] text-[#5C5C5C]"
         >
           <li>✓ Acesso imediato</li>
           <li>✓ Funciona no celular</li>
@@ -489,7 +489,7 @@ function Depoimentos() {
                   </p>
                 ))}
               </div>
-              <div className="mt-6 pt-5 border-t border-[rgba(107,67,37,0.15)]">
+              <div className="mt-6 pt-5 border-t border-[#A8B5A2]/50">
                 <p className="font-display text-[#2D5A3D] text-[16px]">{it.n}</p>
               </div>
             </motion.div>
@@ -497,7 +497,7 @@ function Depoimentos() {
         </div>
         <motion.p
           variants={fadeUp}
-          className="mt-10 text-sm text-[#7B8C9B] leading-relaxed max-w-3xl mx-auto text-center"
+          className="mt-10 text-[14px] text-[#5C5C5C]/80 leading-relaxed max-w-3xl mx-auto text-center"
         >
           Os depoimentos acima foram compartilhados voluntariamente por pacientes que autorizaram
           sua utilização para fins institucionais. Cada processo terapêutico é único e os resultados
@@ -590,7 +590,7 @@ function Pricing() {
           </div>
 
           <div className="min-w-0 flex-1">
-          <h3 className="font-display text-2xl sm:text-3xl text-[#2D5A3D] text-center">
+          <h3 className="font-display text-[22px] sm:text-[24px] text-[#2D5A3D] text-center">
             Um Novo Jeito de Lidar com a Ansiedade
           </h3>
 
@@ -598,21 +598,21 @@ function Pricing() {
 
           <ul className="mt-5 space-y-3">
             {features.map((f) => (
-              <li key={f} className="flex gap-3 text-[#5C5C5C]">
+              <li key={f} className="flex gap-3 text-[17px] text-[#5C5C5C]">
                 <span className="text-[#A8B5A2] shrink-0">✓</span>
                 {f}
               </li>
             ))}
           </ul>
 
-          <p className="mt-8 text-center text-sm text-[#5C5C5C]">Tudo isso por apenas</p>
+          <p className="mt-8 text-center text-[14px] text-[#5C5C5C]">Tudo isso por apenas</p>
           <div className="mt-2 flex items-end justify-center gap-3">
             <span className="text-[#7B8C9B] line-through">R$ 87,00</span>
             <span className="font-display text-5xl sm:text-6xl text-[#2D5A3D] leading-none">
               R$ 47,90
             </span>
           </div>
-          <p className="text-center text-xs text-[#5C5C5C] mt-3 leading-relaxed">
+          <p className="text-center text-[14px] text-[#5C5C5C] mt-3 leading-relaxed">
             Pagamento único.<br />Acesso imediato.<br />Garantia de 7 dias.
           </p>
 
@@ -620,13 +620,13 @@ function Pricing() {
             <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
           </div>
 
-          <p className="mt-5 text-center text-xs text-[#7B8C9B] tracking-wide">
+          <p className="mt-5 text-center text-[14px] text-[#5C5C5C] tracking-wide">
             🔒 Pagamento seguro
           </p>
 
           <div className="mt-6 rounded-2xl border border-dashed border-[#A8B5A2]/60 bg-[#A8B5A2]/10 p-5 text-center">
             <p className="font-display text-[#2D5A3D] text-lg">Garantia incondicional de 7 dias.</p>
-            <p className="text-xs text-[#5C5C5C] mt-1">
+            <p className="text-[14px] text-[#5C5C5C] mt-1">
               Se não fizer sentido pra você, devolvemos 100% do valor.
             </p>
           </div>
@@ -664,12 +664,12 @@ function Garantia() {
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="border-b border-[rgba(107,67,37,0.15)]">
+    <div className="border-b border-[#A8B5A2]/50">
       <button
         onClick={() => setOpen((v) => !v)}
         className="w-full flex items-center justify-between gap-4 py-6 text-left"
       >
-        <span className="font-display text-lg sm:text-xl text-[#2D5A3D]">{q}</span>
+        <span className="font-display text-[19px] sm:text-[24px] text-[#2D5A3D]">{q}</span>
         <span
           className={`shrink-0 w-8 h-8 rounded-full border border-[rgba(107,67,37,0.2)] grid place-items-center transition-transform duration-300 ${
             open ? "rotate-45 bg-[#CC6A39] text-white border-transparent" : "text-[#2D5A3D]"
@@ -805,6 +805,30 @@ function Footer() {
   );
 }
 
+function StickyMobileCTA() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShow(window.scrollY > 500);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div
+      className={`sm:hidden fixed bottom-0 inset-x-0 z-50 px-4 pt-3 pb-[calc(env(safe-area-inset-bottom)+12px)] bg-white border-t border-[#A8B5A2]/50 transition-transform duration-300 ${
+        show ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
+      <a
+        href="#pricing"
+        className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold"
+      >
+        Quero acessar o guia →
+      </a>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <main
@@ -827,6 +851,7 @@ function Index() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <StickyMobileCTA />
     </main>
   );
 }
