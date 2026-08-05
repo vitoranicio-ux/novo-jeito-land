@@ -87,7 +87,7 @@ function Nav() {
         </a>
         <a
           href="#pricing"
-          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
+          className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm text-center leading-tight max-w-[260px] font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
         >
           Quero começar a me relacionar diferente com a ansiedade →
         </a>
@@ -920,7 +920,7 @@ function StickyMobileCTA() {
     >
       <a
         href="#pricing"
-        className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold"
+        className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold text-center leading-tight px-4 py-3"
       >
         Quero começar a me relacionar diferente com a ansiedade →
       </a>
