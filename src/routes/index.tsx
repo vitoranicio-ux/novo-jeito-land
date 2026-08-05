@@ -89,7 +89,7 @@ function Nav() {
           href="#pricing"
           className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#CC6A39] text-white text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-10px_rgba(204,106,57,0.6)]"
         >
-          Quero acessar o guia →
+          Quero começar a me relacionar diferente com a ansiedade →
         </a>
         <button
           onClick={() => setOpen((v) => !v)}
@@ -126,7 +126,7 @@ function Nav() {
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#CC6A39] text-white text-sm font-medium"
               >
-                Quero acessar o guia →
+                Quero começar a me relacionar diferente com a ansiedade →
               </a>
             </div>
           </motion.div>
@@ -185,7 +185,7 @@ function Hero() {
         </motion.div>
 
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
+          <CTA>Quero começar a me relacionar diferente com a ansiedade →</CTA>
         </motion.div>
 
         <motion.ul
@@ -385,7 +385,7 @@ function CTAProblema() {
   return (
     <CTABlock
       text="O próximo passo é aprender uma nova forma de se relacionar com ela."
-      button="Quero acessar o guia →"
+      button="Quero começar a me relacionar diferente com a ansiedade →"
     />
   );
 }
@@ -606,7 +606,7 @@ function CTADepoimentos() {
   return (
     <CTABlock
       text="Você também pode começar hoje a construir uma relação mais leve com a ansiedade."
-      button="Quero acessar o guia →"
+      button="Quero começar a me relacionar diferente com a ansiedade →"
     />
   );
 }
@@ -711,7 +711,7 @@ function Pricing() {
           </p>
 
           <div className="mt-8 flex justify-center">
-            <CTA className="w-full sm:w-auto text-base">Quero acessar o guia →</CTA>
+            <CTA className="w-full sm:w-auto text-base">Quero começar a me relacionar diferente com a ansiedade →</CTA>
           </div>
 
           <p className="mt-5 text-center text-[14px] text-[#5C5C5C] tracking-wide">
@@ -857,7 +857,7 @@ function FinalCTA() {
           vida.
         </motion.p>
         <motion.div variants={fadeUp} className="mt-10 flex justify-center">
-          <CTA>Quero acessar o guia →</CTA>
+          <CTA>Quero começar a me relacionar diferente com a ansiedade →</CTA>
         </motion.div>
         <motion.ul
           variants={fadeUp}
@@ -922,7 +922,7 @@ function StickyMobileCTA() {
         href="#pricing"
         className="flex w-full min-h-[52px] items-center justify-center rounded-full bg-[#CC6A39] text-white text-[18px] font-semibold"
       >
-        Quero acessar o guia →
+        Quero começar a me relacionar diferente com a ansiedade →
       </a>
     </div>
   );
