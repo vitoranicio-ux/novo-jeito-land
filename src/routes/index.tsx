@@ -276,7 +276,11 @@ const cicloIcons: Record<string, React.ReactNode> = {
     <path d="M12 4.2 5.6 6.6v5c0 4 2.7 6.7 6.4 8.2 3.7-1.5 6.4-4.2 6.4-8.2v-5L12 4.2Z" />
   ),
   spiral: (
-    <path d="M14.6 15.6c-1.8 1.6-4.6 1.4-6.1-.5-1.6-1.9-1.3-4.8.6-6.4 2-1.7 5-1.4 6.7.7 1.8 2.2 1.5 5.4-.7 7.3" />
+    <>
+      <ellipse cx="12" cy="12" rx="6.4" ry="4.6" transform="rotate(-28 12 12)" />
+      <ellipse cx="12" cy="12" rx="4.6" ry="3.1" transform="rotate(14 12 12)" />
+      <ellipse cx="12" cy="12" rx="2.6" ry="1.7" transform="rotate(-46 12 12)" />
+    </>
   ),
   battery: (
     <>
