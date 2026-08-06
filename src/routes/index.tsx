@@ -265,58 +265,90 @@ function Identificacao() {
   );
 }
 
+const cicloIcons: Record<string, React.ReactNode> = {
+  brain: (
+    <path d="M12 5.2c-1.1-1.4-3.4-1.2-4.1.4-1.5.1-2.4 1.3-2.1 2.6-1.2.8-1.2 2.6 0 3.4-.3 1.5.8 2.8 2.3 2.7.4 1.5 2.5 2 3.5.8h.4c1 1.2 3.1.7 3.5-.8 1.5.1 2.6-1.2 2.3-2.7 1.2-.8 1.2-2.6 0-3.4.3-1.3-.6-2.5-2.1-2.6-.7-1.6-3-1.8-4.1-.4M12 5.2v11.5M12 19v1.8" />
+  ),
+  shield: (
+    <path d="M12 4.2 5.6 6.6v5c0 4 2.7 6.7 6.4 8.2 3.7-1.5 6.4-4.2 6.4-8.2v-5L12 4.2Z" />
+  ),
+  spiral: (
+    <path d="M12 6.4c3 0 5.4 2.4 5.4 5.4S15 17.2 12 17.2 7.5 15.1 7.5 12.4s2-4.2 4.2-4.2 3.5 1.6 3.5 3.4-1.3 3-2.8 3-2.3-1-2.3-2.1 .8-1.8 1.6-1.8" />
+  ),
+  battery: (
+    <>
+      <rect x="7.6" y="5.4" width="8.8" height="14.2" rx="2.4" />
+      <path d="M10.4 3.6h3.2M10.6 15.6h2.8" />
+    </>
+  ),
+};
+
 function CicloInfografico() {
   const steps = [
     {
-      icon: "🧠",
+      icon: "brain",
       label: "1. PENSAMENTO",
-      color: "#CC6A39",
+      color: "#B4603A",
+      tint: "#F1E4DA",
       desc: "Você tem um pensamento difícil.",
-      pos: "left-1/2 -translate-x-1/2 top-0",
+      pos: "left-1/2 -translate-x-1/2 top-[20%]",
+      circle: "left-1/2 -translate-x-1/2 top-[11.5%] -translate-y-1/2",
     },
     {
-      icon: "🛡️",
+      icon: "shield",
       label: "2. RESISTÊNCIA",
-      color: "#6B4325",
+      color: "#6E8257",
+      tint: "#E5E9DD",
       desc: "Você tenta controlar, evitar ou lutar contra.",
-      pos: "right-0 top-1/2 -translate-y-1/2",
+      pos: "right-[-2%] top-[52%]",
+      circle: "right-[3%] top-[45%] -translate-y-1/2",
     },
     {
-      icon: "🌀",
+      icon: "spiral",
       label: "3. MAIS ANSIEDADE",
-      color: "#6E8091",
+      color: "#5E7183",
+      tint: "#E2E6EA",
       desc: "A emoção aumenta e se intensifica.",
       pos: "left-1/2 -translate-x-1/2 bottom-0",
+      circle: "left-1/2 -translate-x-1/2 top-[78.4%] -translate-y-1/2",
     },
     {
-      icon: "🪫",
+      icon: "battery",
       label: "4. ESGOTAMENTO",
-      color: "#2D5A3D",
+      color: "#8A6A4B",
+      tint: "#EFE7DC",
       desc: "Você se sente exausta, sobrecarregada e sem energia.",
-      pos: "left-0 top-1/2 -translate-y-1/2",
+      pos: "left-[-2%] top-[52%]",
+      circle: "left-[3%] top-[45%] -translate-y-1/2",
     },
   ];
+
   const arcs = [
-    { d: "M 318 92 A 175 175 0 0 1 428 202", color: "#CC6A39", id: "a1" },
-    { d: "M 428 318 A 175 175 0 0 1 318 428", color: "#7BA05B", id: "a2" },
-    { d: "M 202 428 A 175 175 0 0 1 92 318", color: "#6E8091", id: "a3" },
-    { d: "M 92 202 A 175 175 0 0 1 202 92", color: "#2D5A3D", id: "a4" },
+    { d: "M 321.8 78.8 A 200 200 0 0 1 450.2 207.2", color: "#B4603A", id: "a1" },
+    { d: "M 450.2 330.8 A 200 200 0 0 1 321.8 459.2", color: "#6E8257", id: "a2" },
+    { d: "M 198.2 459.2 A 200 200 0 0 1 69.8 330.8", color: "#5E7183", id: "a3" },
+    { d: "M 69.8 207.2 A 200 200 0 0 1 198.2 78.8", color: "#8A6A4B", id: "a4" },
   ];
+
   return (
-    <div className="relative w-full max-w-[520px] mx-auto aspect-square">
-      <svg viewBox="0 0 520 520" className="absolute inset-0 w-full h-full" aria-hidden="true">
+    <div className="relative w-full max-w-[540px] mx-auto aspect-[1/1.15]">
+      <svg
+        viewBox="0 0 520 598"
+        className="absolute inset-0 w-full h-full overflow-visible"
+        aria-hidden="true"
+      >
         <defs>
           {arcs.map((a) => (
             <marker
               key={a.id}
-              id={`arrow-${a.id}`}
-              markerWidth="7"
-              markerHeight="7"
-              refX="5"
-              refY="3.5"
+              id={`ciclo-arrow-${a.id}`}
+              markerWidth="6"
+              markerHeight="6"
+              refX="4.6"
+              refY="3"
               orient="auto"
             >
-              <path d="M0,0 L7,3.5 L0,7 z" fill={a.color} />
+              <path d="M0,0.4 L6,3 L0,5.6 Z" fill={a.color} />
             </marker>
           ))}
         </defs>
@@ -326,32 +358,75 @@ function CicloInfografico() {
             d={a.d}
             fill="none"
             stroke={a.color}
-            strokeWidth="2"
+            strokeOpacity="0.75"
+            strokeWidth="2.6"
             strokeLinecap="round"
-            markerEnd={`url(#arrow-${a.id})`}
+            markerEnd={`url(#ciclo-arrow-${a.id})`}
           />
         ))}
+        {/* hand-drawn center ring */}
+        <g fill="none" stroke="#CC6A39" strokeLinecap="round">
+          <circle cx="260" cy="269" r="97" strokeOpacity="0.55" strokeWidth="2.2" />
+          <circle
+            cx="260"
+            cy="269"
+            r="100"
+            strokeOpacity="0.32"
+            strokeWidth="1.6"
+            transform="rotate(8 260 269)"
+            strokeDasharray="470 40"
+          />
+          <circle
+            cx="260"
+            cy="269"
+            r="94"
+            strokeOpacity="0.22"
+            strokeWidth="1.2"
+            strokeDasharray="380 90"
+            transform="rotate(-24 260 269)"
+          />
+        </g>
       </svg>
 
-      <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[38%] aspect-square grid place-items-center text-center px-3 border-2 border-[#CC6A39]"
-        style={{ borderRadius: "48% 52% 45% 55% / 55% 46% 54% 45%" }}
-      >
-        <p className="font-display italic text-[#6B4325] text-[15px] sm:text-[20px] leading-snug">
-          Reconhece esse ciclo?
+      <div className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2 w-[34%] text-center">
+        <p className="font-display italic text-[#6B4325] text-[16px] sm:text-[22px] leading-[1.3]">
+          Reconhece
+          <br />
+          esse ciclo?
         </p>
       </div>
 
       {steps.map((s) => (
-        <div key={s.label} className={`absolute ${s.pos} w-[42%] sm:w-[38%] text-center`}>
-          <div className="text-xl sm:text-2xl">{s.icon}</div>
-          <p
-            className="mt-1 text-[11px] sm:text-[13px] font-semibold tracking-wide"
-            style={{ color: s.color }}
+        <div key={s.label}>
+          <div
+            className={`absolute ${s.circle} w-[15%] aspect-square rounded-full grid place-items-center`}
+            style={{ backgroundColor: s.tint }}
           >
-            {s.label}
-          </p>
-          <p className="mt-1 text-[11px] sm:text-[13px] text-[#5C5C5C] leading-snug">{s.desc}</p>
+            <svg
+              viewBox="0 0 24 24"
+              className="w-1/2 h-1/2"
+              fill="none"
+              stroke={s.color}
+              strokeWidth="1.3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              {cicloIcons[s.icon]}
+            </svg>
+          </div>
+
+          <div
+            className={`absolute ${s.pos} w-[46%] sm:w-[42%] rounded-xl bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-center shadow-[0_6px_18px_-10px_rgba(45,90,61,0.35)]`}
+          >
+            <p
+              className="text-[10.5px] sm:text-[12px] font-semibold tracking-[0.08em]"
+              style={{ color: s.color }}
+            >
+              {s.label}
+            </p>
+            <p className="mt-1 text-[11px] sm:text-[13px] text-[#5C5C5C] leading-snug">{s.desc}</p>
+          </div>
         </div>
       ))}
     </div>
