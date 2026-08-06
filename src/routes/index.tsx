@@ -267,13 +267,16 @@ function Identificacao() {
 
 const cicloIcons: Record<string, React.ReactNode> = {
   brain: (
-    <path d="M12 5.2c-1.1-1.4-3.4-1.2-4.1.4-1.5.1-2.4 1.3-2.1 2.6-1.2.8-1.2 2.6 0 3.4-.3 1.5.8 2.8 2.3 2.7.4 1.5 2.5 2 3.5.8h.4c1 1.2 3.1.7 3.5-.8 1.5.1 2.6-1.2 2.3-2.7 1.2-.8 1.2-2.6 0-3.4.3-1.3-.6-2.5-2.1-2.6-.7-1.6-3-1.8-4.1-.4M12 5.2v11.5M12 19v1.8" />
+    <>
+      <path d="M11.4 6.1c-.9-1.3-3-1.2-3.7.2-1.4.1-2.2 1.2-1.9 2.4-1.1.7-1.1 2.4 0 3.1-.3 1.4.7 2.6 2.1 2.5.4 1.4 2.3 1.9 3.2.7M12.6 6.1c.9-1.3 3-1.2 3.7.2 1.4.1 2.2 1.2 1.9 2.4 1.1.7 1.1 2.4 0 3.1.3 1.4-.7 2.6-2.1 2.5-.4 1.4-2.3 1.9-3.2.7" />
+      <path d="M12 5.6v12.9M9.3 9.1c.9 0 1.5.6 1.5 1.5M14.7 9.1c-.9 0-1.5.6-1.5 1.5M9.9 13.4c.5 0 .9-.4.9-.9M14.1 13.4c-.5 0-.9-.4-.9-.9" />
+    </>
   ),
   shield: (
     <path d="M12 4.2 5.6 6.6v5c0 4 2.7 6.7 6.4 8.2 3.7-1.5 6.4-4.2 6.4-8.2v-5L12 4.2Z" />
   ),
   spiral: (
-    <path d="M12 6.4c3 0 5.4 2.4 5.4 5.4S15 17.2 12 17.2 7.5 15.1 7.5 12.4s2-4.2 4.2-4.2 3.5 1.6 3.5 3.4-1.3 3-2.8 3-2.3-1-2.3-2.1 .8-1.8 1.6-1.8" />
+    <path d="M14.6 15.6c-1.8 1.6-4.6 1.4-6.1-.5-1.6-1.9-1.3-4.8.6-6.4 2-1.7 5-1.4 6.7.7 1.8 2.2 1.5 5.4-.7 7.3" />
   ),
   battery: (
     <>
@@ -300,7 +303,7 @@ function CicloInfografico() {
       color: "#6E8257",
       tint: "#E5E9DD",
       desc: "Você tenta controlar, evitar ou lutar contra.",
-      pos: "right-[-2%] top-[52%]",
+      pos: "right-[-1%] top-[53%]",
       circle: "right-[3%] top-[45%] -translate-y-1/2",
     },
     {
@@ -318,7 +321,7 @@ function CicloInfografico() {
       color: "#8A6A4B",
       tint: "#EFE7DC",
       desc: "Você se sente exausta, sobrecarregada e sem energia.",
-      pos: "left-[-2%] top-[52%]",
+      pos: "left-[-1%] top-[53%]",
       circle: "left-[3%] top-[45%] -translate-y-1/2",
     },
   ];
@@ -417,7 +420,7 @@ function CicloInfografico() {
           </div>
 
           <div
-            className={`absolute ${s.pos} w-[46%] sm:w-[42%] rounded-xl bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-center shadow-[0_6px_18px_-10px_rgba(45,90,61,0.35)]`}
+            className={`absolute ${s.pos} w-[42%] sm:w-[40%] rounded-xl bg-white px-3 py-2.5 sm:px-4 sm:py-3 text-center shadow-[0_6px_18px_-10px_rgba(45,90,61,0.35)]`}
           >
             <p
               className="text-[10.5px] sm:text-[12px] font-semibold tracking-[0.08em]"
