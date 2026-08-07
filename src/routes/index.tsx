@@ -421,6 +421,9 @@ function Receba() {
             </motion.div>
           ))}
         </div>
+        <motion.div variants={fadeUp} className="mt-12 flex justify-center">
+          <CTA>Quero acessar o guia →</CTA>
+        </motion.div>
       </Reveal>
     </section>
   );
