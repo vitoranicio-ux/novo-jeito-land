@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import sobreVoce from "@/assets/Sobre_Você.jpg.asset.json";
 import capaGuia from "@/assets/capa-guia.png.asset.json";
+import cicloEbook from "@/assets/ciclo-ebook.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -452,7 +453,12 @@ function Problema() {
         </motion.h2>
 
         <motion.div variants={fadeUp} className="mt-14">
-          <CicloInfografico />
+          <img
+            src={cicloEbook.url}
+            alt="Ciclo da ansiedade: pensamento, resistência, mais ansiedade e esgotamento"
+            className="w-full max-w-[540px] mx-auto"
+            loading="lazy"
+          />
         </motion.div>
 
         <motion.p variants={fadeUp} className="mt-10 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
