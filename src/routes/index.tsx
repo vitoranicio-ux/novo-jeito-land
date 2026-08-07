@@ -163,7 +163,7 @@ function Hero() {
           variants={fadeUp}
           className="mt-6 text-[15px] sm:text-base text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75] max-w-2xl mx-auto"
         >
-          Para quem já pesquisou, já respirou fundo, já tentou “pensar positivo” — e ainda assim
+          Para quem já pesquisou, já respirou fundo, já tentou “pensar positivo”. E ainda assim
           sente que <em className="italic">a ansiedade sempre vence</em>.
         </motion.p>
 
@@ -220,18 +220,18 @@ function Identificacao() {
   const items = [
     {
       e: "🧠",
-      t: "Você deita para dormir e, justamente quando tudo fica em silêncio, sua cabeça começa a revirar tudo o que aconteceu — e tudo o que pode acontecer amanhã.",
+      t: "Você deita para dormir e, justamente quando tudo fica em silêncio, sua cabeça começa a revirar tudo o que aconteceu, e tudo o que pode acontecer amanhã.",
     },
     {
       e: "⚠️",
-      t: "Você cria dezenas de cenários antes mesmo das coisas acontecerem — e quase sempre sofre por algo que nunca aconteceu.",
+      t: "Você cria dezenas de cenários antes mesmo das coisas acontecerem, e quase sempre sofre por algo que nunca aconteceu.",
     },
     { e: "😮‍💨", t: "Até nos momentos em que deveria descansar, seu corpo continua em estado de alerta." },
     { e: "🔄", t: "Você tenta se acalmar, mas quanto mais tenta, mais parece que a ansiedade aumenta." },
     { e: "💭", t: "Você está numa conversa, mas parte da sua cabeça já está no próximo problema." },
     {
       e: "🖤",
-      t: "Você já cancelou planos, recusou oportunidades ou ficou em silêncio quando queria falar — por causa da ansiedade.",
+      t: "Você já cancelou planos, recusou oportunidades ou ficou em silêncio quando queria falar. Por causa da ansiedade.",
     },
   ];
   return (
@@ -259,8 +259,11 @@ function Identificacao() {
 
         <motion.p variants={fadeUp} className="mt-12 font-display italic text-[#2D5A3D] text-xl sm:text-2xl">
           Se você se identificou com algum desses pontos, saiba que não está sozinha. E que existe
-          uma forma diferente — não de eliminar a ansiedade, mas de parar de ser governada por ela.
+          uma forma diferente. Não de eliminar a ansiedade, mas de parar de ser governada por ela.
         </motion.p>
+        <motion.div variants={fadeUp} className="mt-10 flex justify-center">
+          <CTA>Quero começar agora →</CTA>
+        </motion.div>
       </Reveal>
     </section>
   );
@@ -418,6 +421,9 @@ function Receba() {
             </motion.div>
           ))}
         </div>
+        <motion.div variants={fadeUp} className="mt-12 flex justify-center">
+          <CTA>Quero acessar o guia →</CTA>
+        </motion.div>
       </Reveal>
     </section>
   );
@@ -448,7 +454,7 @@ function Depoimentos() {
     {
       n: "Thaís",
       t: [
-        "O estresse por conta do excesso de preocupações afetava meu sono, meu trabalho e minha relação com meu filho. Hoje “vejo a ansiedade como um sinal” — e a partir daí penso racionalmente no que posso fazer, no que está sob meu controle.",
+        "O estresse por conta do excesso de preocupações afetava meu sono, meu trabalho e minha relação com meu filho. Hoje “vejo a ansiedade como um sinal”, e a partir daí penso racionalmente no que posso fazer, no que está sob meu controle.",
       ],
     },
     {
