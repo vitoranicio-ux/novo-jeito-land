@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import sobreVoce from "@/assets/Sobre_Você.jpg.asset.json";
 import capaGuia from "@/assets/capa-guia.png.asset.json";
-import circuloEbook from "@/assets/Circulo_Ebook.png.asset.json";
+import circuloEbook from "@/assets/Circulo_Ebook-2.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
