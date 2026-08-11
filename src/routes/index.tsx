@@ -553,21 +553,16 @@ function SobreMariana() {
             Sou Mariana Anício, psicóloga e pós-graduada em Terapia de Aceitação e Compromisso (ACT).
           </p>
           <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-            Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um
-            padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o
-            lugar de identidade. Talvez você mesma já tenha se pegado dizendo: “Eu sou
-            ansiosa”. Foi justamente a partir dessa experiência que criei este guia.
+            Nos últimos cinco anos de prática clínica, acompanhando centenas de pessoas, percebi um padrão muito claro: a ansiedade deixou de ser apenas uma emoção e passou a ocupar o lugar de identidade.
           </p>
           <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-            Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você
-            vai entender por que ela aparece, o que ela está tentando comunicar e como agir de
-            maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser
-            controlada(o) por ela.
+            Talvez você mesma já tenha se pegado dizendo: "Eu sou ansiosa".
           </p>
           <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
-            Criei este guia porque vi, em anos de consultório, que a maioria das pessoas não
-            precisa de mais informação sobre ansiedade. Precisa de uma forma concreta de agir
-            diferente quando ela aparece. É isso que este material entrega.
+            Foi justamente a partir dessa experiência que criei este guia.
+          </p>
+          <p className="mt-4 text-[17px] sm:text-[18px] text-[#5C5C5C] leading-[1.75]">
+            Nele, vou te ajudar a transformar a forma como você se relaciona com a ansiedade. Você vai entender por que ela aparece, o que ela está tentando comunicar e como agir de maneira mais consciente quando ela surgir, sem precisar lutar contra ela nem ser controlada por ela.
           </p>
         </motion.div>
       </Reveal>
